@@ -7,20 +7,24 @@ import {
   IonCardHeader,
   IonCardSubtitle,
   IonCardTitle,
+  IonCol,
   IonContent,
   IonHeader,
+  IonIcon,
   IonInput,
   IonItem,
   IonLabel,
   IonPage,
+  IonRow,
   IonToast,
 } from "@ionic/react";
-import { flame, home, text } from "ionicons/icons";
+import { flame, home, pencil, text } from "ionicons/icons";
 import CirculoCarregamento from "../components/CirculoDeCarregamento";
 import BarraInferior from "../components/BarraInferiorControles";
 import usaSQLiteDB from "../composables/usaSQLiteDB";
 import { SQLiteDBConnection } from "@capacitor-community/sqlite";
 import BotaoAdicionarItem from "../components/BotaoAdicionar";
+import { useHistory } from "react-router";
 
 const ListaMagia: React.FC = () => {
   const [carregamento, defCarregamento] = useState<boolean>(false);
@@ -29,6 +33,7 @@ const ListaMagia: React.FC = () => {
 
   const [magiaItens, defMagiaItens] = useState<Array<any>>([]);
   const { executarAcaoSQL, iniciado, iniciaTabelas } = usaSQLiteDB();
+  const navegar = useHistory();
 
   useEffect(() => {
     const buscaDados = async () => {
@@ -43,19 +48,37 @@ const ListaMagia: React.FC = () => {
         MAGIA.MECANICA AS MAGIA_MECANICA,
         MAGIA.OBSAREA AS OBSAREA,
         MAGIA.OBSRESISTENCIA AS OBSRESISTENCIA,
+        MAGIA.OUTRONATUREZA,
+        MAGIA.OUTRORESISTENCIA,
+        MAGIA.OUTRODURACAO,
+        MAGIA.OUTROALCANCE,
+        MAGIA.OUTROEXECUCAO,
+        MAGIA.OUTROESCOLA,
+        MAGIA.OUTRONATUREZA,
+        MAGIA.OUTRONIVEL,
+        MAGIA.OUTROMANA,
         MANA.DESCRICAO AS MANA_DESCRICAO,
         MANA.ICONE AS MANA_ICONE,
+        NIVEL.ID AS NIVEL_ID,
         NIVEL.NIVEL AS NIVEL_DESCRICAO,
+        NATUREZA.ID AS NATUREZA_ID,
         NATUREZA.DESCRICAO AS NATUREZA_DESCRICAO,
         NATUREZA.ICONE AS NATUREZA_ICONE,
+        ESCOLA.ID AS ESCOLA_ID,
         ESCOLA.DESCRICAO AS ESCOLA_DESCRICAO,
         ESCOLA.ICONE AS ESCOLA_ICONE,
+        EXECUCAO.ID AS EXECUCAO_ID,
         EXECUCAO.DESCRICAO AS EXECUCAO_DESCRICAO,
+        ALCANCE.ID AS ALCANCE_ID,
         ALCANCE.DESCRICAO AS ALCANCE_DESCRICAO,
         AREA.ID AS AREA_ID,
         AREA.DESCRICAO AS AREA_DESCRICAO,
         DURACAO.DESCRICAO AS DURACAO_DESCRICAO,
-        RESISTENCIA.DESCRICAO AS RESISTENCIA_DESCRICAO
+        DURACAO.ID AS DURACAO_ID,
+        RESISTENCIA.DESCRICAO AS RESISTENCIA_DESCRICAO,
+        RESISTENCIA.ID AS RESISTENCIA_ID,
+        MAGIA.ORIGEM AS MAGIA_ORIGEM,
+        MAGIA.ORIGEMSIGLA AS MAGIA_ORIGEMSIGLA
           FROM 
               MAGIA
           INNER JOIN MANA ON MAGIA.ID_MANA = MANA.ID
@@ -146,6 +169,10 @@ const ListaMagia: React.FC = () => {
     };
   };
 
+  const redEdicaoMagia = () => {
+    /*navegar.push("/EdicaoMagia");*/
+  };
+
   return (
     <IonPage>
       <IonHeader>
@@ -159,24 +186,65 @@ const ListaMagia: React.FC = () => {
           >
             <IonCardHeader>
               <IonCardTitle>
-                {magia.MANA_ICONE} {magia.NOME}
+                <IonRow>
+                  <IonCol size="10">
+                    {magia.MANA_ID !== 999
+                      ? magia.MANA_ICONE
+                      : `[${magia.OUTROMANA}]`}{" "}
+                    {magia.NOME}
+                  </IonCol>
+                  <IonCol
+                    onClick={redEdicaoMagia}
+                    className="ion-text-center"
+                    size="2"
+                  >
+                    <IonIcon icon={pencil} />
+                  </IonCol>
+                </IonRow>
               </IonCardTitle>
               <IonCardSubtitle>
-                {magia.NATUREZA_ICONE} {magia.NATUREZA_DESCRICAO}{" "}
-                {magia.NIVEL_DESCRICAO} ({magia.ESCOLA_ICONE}{" "}
-                {magia.ESCOLA_DESCRICAO})
+                <IonRow>
+                  <IonCol size="10">
+                    {" "}
+                    {magia.NATUREZA_ID !== 999
+                      ? magia.NATUREZA_ICONE
+                      : null}{" "}
+                    {magia.NATUREZA_ID !== 999
+                      ? magia.NATUREZA_DESCRICAO
+                      : magia.OUTRONATUREZA}{" "}
+                    {magia.NIVEL_ID !== 999
+                      ? magia.NIVEL_DESCRICAO
+                      : magia.OUTRONIVEL}{" "}
+                    ({magia.ESCOLA_ID !== 999 ? magia.ESCOLA_ICONE : null}{" "}
+                    {magia.ESCOLA_ID !== 999
+                      ? magia.ESCOLA_DESCRICAO
+                      : magia.OUTROESCOLA}
+                    )
+                  </IonCol>
+                  <IonCol className="ion-text-center" size="2">
+                    <strong>{magia.MAGIA_ORIGEMSIGLA}</strong>
+                  </IonCol>
+                </IonRow>
               </IonCardSubtitle>
             </IonCardHeader>
             <IonCardContent>
               <p style={{ paddingBottom: "0.3rem" }}>
                 {magia.EXECUCAO_DESCRICAO && magia.EXECUCAO_DESCRICAO !== "" ? (
                   <>
-                    <strong>Execução:</strong> {magia.EXECUCAO_DESCRICAO};{" "}
+                    <strong>Execução:</strong>{" "}
+                    {magia.EXECUCAO_ID !== 999
+                      ? magia.EXECUCAO_DESCRICAO
+                      : magia.OUTROEXECUCAO}
+                    ;{" "}
                   </>
                 ) : null}
                 {magia.ALCANCE_DESCRICAO && magia.ALCANCE_DESCRICAO !== "" ? (
                   <>
-                    <strong>Alcance:</strong> {magia.ALCANCE_DESCRICAO};{" "}
+                    <strong>Alcance:</strong>{" "}
+                    {magia.ALCANCE_ID !== 999
+                      ? magia.ALCANCE_DESCRICAO
+                      : magia.OUTROALCANCE}
+                    ;{" "}
                   </>
                 ) : null}
                 {magia.ALVO && magia.ALVO !== "" ? (
@@ -188,19 +256,30 @@ const ListaMagia: React.FC = () => {
                 magia.AREA_DESCRICAO !== "" &&
                 magia.AREA_ID !== 998 ? (
                   <>
-                    <strong>Area:</strong> {magia.AREA_DESCRICAO}{" "}
+                    <strong>Area: </strong>{" "}
+                    {magia.AREA_ID !== 999 ? magia.AREA_DESCRICAO : null}{" "}
                     {magia.OBSAREA};{" "}
                   </>
                 ) : null}
-                {magia.DURACAO_DESCRICAO && magia.DURACAO_DESCRICAO !== "" ? (
+                {magia.DURACAO_DESCRICAO &&
+                magia.DURACAO_DESCRICAO !== "" &&
+                magia.DURACAO_ID !== 998 ? (
                   <>
-                    <strong>Duração:</strong> {magia.DURACAO_DESCRICAO};{" "}
+                    <strong>Duração:</strong>{" "}
+                    {magia.DURACAO_ID !== 999
+                      ? magia.DURACAO_DESCRICAO
+                      : magia.OUTRODURACAO}
+                    ;{" "}
                   </>
                 ) : null}
                 {magia.RESISTENCIA_DESCRICAO &&
-                magia.RESISTENCIA_DESCRICAO !== "" ? (
+                magia.RESISTENCIA_DESCRICAO !== "" &&
+                magia.RESISTENCIA_ID !== 998 ? (
                   <>
-                    <strong>Resistencia:</strong> {magia.RESISTENCIA_DESCRICAO}{" "}
+                    <strong>Resistência:</strong>{" "}
+                    {magia.RESISTENCIA_ID !== 999
+                      ? magia.RESISTENCIA_DESCRICAO
+                      : magia.OUTRORESISTENCIA}{" "}
                     {magia.OBSRESISTENCIA};
                   </>
                 ) : null}

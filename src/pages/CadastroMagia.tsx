@@ -41,6 +41,7 @@ import { recarregarPagina } from "../globalConstants/globalFunctions";
 const PaginaBase: React.FC = () => {
   const [carregamento, defCarregamento] = useState<boolean>(false);
   const [mostraMensagem, defMostraMensagem] = useState<boolean>(false);
+  const [corToast, defCorToast] = useState<string>("");
   const [toastTexto, defToastTexto] = useState<string>("");
   const { executarAcaoSQL, iniciado, iniciaTabelas } = usaSQLiteDB();
 
@@ -51,11 +52,11 @@ const PaginaBase: React.FC = () => {
   const [descricao, defDescricao] = useState<string>("");
   const [mecanica, defMecanica] = useState<string>("");
 
-  const [outraMana, defOutraMana] = useState<string>("");
+  const [outroMana, defOutraMana] = useState<string>("");
   const [outroNivel, defOutroNivel] = useState<string>("");
   const [outroNatureza, defOutroNatureza] = useState<string>("");
   const [outroEscola, defOutroEscola] = useState<string>("");
-  const [outraExecucao, defOutroExecucao] = useState<string>("");
+  const [outroExecucao, defOutroExecucao] = useState<string>("");
   const [outroAlcance, defOutroAlcance] = useState<string>("");
   const [outroDuracao, defOutroDuracao] = useState<string>("");
   const [outroResistencia, defOutroResistencia] = useState<string>("");
@@ -66,6 +67,8 @@ const PaginaBase: React.FC = () => {
   const [obsResistencia, defObsResistencia] = useState<string>("");
   const [nomeVerdadeiro, defNomeVerdadeiro] = useState<string>("");
   const [nomeAlternativo, defNomesAlternativos] = useState<string>("");
+  const [origem, defOrigem] = useState<string>();
+  const [origemSigla, defOrigemSigla] = useState<string>();
 
   const [manaItens, defManaItens] = useState<Array<any>>([]);
   const [manaSelecionada, defManaSelecionada] = useState<any>();
@@ -280,16 +283,61 @@ const PaginaBase: React.FC = () => {
     }
   }, [iniciado]);
 
+  const verificaOutros = (id: number) => {
+    if (id == 999) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
   const criarMagia = async () => {
+    let outraRes = "";
+    let outraDur = "";
+    let outraAlc = "";
+    let outraExe = "";
+    let outraEsc = "";
+    let outraNat = "";
+    let outraNiv = "";
+    let outraMan = "";
+
+    if (verificaOutros(resistenciaSelecionada)) {
+      outraRes = outroResistencia;
+    }
+    if (verificaOutros(duracaoSelecionada)) {
+      outraDur = outroDuracao;
+    }
+    if (verificaOutros(alcanceSelecionada)) {
+      outraAlc = outroAlcance;
+    }
+    if (verificaOutros(execucaoSelecionada)) {
+      outraExe = outroExecucao;
+    }
+    if (verificaOutros(escolaSelecionada)) {
+      outraEsc = outroEscola;
+    }
+    if (verificaOutros(naturezaSelecionada)) {
+      outraNat = outroNatureza;
+    }
+    if (verificaOutros(nivelSelecionada)) {
+      outraNiv = outroNivel;
+    }
+    if (verificaOutros(manaSelecionada)) {
+      outraMan = outroMana;
+    }
+
     const comandoSQL = `INSERT INTO MAGIA 
     (ID_MANA, ID_NIVEL, ID_NATUREZA, 
     ID_ESCOLA, ID_EXECUCAO, ALVO, 
     ID_AREA, OBSAREA, ID_ALCANCE, 
     ID_DURACAO, ID_RESISTENCIA, OBSRESISTENCIA, 
     DESCRICAO, MECANICA, NOMEALTERNATIVO, 
-    NOMEVERDADEIRO, NOME) 
+    NOMEVERDADEIRO, NOME, ORIGEM, ORIGEMSIGLA,
+    OUTRORESISTENCIA, OUTRODURACAO, OUTROALCANCE, 
+    OUTROEXECUCAO, OUTROESCOLA, OUTRONATUREZA, 
+    OUTRONIVEL, OUTROMANA) 
     VALUES 
-    (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+    (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
     console.log(comandoSQL, [
       manaSelecionada,
@@ -298,40 +346,103 @@ const PaginaBase: React.FC = () => {
       escolaSelecionada,
       execucaoSelecionada,
       alvo,
-      areaSelecionada,
+      areaSelecionada ?? 998,
       obsArea,
       alcanceSelecionada,
-      duracaoSelecionada,
-      resistenciaSelecionada,
+      duracaoSelecionada ?? 998,
+      resistenciaSelecionada ?? 998,
       obsResistencia,
       descricao,
       mecanica,
       nomeAlternativo,
       nomeVerdadeiro,
       nome,
+      origem == "" || origem == null ? "Desconhecido" : origem,
+      origemSigla == "" || origemSigla == null ? "N.N." : origemSigla,
+      outraRes,
+      outraDur,
+      outraAlc,
+      outraExe,
+      outraEsc,
+      outraNat,
+      outraNiv,
+      outraMan,
     ]);
 
-    await executarAcaoSQL(async (db: SQLiteDBConnection | undefined) => {
-      await db?.query(comandoSQL, [
-        manaSelecionada,
-        nivelSelecionada,
-        naturezaSelecionada,
-        escolaSelecionada,
-        execucaoSelecionada,
-        alvo,
-        areaSelecionada,
-        obsArea,
-        alcanceSelecionada,
-        duracaoSelecionada,
-        resistenciaSelecionada,
-        obsResistencia,
-        descricao,
-        mecanica,
-        nomeAlternativo,
-        nomeVerdadeiro,
-        nome,
-      ]);
-    });
+    if (
+      manaSelecionada &&
+      nivelSelecionada &&
+      naturezaSelecionada &&
+      escolaSelecionada &&
+      execucaoSelecionada &&
+      alcanceSelecionada &&
+      nome
+    ) {
+      try {
+        await executarAcaoSQL(async (db: SQLiteDBConnection | undefined) => {
+          await db?.query(comandoSQL, [
+            manaSelecionada,
+            nivelSelecionada,
+            naturezaSelecionada,
+            escolaSelecionada,
+            execucaoSelecionada,
+            alvo,
+            areaSelecionada ?? 998,
+            obsArea,
+            alcanceSelecionada,
+            duracaoSelecionada ?? 998,
+            resistenciaSelecionada ?? 998,
+            obsResistencia,
+            descricao,
+            mecanica,
+            nomeAlternativo,
+            nomeVerdadeiro,
+            nome,
+            origem == "" || origem == null ? "Desconhecido" : origem,
+            origemSigla == "" || origemSigla == null ? "N.N." : origemSigla,
+            outraRes,
+            outraDur,
+            outraAlc,
+            outraExe,
+            outraEsc,
+            outraNat,
+            outraNiv,
+            outraMan,
+          ]);
+          defCorToast("success");
+          defToastTexto(`Magia '${nome}' criada com sucesso!`);
+          defMostraMensagem(true);
+        });
+      } catch (erro) {
+        console.error(erro);
+        defCorToast("danger");
+        defToastTexto("ERRO: " + erro);
+        defMostraMensagem(true);
+      }
+    } else {
+      const dadosFaltando = [];
+
+      switch (true) {
+        case !manaSelecionada:
+          dadosFaltando.push("(Mana)");
+        case !nivelSelecionada:
+          dadosFaltando.push("(Círculo)");
+        case !naturezaSelecionada:
+          dadosFaltando.push("(Natureza)");
+        case !escolaSelecionada:
+          dadosFaltando.push("(Escola)");
+        case !execucaoSelecionada:
+          dadosFaltando.push("(Execução)");
+        case !alcanceSelecionada:
+          dadosFaltando.push("(Alcance)");
+        case !nome:
+          dadosFaltando.push("(Nome)");
+      }
+
+      defCorToast("danger");
+      defToastTexto("DADOS OBRIGATÓRIOS FALTANDO: " + dadosFaltando.join(", "));
+      defMostraMensagem(true);
+    }
   };
 
   const consoleMagiaInfo = () => {
@@ -377,6 +488,16 @@ const PaginaBase: React.FC = () => {
 
     defToastTexto("Informação da magia inserida no console!");
     defMostraMensagem(true);
+  };
+
+  const capOrigem = (valor: any) => {
+    console.log("Alvo Observacao: " + valor.detail.value);
+    defOrigem(valor.detail.value);
+  };
+
+  const capOrigemSigla = (valor: any) => {
+    console.log("Alvo Observacao: " + valor.detail.value);
+    defOrigemSigla(valor.detail.value);
   };
 
   const capObsArea = (valor: any) => {
@@ -697,7 +818,7 @@ const PaginaBase: React.FC = () => {
                               onIonInput={capOutraMana}
                               labelPlacement="floating"
                               color={telaCorPrimaria}
-                              label={outraMana ? "" : "Mana?"}
+                              label={outroMana ? "" : "Mana?"}
                             />
                           </IonItem>
                         </IonRow>
@@ -878,7 +999,7 @@ const PaginaBase: React.FC = () => {
                               inputMode="numeric"
                               color={telaCorPrimaria}
                               labelPlacement="floating"
-                              label={outraExecucao ? "" : "Execução?"}
+                              label={outroExecucao ? "" : "Execução?"}
                             />
                           </IonItem>
                         </IonRow>
@@ -1112,6 +1233,28 @@ const PaginaBase: React.FC = () => {
                     </IonCol>
                   </IonRow>
                   <IonRow>
+                    <IonCol size="3" style={{ padding: "0px" }}>
+                      <IonItem lines="none" color={telaCorSecundaria}>
+                        <IonInput
+                          color={telaCorPrimaria}
+                          labelPlacement="floating"
+                          label="Sigla"
+                          onIonInput={capOrigemSigla}
+                        ></IonInput>
+                      </IonItem>
+                    </IonCol>
+                    <IonCol style={{ padding: "0px" }}>
+                      <IonItem lines="none" color={telaCorSecundaria}>
+                        <IonInput
+                          color={telaCorPrimaria}
+                          labelPlacement="floating"
+                          label="Origem"
+                          onIonInput={capOrigem}
+                        ></IonInput>
+                      </IonItem>
+                    </IonCol>
+                  </IonRow>
+                  <IonRow>
                     <IonCol style={{ padding: "0px" }}>
                       <div className="ion-text-center">
                         <IonButton color={telaCorPrimaria} onClick={criarMagia}>
@@ -1126,6 +1269,7 @@ const PaginaBase: React.FC = () => {
             </IonCard>
           ) : null}
           <IonToast
+            color={corToast}
             isOpen={mostraMensagem}
             message={toastTexto}
             onDidDismiss={() => defMostraMensagem(false)}
