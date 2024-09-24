@@ -30,7 +30,6 @@ import {
   create,
   diamond,
   grid,
-  reader,
   search,
   today,
   trash,

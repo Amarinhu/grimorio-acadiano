@@ -267,7 +267,6 @@ http://ionicframework.com/docs/theming/ */
   --ion-color-tint: var(--ion-color-verdeterciario-tint);
 }
 
-
 :root {
   /** Vermelho Primário **/
   --ion-color-vermelhoprimario: #a80000; /* Darker bright red */
@@ -321,31 +320,30 @@ http://ionicframework.com/docs/theming/ */
   --ion-color-tint: var(--ion-color-vermelhoterciario-tint);
 }
 
-
 :root {
   /** Primary **/
-  --ion-color-primary: #800080; /* Purple */
-  --ion-color-primary-rgb: 128, 0, 128;
+  --ion-color-primary: #cf0100; /* Deep Red */
+  --ion-color-primary-rgb: 207, 1, 0;
   --ion-color-primary-contrast: #ffffff; /* White */
   --ion-color-primary-contrast-rgb: 255, 255, 255;
-  --ion-color-primary-shade: #660066; /* Darker purple */
-  --ion-color-primary-tint: #993399; /* Lighter purple */
+  --ion-color-primary-shade: #a50100; /* Darker Red */
+  --ion-color-primary-tint: #e32e2e; /* Lighter Red */
 
   /** Secondary **/
-  --ion-color-secondary: #b19cd9; /* Light lavender */
-  --ion-color-secondary-rgb: 177, 156, 217;
-  --ion-color-secondary-contrast: #3e003e; /* Dark purple */
-  --ion-color-secondary-contrast-rgb: 62, 0, 62;
-  --ion-color-secondary-shade: #957eb8; /* Darker lavender */
-  --ion-color-secondary-tint: #c5b3e1; /* Lighter lavender */
+  --ion-color-secondary: #ff4d4d; /* Light Red */
+  --ion-color-secondary-rgb: 255, 77, 77;
+  --ion-color-secondary-contrast: #870000; /* Dark Red */
+  --ion-color-secondary-contrast-rgb: 135, 0, 0;
+  --ion-color-secondary-shade: #d14242; /* Darker Light Red */
+  --ion-color-secondary-tint: #ff6666; /* Lighter Light Red */
 
   /** Tertiary **/
-  --ion-color-tertiary: #9370db; /* Medium purple */
-  --ion-color-tertiary-rgb: 147, 112, 219;
+  --ion-color-tertiary: #e73c3c; /* Medium Red */
+  --ion-color-tertiary-rgb: 231, 60, 60;
   --ion-color-tertiary-contrast: #ffffff; /* White */
   --ion-color-tertiary-contrast-rgb: 255, 255, 255;
-  --ion-color-tertiary-shade: #7b5fb4; /* Darker medium purple */
-  --ion-color-tertiary-tint: #a98be1; /* Lighter medium purple */
+  --ion-color-tertiary-shade: #b83232; /* Darker Medium Red */
+  --ion-color-tertiary-tint: #ef5959; /* Lighter Medium Red */
 
   /** Success **/
   --ion-color-success: #2dd36f;
@@ -403,28 +401,28 @@ http://ionicframework.com/docs/theming/ */
    */
   body {
     /** Primary **/
-    --ion-color-primary: #800080; /* Purple */
-    --ion-color-primary-rgb: 128, 0, 128;
+    --ion-color-primary: #7c0000; /* Deep Red */
+    --ion-color-primary-rgb: 207, 1, 0;
     --ion-color-primary-contrast: #ffffff; /* White */
     --ion-color-primary-contrast-rgb: 255, 255, 255;
-    --ion-color-primary-shade: #660066; /* Darker purple */
-    --ion-color-primary-tint: #993399; /* Lighter purple */
+    --ion-color-primary-shade: #a50100; /* Darker Red */
+    --ion-color-primary-tint: #e32e2e; /* Lighter Red */
 
     /** Secondary **/
-    --ion-color-secondary: #b19cd9; /* Light lavender */
-    --ion-color-secondary-rgb: 177, 156, 217;
-    --ion-color-secondary-contrast: #3e003e; /* Dark purple */
-    --ion-color-secondary-contrast-rgb: 62, 0, 62;
-    --ion-color-secondary-shade: #957eb8; /* Darker lavender */
-    --ion-color-secondary-tint: #c5b3e1; /* Lighter lavender */
+    --ion-color-secondary: #ff6868; /* Light Red */
+    --ion-color-secondary-rgb: 255, 77, 77;
+    --ion-color-secondary-contrast: #870000; /* Dark Red */
+    --ion-color-secondary-contrast-rgb: 135, 0, 0;
+    --ion-color-secondary-shade: #d14242; /* Darker Light Red */
+    --ion-color-secondary-tint: #ff6666; /* Lighter Light Red */
 
     /** Tertiary **/
-    --ion-color-tertiary: #9370db; /* Medium purple */
-    --ion-color-tertiary-rgb: 147, 112, 219;
+    --ion-color-tertiary: #a41818; /* Medium Red */
+    --ion-color-tertiary-rgb: 231, 60, 60;
     --ion-color-tertiary-contrast: #ffffff; /* White */
     --ion-color-tertiary-contrast-rgb: 255, 255, 255;
-    --ion-color-tertiary-shade: #7b5fb4; /* Darker medium purple */
-    --ion-color-tertiary-tint: #a98be1; /* Lighter medium purple */
+    --ion-color-tertiary-shade: #b83232; /* Darker Medium Red */
+    --ion-color-tertiary-tint: #ef5959; /* Lighter Medium Red */
 
     /** Success **/
     --ion-color-success: #2dd36f;

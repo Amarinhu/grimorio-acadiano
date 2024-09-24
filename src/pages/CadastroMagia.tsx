@@ -44,9 +44,8 @@ const PaginaBase: React.FC = () => {
   const [toastTexto, defToastTexto] = useState<string>("");
   const { executarAcaoSQL, iniciado, iniciaTabelas } = usaSQLiteDB();
 
-  const [telaCorPrimaria, defTelaCorPrimaria] = useState<string>("primary");
-  const [telaCorSecundaria, defTelaCorSecundaria] =
-    useState<string>("secondary");
+  const [telaCorPrimaria, defTelaCorPrimaria] = useState<string>("secondary");
+  const [telaCorSecundaria, defTelaCorSecundaria] = useState<string>("primary");
   const [telaCorTerciaria, defTelaCorTerciaria] = useState<string>("tertiary");
 
   const [descricao, defDescricao] = useState<string>("");
@@ -66,7 +65,7 @@ const PaginaBase: React.FC = () => {
   const [obsArea, defObsArea] = useState<string>("");
   const [obsResistencia, defObsResistencia] = useState<string>("");
   const [nomeVerdadeiro, defNomeVerdadeiro] = useState<string>("");
-  const [nomeAlternativos, defNomesAlternativos] = useState<string>("");
+  const [nomeAlternativo, defNomesAlternativos] = useState<string>("");
 
   const [manaItens, defManaItens] = useState<Array<any>>([]);
   const [manaSelecionada, defManaSelecionada] = useState<any>();
@@ -282,8 +281,56 @@ const PaginaBase: React.FC = () => {
   }, [iniciado]);
 
   const criarMagia = async () => {
+    const comandoSQL = `INSERT INTO MAGIA 
+    (ID_MANA, ID_NIVEL, ID_NATUREZA, 
+    ID_ESCOLA, ID_EXECUCAO, ALVO, 
+    ID_AREA, OBSAREA, ID_ALCANCE, 
+    ID_DURACAO, ID_RESISTENCIA, OBSRESISTENCIA, 
+    DESCRICAO, MECANICA, NOMEALTERNATIVO, 
+    NOMEVERDADEIRO, NOME) 
+    VALUES 
+    (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+
+    console.log(comandoSQL, [
+      manaSelecionada,
+      nivelSelecionada,
+      naturezaSelecionada,
+      escolaSelecionada,
+      execucaoSelecionada,
+      alvo,
+      areaSelecionada,
+      obsArea,
+      alcanceSelecionada,
+      duracaoSelecionada,
+      resistenciaSelecionada,
+      obsResistencia,
+      descricao,
+      mecanica,
+      nomeAlternativo,
+      nomeVerdadeiro,
+      nome,
+    ]);
+
     await executarAcaoSQL(async (db: SQLiteDBConnection | undefined) => {
-      const comandoSQL = ``
+      await db?.query(comandoSQL, [
+        manaSelecionada,
+        nivelSelecionada,
+        naturezaSelecionada,
+        escolaSelecionada,
+        execucaoSelecionada,
+        alvo,
+        areaSelecionada,
+        obsArea,
+        alcanceSelecionada,
+        duracaoSelecionada,
+        resistenciaSelecionada,
+        obsResistencia,
+        descricao,
+        mecanica,
+        nomeAlternativo,
+        nomeVerdadeiro,
+        nome,
+      ]);
     });
   };
 
@@ -322,7 +369,7 @@ const PaginaBase: React.FC = () => {
       `OBS_RESISTENCIA: ${obsResistencia}`,
       `DESCRICAO: ${descricao}`,
       `MECANICA: ${mecanica}`,
-      `NOMES ALTERNATIVOS: ${nomeAlternativos}`,
+      `NOMES ALTERNATIVOS: ${nomeAlternativo}`,
       `NOME VERDADEIRO: ${nomeVerdadeiro}`,
     ];
     defConsoleLog(magiaInfo);
@@ -506,12 +553,6 @@ const PaginaBase: React.FC = () => {
     defMostraModalNivel(false);
   };
 
-  const teste = () => {
-    defTelaCorPrimaria("vermelhosecundario");
-    defTelaCorSecundaria("vermelhoprimario");
-    defTelaCorTerciaria("vermelhoterciario");
-  };
-
   const insercao = async () => {
     try {
       const comandosSQL = [
@@ -525,7 +566,7 @@ const PaginaBase: React.FC = () => {
         `INSERT OR REPLACE INTO NIVEL (ID, NIVEL)
         VALUES (1, '1'), (2, '2'), (3, '3'), (4, '4'), (5, '5'), (6, '6'), (999, 'Ø');`,
         `INSERT OR REPLACE INTO NATUREZA(ID, ICONE, DESCRICAO)
-        VALUES (1,'🙏', 'Divino'), (2,'✨', 'Arcana'), (998, 'x', 'Nenhum'), (999,'Ø','Outro')`,
+        VALUES (1,'🙏', 'Divino'), (2,'✨', 'Arcana'), (3,'📖', 'Universal'), (998, 'x', 'Nenhum'), (999,'Ø','Outro')`,
         `INSERT OR REPLACE INTO ESCOLA(ID, ICONE, DESCRICAO)
         VALUES (1, '🛡️', 'Abjuração'), (2, '🔮', 'Adivinhação'), (3, '🌀', 'Convocação'), 
         (4, '❤️', 'Encantamento'), (5, '👁️‍🗨️', 'Ilusão'), (6, '🔥', 'Evocação'), (7, '☠️', 'Necromancia'), 

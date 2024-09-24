@@ -15,7 +15,7 @@ import { useHistory } from "react-router";
 import { exit, cog } from "ionicons/icons";
 import "./MenuLateral.css";
 import armazenamento from "../armazenamento";
-import domoImagem from "../assets/domoImagem.png";
+import LogoAssistente from "../assets/logo-assistente-acadiano.png";
 
 const MenuLateral: React.FC = () => {
   const navegar = useHistory();
@@ -31,32 +31,27 @@ const MenuLateral: React.FC = () => {
     }
   };
 
-  const caminhos = [
-    { nome: "Dev Tools", url: "/AssistenteDev", icon: cog },
-    { nome: "Sair", url: "/PaginaLogin", icon: exit },
-  ];
+  const caminhos = [{ nome: "Dev Tools", url: "/AssistenteDev", icon: cog }];
 
   return (
     <IonMenu contentId="main">
-      <IonContent>
+      <IonContent color="primary">
         <div className="circula-img limita-img">
-          <IonImg src={domoImagem} />
+          <IonImg src={LogoAssistente} />
         </div>
-        <IonHeader>DOMO</IonHeader>
-        <IonList>
-          {caminhos.map((item, index) => (
-            <IonMenuToggle key={index}>
-              <IonItem
-                color="light"
-                routerLink={item.url}
-                onClick={() => caminhosMenu(item.url, item.nome)}
-              >
-                <IonIcon color="primary" icon={item.icon} slot="start" />
-                <IonLabel>{item.nome}</IonLabel>
-              </IonItem>
-            </IonMenuToggle>
-          ))}
-        </IonList>
+        <IonHeader style={{ color: "yellow" }}>Assitente Acadiano</IonHeader>
+        {caminhos.map((item, index) => (
+          <IonMenuToggle key={index}>
+            <IonItem
+              color="tertiary"
+              routerLink={item.url}
+              onClick={() => caminhosMenu(item.url, item.nome)}
+            >
+              <IonIcon color="primary" icon={item.icon} slot="start" />
+              <IonLabel>{item.nome}</IonLabel>
+            </IonItem>
+          </IonMenuToggle>
+        ))}
         <div className="ion-text-center custom-versao">
           <IonText>Ver. 0.1.0</IonText>
         </div>
