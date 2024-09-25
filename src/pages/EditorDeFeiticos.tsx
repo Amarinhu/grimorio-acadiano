@@ -14,6 +14,7 @@ import {
   IonInput,
   IonItem,
   IonLabel,
+  IonList,
   IonModal,
   IonPage,
   IonRow,
@@ -21,22 +22,12 @@ import {
   IonTextarea,
   IonToast,
 } from "@ionic/react";
-import {
-  brush,
-  colorWand,
-  flame,
-  home,
-  informationCircle,
-  planet,
-  radioButtonOff,
-  radioButtonOn,
-  save,
-  text,
-} from "ionicons/icons";
+import { brush, flame, radioButtonOff, radioButtonOn } from "ionicons/icons";
 import CirculoCarregamento from "../components/CirculoDeCarregamento";
 import usaSQLiteDB from "../composables/usaSQLiteDB";
 import { SQLiteDBConnection } from "@capacitor-community/sqlite";
 import { recarregarPagina } from "../globalConstants/globalFunctions";
+import { useLocation } from "react-router-dom";
 
 const PaginaBase: React.FC = () => {
   const [carregamento, defCarregamento] = useState<boolean>(false);
@@ -107,6 +98,117 @@ const PaginaBase: React.FC = () => {
   const [mostraModalResistencia, defMostraModalResistencia] = useState(false);
 
   const [consoleLog, defConsoleLog] = useState<Array<string>>([]);
+
+  const url = useLocation();
+
+  const parametros = new URLSearchParams(url.search);
+
+  const idMagia = parametros.get("idMagia");
+
+  useEffect(() => {
+    if (idMagia) {
+      const carregaDadosEdicao = async () => {
+        const comandoSQL = `SELECT 
+          MAGIA.ID,
+          MANA.ID AS MANA_ID,
+          MAGIA.NOME,
+          MAGIA.ALVO,
+          MAGIA.NOMEVERDADEIRO,
+          MAGIA.NOMEALTERNATIVO,
+          MAGIA.DESCRICAO AS MAGIA_DESCRICAO,
+          MAGIA.MECANICA AS MAGIA_MECANICA,
+          MAGIA.OBSAREA AS OBSAREA,
+          MAGIA.OBSRESISTENCIA AS OBSRESISTENCIA,
+          MAGIA.OUTRONATUREZA,
+          MAGIA.OUTRORESISTENCIA,
+          MAGIA.OUTRODURACAO,
+          MAGIA.OUTROALCANCE,
+          MAGIA.OUTROEXECUCAO,
+          MAGIA.OUTROESCOLA,
+          MAGIA.OUTRONATUREZA,
+          MAGIA.OUTRONIVEL,
+          MAGIA.OUTROMANA,
+          MANA.DESCRICAO AS MANA_DESCRICAO,
+          MANA.ICONE AS MANA_ICONE,
+          NIVEL.ID AS NIVEL_ID,
+          NIVEL.NIVEL AS NIVEL_DESCRICAO,
+          NATUREZA.ID AS NATUREZA_ID,
+          NATUREZA.DESCRICAO AS NATUREZA_DESCRICAO,
+          NATUREZA.ICONE AS NATUREZA_ICONE,
+          ESCOLA.ID AS ESCOLA_ID,
+          ESCOLA.DESCRICAO AS ESCOLA_DESCRICAO,
+          ESCOLA.ICONE AS ESCOLA_ICONE,
+          EXECUCAO.ID AS EXECUCAO_ID,
+          EXECUCAO.DESCRICAO AS EXECUCAO_DESCRICAO,
+          ALCANCE.ID AS ALCANCE_ID,
+          ALCANCE.DESCRICAO AS ALCANCE_DESCRICAO,
+          AREA.ID AS AREA_ID,
+          AREA.DESCRICAO AS AREA_DESCRICAO,
+          DURACAO.DESCRICAO AS DURACAO_DESCRICAO,
+          DURACAO.ID AS DURACAO_ID,
+          RESISTENCIA.DESCRICAO AS RESISTENCIA_DESCRICAO,
+          RESISTENCIA.ID AS RESISTENCIA_ID,
+          MAGIA.ORIGEM AS MAGIA_ORIGEM,
+          MAGIA.ORIGEMSIGLA AS MAGIA_ORIGEMSIGLA
+            FROM 
+                MAGIA
+            INNER JOIN MANA ON MAGIA.ID_MANA = MANA.ID
+            INNER JOIN NIVEL ON MAGIA.ID_NIVEL = NIVEL.ID
+            INNER JOIN NATUREZA ON MAGIA.ID_NATUREZA = NATUREZA.ID
+            INNER JOIN ESCOLA ON MAGIA.ID_ESCOLA = ESCOLA.ID
+            INNER JOIN EXECUCAO ON MAGIA.ID_EXECUCAO = EXECUCAO.ID
+            INNER JOIN ALCANCE ON MAGIA.ID_ALCANCE = ALCANCE.ID
+            INNER JOIN AREA ON MAGIA.ID_AREA = AREA.ID
+            INNER JOIN DURACAO ON MAGIA.ID_DURACAO = DURACAO.ID
+            INNER JOIN RESISTENCIA ON MAGIA.ID_RESISTENCIA = RESISTENCIA.ID
+          WHERE MAGIA.ID = ${idMagia}`;
+        try {
+          let resultado: { values: any[] } | undefined;
+          await executarAcaoSQL(async (db: SQLiteDBConnection | undefined) => {
+            resultado = (await db?.query(comandoSQL)) as {
+              values: any[];
+            };
+          });
+          console.log(resultado);
+          if (resultado && resultado.values) {
+            const valores = resultado.values?.[0];
+            defNome(valores.NOME);
+            defAlcanceSelecionada(valores.ALCANCE_ID);
+            defOutroAlcance(valores.OUTROALCANCE);
+            defManaSelecionada(valores.MANA_ID);
+            definirCoresMana(valores.MANA_ID);
+            defOutraMana(valores.OUTROMANA);
+            defNivelSelecionada(valores.NIVEL_ID);
+            defOutroNivel(valores.OUTRONIVEL);
+            defNaturezaSelecionada(valores.NATUREZA_ID);
+            defOutroNatureza(valores.OUTRONATUREZA);
+            defEscolaSelecionada(valores.ESCOLA_ID);
+            defOutroEscola(valores.OUTROESCOLA);
+            defExecucaoSelecionada(valores.EXECUCAO_ID);
+            defOutroExecucao(valores.OUTROEXECUCAO);
+            defAlvo(valores.ALVO);
+            defAreaSelecionada(valores.AREA_ID);
+            defObsArea(valores.OBSAREA);
+            defDuracaoSelecionada(valores.DURACAO_ID);
+            defOutroDuracao(valores.OUTRODURACAO);
+            defResistenciaSelecionada(valores.RESISTENCIA_ID);
+            defOutroResistencia(valores.OUTRORESISTENCIA);
+            defObsResistencia(valores.OBSRESISTENCIA);
+            defDescricao(valores.MAGIA_DESCRICAO);
+            defMecanica(valores.MAGIA_MECANICA);
+            defNomesAlternativos(valores.NOMEALTERNATIVO);
+            defNomeVerdadeiro(valores.NOMEVERDADEIRO);
+            defOrigemSigla(valores.MAGIA_ORIGEMSIGLA);
+            defOrigem(valores.MAGIA_ORIGEM);
+          }
+        } catch (erro) {
+          console.error(erro);
+        }
+      };
+
+      carregaDadosEdicao();
+    }
+  }, [iniciado]);
 
   useEffect(() => {
     const carregaMana = async () => {
@@ -325,19 +427,36 @@ const PaginaBase: React.FC = () => {
     if (verificaOutros(manaSelecionada)) {
       outraMan = outroMana;
     }
+    let comandoSQL = "";
 
-    const comandoSQL = `INSERT INTO MAGIA 
-    (ID_MANA, ID_NIVEL, ID_NATUREZA, 
-    ID_ESCOLA, ID_EXECUCAO, ALVO, 
-    ID_AREA, OBSAREA, ID_ALCANCE, 
-    ID_DURACAO, ID_RESISTENCIA, OBSRESISTENCIA, 
-    DESCRICAO, MECANICA, NOMEALTERNATIVO, 
-    NOMEVERDADEIRO, NOME, ORIGEM, ORIGEMSIGLA,
-    OUTRORESISTENCIA, OUTRODURACAO, OUTROALCANCE, 
-    OUTROEXECUCAO, OUTROESCOLA, OUTRONATUREZA, 
-    OUTRONIVEL, OUTROMANA) 
-    VALUES 
-    (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+    if (idMagia) {
+      comandoSQL = `
+      UPDATE MAGIA 
+        SET 
+        ID_MANA = ?, ID_NIVEL = ?, ID_NATUREZA = ?, 
+        ID_ESCOLA = ?, ID_EXECUCAO = ?, ALVO = ?, 
+        ID_AREA = ?, OBSAREA = ?, ID_ALCANCE = ?, 
+        ID_DURACAO = ?, ID_RESISTENCIA = ?, OBSRESISTENCIA = ?, 
+        DESCRICAO = ?, MECANICA = ?, NOMEALTERNATIVO = ?, 
+        NOMEVERDADEIRO = ?, NOME = ?, ORIGEM = ?, 
+        ORIGEMSIGLA = ?, OUTRORESISTENCIA = ?, OUTRODURACAO = ?, 
+        OUTROALCANCE = ?, OUTROEXECUCAO = ?, OUTROESCOLA = ?, 
+        OUTRONATUREZA = ?, OUTRONIVEL = ?, OUTROMANA = ? 
+      WHERE MAGIA.ID = ${idMagia} `;
+    } else {
+      comandoSQL = ` INSERT INTO MAGIA 
+      (ID_MANA, ID_NIVEL, ID_NATUREZA, 
+      ID_ESCOLA, ID_EXECUCAO, ALVO, 
+      ID_AREA, OBSAREA, ID_ALCANCE, 
+      ID_DURACAO, ID_RESISTENCIA, OBSRESISTENCIA, 
+      DESCRICAO, MECANICA, NOMEALTERNATIVO, 
+      NOMEVERDADEIRO, NOME, ORIGEM, ORIGEMSIGLA,
+      OUTRORESISTENCIA, OUTRODURACAO, OUTROALCANCE, 
+      OUTROEXECUCAO, OUTROESCOLA, OUTRONATUREZA, 
+      OUTRONIVEL, OUTROMANA) 
+      VALUES 
+      (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) `;
+    }
 
     console.log(comandoSQL, [
       manaSelecionada,
@@ -410,7 +529,12 @@ const PaginaBase: React.FC = () => {
             outraMan,
           ]);
           defCorToast("success");
-          defToastTexto(`Magia '${nome}' criada com sucesso!`);
+          if (idMagia) {
+            defToastTexto(`Magia '${nome}' alterada com sucesso!`);
+          } else {
+            defToastTexto(`Magia '${nome}' criada com sucesso!`);
+          }
+
           defMostraMensagem(true);
         });
       } catch (erro) {
@@ -622,10 +746,7 @@ const PaginaBase: React.FC = () => {
     defMostraModalResistencia(false);
   };
 
-  const capMana = (valor: any) => {
-    console.log("Mana Selecionado: " + valor);
-
-    console.log(manaItens);
+  const definirCoresMana = (valor: number) => {
     switch (valor) {
       case 1:
         defTelaCorPrimaria("vermelhosecundario");
@@ -663,6 +784,13 @@ const PaginaBase: React.FC = () => {
         defTelaCorTerciaria("tertiary");
         break;
     }
+  };
+
+  const capMana = (valor: any) => {
+    console.log("Mana Selecionado: " + valor);
+
+    console.log(manaItens);
+    definirCoresMana(valor);
 
     defManaSelecionada(valor);
     defMostraModalMana(false);
@@ -774,6 +902,7 @@ const PaginaBase: React.FC = () => {
                     color={telaCorPrimaria}
                     label={nome ? "" : "Insira o nome da magia"}
                     onIonInput={capNome}
+                    value={nome}
                     labelPlacement="floating"
                   ></IonInput>
                 </IonCardTitle>
@@ -815,6 +944,7 @@ const PaginaBase: React.FC = () => {
                             color={telaCorSecundaria}
                           >
                             <IonInput
+                              value={outroMana}
                               onIonInput={capOutraMana}
                               labelPlacement="floating"
                               color={telaCorPrimaria}
@@ -856,12 +986,7 @@ const PaginaBase: React.FC = () => {
                           >
                             <IonInput
                               onIonInput={capOutroNivel}
-                              onIonChange={(e) => {
-                                const input = e.target.value
-                                  ?.toString()
-                                  .replace(/\D/g, "");
-                                e.target.value = input ? `${input}º` : "";
-                              }}
+                              value={outroNivel}
                               inputMode="numeric"
                               color={telaCorPrimaria}
                               labelPlacement="floating"
@@ -909,6 +1034,7 @@ const PaginaBase: React.FC = () => {
                           >
                             <IonInput
                               onIonInput={capOutraNatureza}
+                              value={outroNatureza}
                               inputMode="numeric"
                               color={telaCorPrimaria}
                               labelPlacement="floating"
@@ -955,6 +1081,7 @@ const PaginaBase: React.FC = () => {
                             <IonInput
                               onIonInput={capOutraEscola}
                               inputMode="numeric"
+                              value={outroEscola}
                               color={telaCorPrimaria}
                               labelPlacement="floating"
                               label={outroEscola ? "" : "Escola?"}
@@ -997,6 +1124,7 @@ const PaginaBase: React.FC = () => {
                             <IonInput
                               onIonInput={capOutraExecucao}
                               inputMode="numeric"
+                              value={outroExecucao}
                               color={telaCorPrimaria}
                               labelPlacement="floating"
                               label={outroExecucao ? "" : "Execução?"}
@@ -1012,6 +1140,7 @@ const PaginaBase: React.FC = () => {
                         <IonInput
                           onIonInput={capAlvo}
                           color={telaCorPrimaria}
+                          value={alvo}
                           label="Alvo"
                           labelPlacement="floating"
                         ></IonInput>
@@ -1042,6 +1171,7 @@ const PaginaBase: React.FC = () => {
                       <IonItem lines="none" color={telaCorSecundaria}>
                         <IonInput
                           onIonInput={capObsArea}
+                          value={obsArea}
                           color={telaCorPrimaria}
                           label="Observação Área"
                           labelPlacement="floating"
@@ -1079,6 +1209,7 @@ const PaginaBase: React.FC = () => {
                           >
                             <IonInput
                               onIonInput={capOutroAlcance}
+                              value={outroAlcance}
                               inputMode="numeric"
                               color={telaCorPrimaria}
                               labelPlacement="floating"
@@ -1120,6 +1251,7 @@ const PaginaBase: React.FC = () => {
                             <IonInput
                               onIonInput={capOutroDuracao}
                               inputMode="numeric"
+                              value={outroDuracao}
                               color={telaCorPrimaria}
                               labelPlacement="floating"
                               label={outroDuracao ? "" : "Duração?"}
@@ -1161,6 +1293,7 @@ const PaginaBase: React.FC = () => {
                             <IonInput
                               onIonInput={capOutroResistencia}
                               inputMode="numeric"
+                              value={outroResistencia}
                               color={telaCorPrimaria}
                               labelPlacement="floating"
                               label={outroResistencia ? "" : "Resistencia?"}
@@ -1177,6 +1310,7 @@ const PaginaBase: React.FC = () => {
                           color={telaCorPrimaria}
                           labelPlacement="floating"
                           label="Observação Resistência"
+                          value={obsResistencia}
                           onIonInput={capObsResistencia}
                         ></IonInput>
                       </IonItem>
@@ -1188,6 +1322,7 @@ const PaginaBase: React.FC = () => {
                         <IonTextarea
                           color={telaCorPrimaria}
                           autoGrow={true}
+                          value={descricao}
                           label="Descrição"
                           labelPlacement="floating"
                           onIonInput={capDescricao}
@@ -1202,6 +1337,7 @@ const PaginaBase: React.FC = () => {
                           color={telaCorPrimaria}
                           autoGrow={true}
                           label="Mecânica"
+                          value={mecanica}
                           labelPlacement="floating"
                           onIonInput={capMecanica}
                         />
@@ -1214,6 +1350,7 @@ const PaginaBase: React.FC = () => {
                         <IonInput
                           color={telaCorPrimaria}
                           labelPlacement="floating"
+                          value={nomeAlternativo}
                           label="Nomes Alternativos"
                           onIonInput={capNomesAlternativos}
                         ></IonInput>
@@ -1227,6 +1364,7 @@ const PaginaBase: React.FC = () => {
                           color={telaCorPrimaria}
                           labelPlacement="floating"
                           label="Nome Verdadeiro"
+                          value={nomeVerdadeiro}
                           onIonInput={capNomeVerdadeiro}
                         ></IonInput>
                       </IonItem>
@@ -1239,6 +1377,7 @@ const PaginaBase: React.FC = () => {
                           color={telaCorPrimaria}
                           labelPlacement="floating"
                           label="Sigla"
+                          value={origemSigla}
                           onIonInput={capOrigemSigla}
                         ></IonInput>
                       </IonItem>
@@ -1248,6 +1387,7 @@ const PaginaBase: React.FC = () => {
                         <IonInput
                           color={telaCorPrimaria}
                           labelPlacement="floating"
+                          value={origem}
                           label="Origem"
                           onIonInput={capOrigem}
                         ></IonInput>
@@ -1259,7 +1399,9 @@ const PaginaBase: React.FC = () => {
                       <div className="ion-text-center">
                         <IonButton color={telaCorPrimaria} onClick={criarMagia}>
                           <IonIcon slot="start" icon={brush} />
-                          <IonLabel>Criar Magia!</IonLabel>
+                          <IonLabel>
+                            {idMagia ? "Alterar Magia!" : "Criar Magia!"}
+                          </IonLabel>
                         </IonButton>
                       </div>
                     </IonCol>
@@ -1281,333 +1423,315 @@ const PaginaBase: React.FC = () => {
             isOpen={mostraModalMana}
             onDidDismiss={() => defMostraModalMana(false)}
           >
-            <IonContent color={telaCorTerciaria}>
-              <div>
-                {manaItens?.map((mana, indice) => (
-                  <IonItem
-                    className="ion-text-center"
-                    button
-                    key={indice}
-                    onClick={() => capMana(mana.ID)}
-                    color={telaCorSecundaria}
-                  >
-                    {mana.ID === manaSelecionada ? (
-                      <IonIcon
-                        style={{ marginRight: "0.5rem" }}
-                        slot="start"
-                        icon={radioButtonOn}
-                        color={telaCorPrimaria}
-                      ></IonIcon>
-                    ) : (
-                      <IonIcon
-                        style={{ marginRight: "0.5rem" }}
-                        slot="start"
-                        icon={radioButtonOff}
-                      ></IonIcon>
-                    )}
-                    <IonLabel style={{ fontSize: "1.3rem" }}>
-                      {mana.ICONE} - {mana.DESCRICAO}
-                    </IonLabel>
-                  </IonItem>
-                ))}
-              </div>
-            </IonContent>
+            <IonList style={{ marginTop: "auto", marginBottom: "auto" }}>
+              {manaItens?.map((mana, indice) => (
+                <IonItem
+                  className="ion-text-center"
+                  button
+                  key={indice}
+                  onClick={() => capMana(mana.ID)}
+                  color={telaCorSecundaria}
+                >
+                  {mana.ID === manaSelecionada ? (
+                    <IonIcon
+                      style={{ marginRight: "0.5rem" }}
+                      slot="start"
+                      icon={radioButtonOn}
+                      color={telaCorPrimaria}
+                    ></IonIcon>
+                  ) : (
+                    <IonIcon
+                      style={{ marginRight: "0.5rem" }}
+                      slot="start"
+                      icon={radioButtonOff}
+                    ></IonIcon>
+                  )}
+                  <IonLabel style={{ fontSize: "1.3rem" }}>
+                    {mana.ICONE} - {mana.DESCRICAO}
+                  </IonLabel>
+                </IonItem>
+              ))}
+            </IonList>
           </IonModal>
 
           <IonModal
             isOpen={mostraModalNatureza}
             onDidDismiss={() => defMostraModalNatureza(false)}
           >
-            <IonContent color={telaCorTerciaria}>
-              <div>
-                {naturezaItens?.map((natureza, indice) => (
-                  <IonItem
-                    className="ion-text-center"
-                    button
-                    key={indice}
-                    onClick={() => capNatureza(natureza.ID)}
-                    color={telaCorSecundaria}
-                  >
-                    {natureza.ID === naturezaSelecionada ? (
-                      <IonIcon
-                        style={{ marginRight: "0.5rem" }}
-                        slot="start"
-                        icon={radioButtonOn}
-                        color={telaCorPrimaria}
-                      ></IonIcon>
-                    ) : (
-                      <IonIcon
-                        style={{ marginRight: "0.5rem" }}
-                        slot="start"
-                        icon={radioButtonOff}
-                      ></IonIcon>
-                    )}
-                    <IonLabel style={{ fontSize: "1.3rem" }}>
-                      {natureza.ICONE} - {natureza.DESCRICAO}
-                    </IonLabel>
-                  </IonItem>
-                ))}
-              </div>
-            </IonContent>
+            <IonList style={{ marginTop: "auto", marginBottom: "auto" }}>
+              {naturezaItens?.map((natureza, indice) => (
+                <IonItem
+                  className="ion-text-center"
+                  button
+                  key={indice}
+                  onClick={() => capNatureza(natureza.ID)}
+                  color={telaCorSecundaria}
+                >
+                  {natureza.ID === naturezaSelecionada ? (
+                    <IonIcon
+                      style={{ marginRight: "0.5rem" }}
+                      slot="start"
+                      icon={radioButtonOn}
+                      color={telaCorPrimaria}
+                    ></IonIcon>
+                  ) : (
+                    <IonIcon
+                      style={{ marginRight: "0.5rem" }}
+                      slot="start"
+                      icon={radioButtonOff}
+                    ></IonIcon>
+                  )}
+                  <IonLabel style={{ fontSize: "1.3rem" }}>
+                    {natureza.ICONE} - {natureza.DESCRICAO}
+                  </IonLabel>
+                </IonItem>
+              ))}
+            </IonList>
           </IonModal>
 
           <IonModal
             isOpen={mostraModalEscola}
             onDidDismiss={() => defMostraModalEscola(false)}
           >
-            <IonContent color={telaCorTerciaria}>
-              <div>
-                {escolaItens?.map((escola, indice) => (
-                  <IonItem
-                    className="ion-text-center"
-                    button
-                    key={indice}
-                    onClick={() => capEscola(escola.ID)}
-                    color={telaCorSecundaria}
-                  >
-                    {escola.ID === escolaSelecionada ? (
-                      <IonIcon
-                        style={{ marginRight: "0.5rem" }}
-                        slot="start"
-                        icon={radioButtonOn}
-                        color={telaCorPrimaria}
-                      ></IonIcon>
-                    ) : (
-                      <IonIcon
-                        style={{ marginRight: "0.5rem" }}
-                        slot="start"
-                        icon={radioButtonOff}
-                      ></IonIcon>
-                    )}
-                    <IonLabel style={{ fontSize: "1.3rem" }}>
-                      {escola.ICONE} - {escola.DESCRICAO}
-                    </IonLabel>
-                  </IonItem>
-                ))}
-              </div>
-            </IonContent>
+            <IonList style={{ marginTop: "auto", marginBottom: "auto" }}>
+              {escolaItens?.map((escola, indice) => (
+                <IonItem
+                  className="ion-text-center"
+                  button
+                  key={indice}
+                  onClick={() => capEscola(escola.ID)}
+                  color={telaCorSecundaria}
+                >
+                  {escola.ID === escolaSelecionada ? (
+                    <IonIcon
+                      style={{ marginRight: "0.5rem" }}
+                      slot="start"
+                      icon={radioButtonOn}
+                      color={telaCorPrimaria}
+                    ></IonIcon>
+                  ) : (
+                    <IonIcon
+                      style={{ marginRight: "0.5rem" }}
+                      slot="start"
+                      icon={radioButtonOff}
+                    ></IonIcon>
+                  )}
+                  <IonLabel style={{ fontSize: "1.3rem" }}>
+                    {escola.ICONE} - {escola.DESCRICAO}
+                  </IonLabel>
+                </IonItem>
+              ))}
+            </IonList>
           </IonModal>
 
           <IonModal
             isOpen={mostraModalDuracao}
             onDidDismiss={() => defMostraModalDuracao(false)}
           >
-            <IonContent color={telaCorTerciaria}>
-              <div>
-                {duracaoItens?.map((duracao, indice) => (
-                  <IonItem
-                    className="ion-text-center"
-                    button
-                    key={indice}
-                    onClick={() => capDuracao(duracao.ID)}
-                    color={telaCorSecundaria}
-                  >
-                    {duracao.ID === duracaoSelecionada ? (
-                      <IonIcon
-                        style={{ marginRight: "0.5rem" }}
-                        slot="start"
-                        icon={radioButtonOn}
-                        color={telaCorPrimaria}
-                      ></IonIcon>
-                    ) : (
-                      <IonIcon
-                        style={{ marginRight: "0.5rem" }}
-                        slot="start"
-                        icon={radioButtonOff}
-                      ></IonIcon>
-                    )}
-                    <IonLabel style={{ fontSize: "1.3rem" }}>
-                      {duracao.DESCRICAO}
-                    </IonLabel>
-                  </IonItem>
-                ))}
-              </div>
-            </IonContent>
+            <IonList style={{ marginTop: "auto", marginBottom: "auto" }}>
+              {duracaoItens?.map((duracao, indice) => (
+                <IonItem
+                  className="ion-text-center"
+                  button
+                  key={indice}
+                  onClick={() => capDuracao(duracao.ID)}
+                  color={telaCorSecundaria}
+                >
+                  {duracao.ID === duracaoSelecionada ? (
+                    <IonIcon
+                      style={{ marginRight: "0.5rem" }}
+                      slot="start"
+                      icon={radioButtonOn}
+                      color={telaCorPrimaria}
+                    ></IonIcon>
+                  ) : (
+                    <IonIcon
+                      style={{ marginRight: "0.5rem" }}
+                      slot="start"
+                      icon={radioButtonOff}
+                    ></IonIcon>
+                  )}
+                  <IonLabel style={{ fontSize: "1.3rem" }}>
+                    {duracao.DESCRICAO}
+                  </IonLabel>
+                </IonItem>
+              ))}
+            </IonList>
           </IonModal>
 
           <IonModal
             isOpen={mostraModalExecucao}
             onDidDismiss={() => defMostraModalExecucao(false)}
           >
-            <IonContent color={telaCorTerciaria}>
-              <div>
-                {execucaoItens?.map((execucao, indice) => (
-                  <IonItem
-                    className="ion-text-center"
-                    button
-                    key={indice}
-                    onClick={() => capExecucao(execucao.ID)}
-                    color={telaCorSecundaria}
-                  >
-                    {execucao.ID === execucaoSelecionada ? (
-                      <IonIcon
-                        style={{ marginRight: "0.5rem" }}
-                        slot="start"
-                        icon={radioButtonOn}
-                        color={telaCorPrimaria}
-                      ></IonIcon>
-                    ) : (
-                      <IonIcon
-                        style={{ marginRight: "0.5rem" }}
-                        slot="start"
-                        icon={radioButtonOff}
-                      ></IonIcon>
-                    )}
-                    <IonLabel style={{ fontSize: "1.3rem" }}>
-                      {execucao.DESCRICAO}
-                    </IonLabel>
-                  </IonItem>
-                ))}
-              </div>
-            </IonContent>
+            <IonList style={{ marginTop: "auto", marginBottom: "auto" }}>
+              {execucaoItens?.map((execucao, indice) => (
+                <IonItem
+                  className="ion-text-center"
+                  button
+                  key={indice}
+                  onClick={() => capExecucao(execucao.ID)}
+                  color={telaCorSecundaria}
+                >
+                  {execucao.ID === execucaoSelecionada ? (
+                    <IonIcon
+                      style={{ marginRight: "0.5rem" }}
+                      slot="start"
+                      icon={radioButtonOn}
+                      color={telaCorPrimaria}
+                    ></IonIcon>
+                  ) : (
+                    <IonIcon
+                      style={{ marginRight: "0.5rem" }}
+                      slot="start"
+                      icon={radioButtonOff}
+                    ></IonIcon>
+                  )}
+                  <IonLabel style={{ fontSize: "1.3rem" }}>
+                    {execucao.DESCRICAO}
+                  </IonLabel>
+                </IonItem>
+              ))}
+            </IonList>
           </IonModal>
 
           <IonModal
             isOpen={mostraModalAlcance}
             onDidDismiss={() => defMostraModalAlcance(false)}
           >
-            <IonContent color={telaCorTerciaria}>
-              <div>
-                {alcanceItens?.map((alcance, indice) => (
-                  <IonItem
-                    className="ion-text-center"
-                    button
-                    key={indice}
-                    onClick={() => capAlcance(alcance.ID)}
-                    color={telaCorSecundaria}
-                  >
-                    {alcance.ID === alcanceSelecionada ? (
-                      <IonIcon
-                        style={{ marginRight: "0.5rem" }}
-                        slot="start"
-                        icon={radioButtonOn}
-                        color={telaCorPrimaria}
-                      ></IonIcon>
-                    ) : (
-                      <IonIcon
-                        style={{ marginRight: "0.5rem" }}
-                        slot="start"
-                        icon={radioButtonOff}
-                      ></IonIcon>
-                    )}
-                    <IonLabel style={{ fontSize: "1.3rem" }}>
-                      {alcance.DESCRICAO}
-                    </IonLabel>
-                  </IonItem>
-                ))}
-              </div>
-            </IonContent>
+            <IonList style={{ marginTop: "auto", marginBottom: "auto" }}>
+              {alcanceItens?.map((alcance, indice) => (
+                <IonItem
+                  className="ion-text-center"
+                  button
+                  key={indice}
+                  onClick={() => capAlcance(alcance.ID)}
+                  color={telaCorSecundaria}
+                >
+                  {alcance.ID === alcanceSelecionada ? (
+                    <IonIcon
+                      style={{ marginRight: "0.5rem" }}
+                      slot="start"
+                      icon={radioButtonOn}
+                      color={telaCorPrimaria}
+                    ></IonIcon>
+                  ) : (
+                    <IonIcon
+                      style={{ marginRight: "0.5rem" }}
+                      slot="start"
+                      icon={radioButtonOff}
+                    ></IonIcon>
+                  )}
+                  <IonLabel style={{ fontSize: "1.3rem" }}>
+                    {alcance.DESCRICAO}
+                  </IonLabel>
+                </IonItem>
+              ))}
+            </IonList>
           </IonModal>
 
           <IonModal
             isOpen={mostraModalArea}
             onDidDismiss={() => defMostraModalArea(false)}
           >
-            <IonContent color={telaCorTerciaria}>
-              <div>
-                {areaItens?.map((area, indice) => (
-                  <IonItem
-                    className="ion-text-center"
-                    button
-                    key={indice}
-                    onClick={() => capArea(area.ID)}
-                    color={telaCorSecundaria}
-                  >
-                    {area.ID === areaSelecionada ? (
-                      <IonIcon
-                        style={{ marginRight: "0.5rem" }}
-                        slot="start"
-                        icon={radioButtonOn}
-                        color={telaCorPrimaria}
-                      ></IonIcon>
-                    ) : (
-                      <IonIcon
-                        style={{ marginRight: "0.5rem" }}
-                        slot="start"
-                        icon={radioButtonOff}
-                      ></IonIcon>
-                    )}
-                    <IonLabel style={{ fontSize: "1.3rem" }}>
-                      {area.DESCRICAO}
-                    </IonLabel>
-                  </IonItem>
-                ))}
-              </div>
-            </IonContent>
+            <IonList style={{ marginTop: "auto", marginBottom: "auto" }}>
+              {areaItens?.map((area, indice) => (
+                <IonItem
+                  className="ion-text-center"
+                  button
+                  key={indice}
+                  onClick={() => capArea(area.ID)}
+                  color={telaCorSecundaria}
+                >
+                  {area.ID === areaSelecionada ? (
+                    <IonIcon
+                      style={{ marginRight: "0.5rem" }}
+                      slot="start"
+                      icon={radioButtonOn}
+                      color={telaCorPrimaria}
+                    ></IonIcon>
+                  ) : (
+                    <IonIcon
+                      style={{ marginRight: "0.5rem" }}
+                      slot="start"
+                      icon={radioButtonOff}
+                    ></IonIcon>
+                  )}
+                  <IonLabel style={{ fontSize: "1.3rem" }}>
+                    {area.DESCRICAO}
+                  </IonLabel>
+                </IonItem>
+              ))}
+            </IonList>
           </IonModal>
 
           <IonModal
             isOpen={mostraModalResistencia}
             onDidDismiss={() => defMostraModalResistencia(false)}
           >
-            <IonContent color={telaCorTerciaria}>
-              <div>
-                {resistenciaItens?.map((resistencia, indice) => (
-                  <IonItem
-                    className="ion-text-center"
-                    button
-                    key={indice}
-                    onClick={() => capResistencia(resistencia.ID)}
-                    color={telaCorSecundaria}
-                  >
-                    {resistencia.ID === resistenciaSelecionada ? (
-                      <IonIcon
-                        style={{ marginRight: "0.5rem" }}
-                        slot="start"
-                        icon={radioButtonOn}
-                        color={telaCorPrimaria}
-                      ></IonIcon>
-                    ) : (
-                      <IonIcon
-                        style={{ marginRight: "0.5rem" }}
-                        slot="start"
-                        icon={radioButtonOff}
-                      ></IonIcon>
-                    )}
-                    <IonLabel style={{ fontSize: "1.3rem" }}>
-                      {resistencia.DESCRICAO}
-                    </IonLabel>
-                  </IonItem>
-                ))}
-              </div>
-            </IonContent>
+            <IonList style={{ marginTop: "auto", marginBottom: "auto" }}>
+              {resistenciaItens?.map((resistencia, indice) => (
+                <IonItem
+                  className="ion-text-center"
+                  button
+                  key={indice}
+                  onClick={() => capResistencia(resistencia.ID)}
+                  color={telaCorSecundaria}
+                >
+                  {resistencia.ID === resistenciaSelecionada ? (
+                    <IonIcon
+                      style={{ marginRight: "0.5rem" }}
+                      slot="start"
+                      icon={radioButtonOn}
+                      color={telaCorPrimaria}
+                    ></IonIcon>
+                  ) : (
+                    <IonIcon
+                      style={{ marginRight: "0.5rem" }}
+                      slot="start"
+                      icon={radioButtonOff}
+                    ></IonIcon>
+                  )}
+                  <IonLabel style={{ fontSize: "1.3rem" }}>
+                    {resistencia.DESCRICAO}
+                  </IonLabel>
+                </IonItem>
+              ))}
+            </IonList>
           </IonModal>
 
           <IonModal
             isOpen={mostraModalNivel}
             onDidDismiss={() => defMostraModalNivel(false)}
           >
-            <IonContent color={telaCorTerciaria}>
-              <div>
-                {nivelItens?.map((nivel, indice) => (
-                  <IonItem
-                    className="ion-text-center"
-                    button
-                    key={indice}
-                    onClick={() => capNivel(nivel.ID)}
-                    color={telaCorSecundaria}
-                  >
-                    {nivel.ID === nivelSelecionada ? (
-                      <IonIcon
-                        style={{ marginRight: "0.5rem" }}
-                        slot="start"
-                        icon={radioButtonOn}
-                        color={telaCorPrimaria}
-                      ></IonIcon>
-                    ) : (
-                      <IonIcon
-                        style={{ marginRight: "0.5rem" }}
-                        slot="start"
-                        icon={radioButtonOff}
-                      ></IonIcon>
-                    )}
-                    <IonLabel style={{ fontSize: "1.3rem" }}>
-                      {nivel.NIVEL}º Círculo
-                    </IonLabel>
-                  </IonItem>
-                ))}
-              </div>
-            </IonContent>
+            <IonList style={{ marginTop: "auto", marginBottom: "auto" }}>
+              {nivelItens?.map((nivel, indice) => (
+                <IonItem
+                  className="ion-text-center"
+                  button
+                  key={indice}
+                  onClick={() => capNivel(nivel.ID)}
+                  color={telaCorSecundaria}
+                >
+                  {nivel.ID === nivelSelecionada ? (
+                    <IonIcon
+                      style={{ marginRight: "0.5rem" }}
+                      slot="start"
+                      icon={radioButtonOn}
+                      color={telaCorPrimaria}
+                    ></IonIcon>
+                  ) : (
+                    <IonIcon
+                      style={{ marginRight: "0.5rem" }}
+                      slot="start"
+                      icon={radioButtonOff}
+                    ></IonIcon>
+                  )}
+                  <IonLabel style={{ fontSize: "1.3rem" }}>
+                    {nivel.NIVEL}º Círculo
+                  </IonLabel>
+                </IonItem>
+              ))}
+            </IonList>
           </IonModal>
         </IonContent>
       ) : null}

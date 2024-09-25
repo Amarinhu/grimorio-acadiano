@@ -16,7 +16,7 @@ const BotaoAdicionarItem: React.FC<BotaoAdicionar> = ({ caminho }) => {
     };
 
     return (
-        <IonButton onClick={caminhoNavegar} shape="round" className="custom-botao" color="primary">+</IonButton>
+        <IonButton onClick={caminhoNavegar} className="custom-botao" color="primary">+</IonButton>
     );
 };
 

@@ -10,8 +10,8 @@ import {
 import "./global.css";
 import "./theme/variables.css";
 
-import CadastroMagia from "./pages/CadastroMagia";
-import ListaMagia from "./pages/ListaMagia";
+import EditorDeFeiticos from "./pages/EditorDeFeiticos";
+import ExploradorDeFeiticos from "./pages/ExploradorDeFeiticos";
 
 import AssistenteDev from "./pages/AssistenteDev";
 
@@ -35,14 +35,14 @@ const App: React.FC = () => {
     <IonApp>
       <Router>
         <Switch>
-          <Route path="/CadastroMagia" component={CadastroMagia} />
-          <Route path="/ListaMagia" component={ListaMagia} />
+          <Route path="/EditorDeFeiticos" component={EditorDeFeiticos} />
+          <Route path="/ExploradorDeFeiticos" component={ExploradorDeFeiticos} />
           <Route path="/AssistenteDev" component={AssistenteDev} />
           <Route
             path="/PaginaModificarPlanejamento"
             component={PaginaModificarPlanejamento}
           />
-          <Route path="/" exact component={ListaMagia} />
+          <Route path="/" exact component={ExploradorDeFeiticos} />
         </Switch>
       </Router>
     </IonApp>
