@@ -27,6 +27,7 @@ import {
 import {
   add,
   brush,
+  closeCircle,
   flame,
   helpCircle,
   radioButtonOff,
@@ -667,6 +668,7 @@ const PaginaBase: React.FC = () => {
 
           if (!idMagia || Boolean(copia) == true) {
             navegar.replace(`/EditorDeFeiticos?idMagia=${ultimoID}`);
+            location.reload();
           }
         });
       } catch (erro) {
@@ -1013,19 +1015,21 @@ const PaginaBase: React.FC = () => {
   };
 
   const addAprimoramento = () => {
-    defQtdAprimoramento((prevArray) => [...prevArray, prevArray.length + 1]);
+    defQtdAprimoramento((prevArray) => [
+      ...prevArray,
+      prevArray[prevArray.length - 1] + 1,
+    ]);
   };
 
   const delAprimoramento = (valor: number) => {
-    const novoArray = qtdAprimoramento.filter((item) => item !== valor);
-    defQtdAprimoramento(novoArray);
-    /*console.log(novoArray);*/
+    const novoArrayqtd = qtdAprimoramento.filter((item) => item !== valor);
+    defQtdAprimoramento(novoArrayqtd);
+    const novoArrayApt = aprimoramento.filter((item) => item.ID !== valor);
+    defAprimoramento(novoArrayApt);
   };
 
   const teste = () => {
-    console.log(aprimoramento?.[0]?.ID);
-    console.log(aprimoramento?.[1]?.ID);
-    console.log(aprimoramento?.[2]?.ID);
+    console.log(aprimoramento);
   };
 
   return (
@@ -1574,9 +1578,10 @@ const PaginaBase: React.FC = () => {
                           color={telaCorPrimaria}
                           labelPlacement="floating"
                           label="PM"
+                          inputMode="numeric"
                           onIonInput={(e) =>
                             capAprimoramento({
-                              ID: aprimoramento?.[indice]?.ID || indice,
+                              ID: aprimoramento?.[indice]?.ID || valor,
                               CUSTO: e.detail.value,
                             })
                           }
@@ -1592,7 +1597,7 @@ const PaginaBase: React.FC = () => {
                             label="Aprimoramento"
                             onIonInput={(e) =>
                               capAprimoramento({
-                                ID: aprimoramento?.[indice]?.ID || indice,
+                                ID: aprimoramento?.[indice]?.ID || valor,
                                 DESCRICAO: e.detail.value,
                               })
                             }
@@ -1601,7 +1606,8 @@ const PaginaBase: React.FC = () => {
                       </IonCol>
                       <IonCol style={{ padding: "0px" }} size="2">
                         <IonRow>
-                          {indice == 0 ? (
+                          {indice == 0 &&
+                          !(idMagia && Boolean(copia) !== true) ? (
                             <IonCol
                               style={{ padding: "0px" }}
                               onClick={addAprimoramento}
@@ -1612,7 +1618,8 @@ const PaginaBase: React.FC = () => {
                               </IonButton>
                             </IonCol>
                           ) : null}
-                          {indice !== 0 ? (
+                          {indice !== 0 &&
+                          !(idMagia && Boolean(copia) !== true) ? (
                             <IonCol
                               style={{ padding: "0px" }}
                               onClick={() => delAprimoramento(valor)}
@@ -1684,6 +1691,16 @@ const PaginaBase: React.FC = () => {
                   </IonLabel>
                 </IonItem>
               ))}
+              <div className="ion-text-center">
+                <IonButton
+                  fill="clear"
+                  color={telaCorSecundaria}
+                  onClick={() => defMostraModalMana(false)}
+                >
+                  <IonIcon color="danger" slot="start" icon={closeCircle} />
+                  <IonLabel color="danger">CANCELAR</IonLabel>
+                </IonButton>
+              </div>
             </IonList>
           </IonModal>
 
@@ -1719,6 +1736,16 @@ const PaginaBase: React.FC = () => {
                   </IonLabel>
                 </IonItem>
               ))}
+              <div className="ion-text-center">
+                <IonButton
+                  fill="clear"
+                  color={telaCorSecundaria}
+                  onClick={() => defMostraModalNatureza(false)}
+                >
+                  <IonIcon color="danger" slot="start" icon={closeCircle} />
+                  <IonLabel color="danger">CANCELAR</IonLabel>
+                </IonButton>
+              </div>
             </IonList>
           </IonModal>
 
@@ -1754,6 +1781,16 @@ const PaginaBase: React.FC = () => {
                   </IonLabel>
                 </IonItem>
               ))}
+              <div className="ion-text-center">
+                <IonButton
+                  fill="clear"
+                  color={telaCorSecundaria}
+                  onClick={() => defMostraModalEscola(false)}
+                >
+                  <IonIcon color="danger" slot="start" icon={closeCircle} />
+                  <IonLabel color="danger">CANCELAR</IonLabel>
+                </IonButton>
+              </div>
             </IonList>
           </IonModal>
 
@@ -1789,6 +1826,16 @@ const PaginaBase: React.FC = () => {
                   </IonLabel>
                 </IonItem>
               ))}
+              <div className="ion-text-center">
+                <IonButton
+                  fill="clear"
+                  color={telaCorSecundaria}
+                  onClick={() => defMostraModalDuracao(false)}
+                >
+                  <IonIcon color="danger" slot="start" icon={closeCircle} />
+                  <IonLabel color="danger">CANCELAR</IonLabel>
+                </IonButton>
+              </div>
             </IonList>
           </IonModal>
 
@@ -1824,6 +1871,16 @@ const PaginaBase: React.FC = () => {
                   </IonLabel>
                 </IonItem>
               ))}
+              <div className="ion-text-center">
+                <IonButton
+                  fill="clear"
+                  color={telaCorSecundaria}
+                  onClick={() => defMostraModalExecucao(false)}
+                >
+                  <IonIcon color="danger" slot="start" icon={closeCircle} />
+                  <IonLabel color="danger">CANCELAR</IonLabel>
+                </IonButton>
+              </div>
             </IonList>
           </IonModal>
 
@@ -1859,6 +1916,16 @@ const PaginaBase: React.FC = () => {
                   </IonLabel>
                 </IonItem>
               ))}
+              <div className="ion-text-center">
+                <IonButton
+                  fill="clear"
+                  color={telaCorSecundaria}
+                  onClick={() => defMostraModalAlcance(false)}
+                >
+                  <IonIcon color="danger" slot="start" icon={closeCircle} />
+                  <IonLabel color="danger">CANCELAR</IonLabel>
+                </IonButton>
+              </div>
             </IonList>
           </IonModal>
 
@@ -1894,6 +1961,16 @@ const PaginaBase: React.FC = () => {
                   </IonLabel>
                 </IonItem>
               ))}
+              <div className="ion-text-center">
+                <IonButton
+                  fill="clear"
+                  color={telaCorSecundaria}
+                  onClick={() => defMostraModalArea(false)}
+                >
+                  <IonIcon color="danger" slot="start" icon={closeCircle} />
+                  <IonLabel color="danger">CANCELAR</IonLabel>
+                </IonButton>
+              </div>
             </IonList>
           </IonModal>
 
@@ -1929,6 +2006,16 @@ const PaginaBase: React.FC = () => {
                   </IonLabel>
                 </IonItem>
               ))}
+              <div className="ion-text-center">
+                <IonButton
+                  fill="clear"
+                  color={telaCorSecundaria}
+                  onClick={() => defMostraModalResistencia(false)}
+                >
+                  <IonIcon color="danger" slot="start" icon={closeCircle} />
+                  <IonLabel color="danger">CANCELAR</IonLabel>
+                </IonButton>
+              </div>
             </IonList>
           </IonModal>
 
@@ -1964,6 +2051,16 @@ const PaginaBase: React.FC = () => {
                   </IonLabel>
                 </IonItem>
               ))}
+              <div className="ion-text-center">
+                <IonButton
+                  fill="clear"
+                  color={telaCorSecundaria}
+                  onClick={() => defMostraModalNivel(false)}
+                >
+                  <IonIcon color="danger" slot="start" icon={closeCircle} />
+                  <IonLabel color="danger">CANCELAR</IonLabel>
+                </IonButton>
+              </div>
             </IonList>
           </IonModal>
 
