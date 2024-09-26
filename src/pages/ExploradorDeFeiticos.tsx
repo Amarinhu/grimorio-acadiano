@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import BarraSuperior from "../components/BarraSuperior";
 import {
   IonButton,
@@ -15,22 +15,29 @@ import {
   IonInput,
   IonItem,
   IonLabel,
+  IonList,
+  IonModal,
   IonPage,
   IonRow,
+  IonTitle,
   IonToast,
+  IonToolbar,
 } from "@ionic/react";
-import { flame, home, pencil, search, text } from "ionicons/icons";
+import { copy, flame, pencil, search, trash } from "ionicons/icons";
 import CirculoCarregamento from "../components/CirculoDeCarregamento";
 import BarraInferior from "../components/BarraInferiorControles";
 import usaSQLiteDB from "../composables/usaSQLiteDB";
 import { SQLiteDBConnection } from "@capacitor-community/sqlite";
 import BotaoAdicionarItem from "../components/BotaoAdicionar";
 import { useHistory } from "react-router";
+import { createGesture, Gesture } from "@ionic/react";
 
 const ListaMagia: React.FC = () => {
   const [carregamento, defCarregamento] = useState<boolean>(false);
   const [mostraMensagem, defMostraMensagem] = useState<boolean>(false);
   const [texto, definirTexto] = useState<string>("");
+
+  const [mostraModalOpcoes, defMostraModalOpcoes] = useState(false);
 
   const [filtro, defFiltro] = useState<string>("");
   const [magiaItens, defMagiaItens] = useState<Array<any>>([]);
@@ -173,9 +180,64 @@ const ListaMagia: React.FC = () => {
     };
   };
 
+  const deletarMagia = async (idMagia: number) => {
+    try {
+      await executarAcaoSQL(async (db: SQLiteDBConnection | undefined) => {
+        await db?.query(`DELETE FROM MAGIA WHERE ID = ?`, [idMagia]);
+      });
+    } catch (erro) {
+      console.error(erro);
+    } finally {
+      filtraDados();
+      defMostraModalOpcoes(false);
+    }
+  };
+
   const redEdicaoMagia = (idMagia: number) => {
     navegar.push(`/EditorDeFeiticos?idMagia=${idMagia}`);
   };
+
+  const redClonarMagia = (idMagia: number) => {
+    navegar.push(`/EditorDeFeiticos?idMagia=${idMagia}&copia=true`);
+  };
+
+  /**/
+  const botaoRefs = useRef<Array<HTMLIonCardElement | null>>([]);
+  const [cardSel, defCardSel] = useState<number>(0);
+  const [cardSelNome, defCardSelNome] = useState<string | null>();
+  let holdTimeout: NodeJS.Timeout | null = null;
+
+  const iniciarSegurar = (idCard: number, nome: string) => {
+    holdTimeout = setTimeout(() => {
+      defCardSel(idCard);
+      defCardSelNome(nome);
+      defMostraModalOpcoes(true);
+      console.log(`Botão ${idCard} ${cardSel} foi segurado`);
+    }, 1000);
+  };
+
+  const cancelarSegurar = () => {
+    if (holdTimeout) {
+      clearTimeout(holdTimeout);
+      holdTimeout = null;
+    }
+  };
+
+  const segurarBotao = (idCard: number, nome: string, cardIndex: number) => {
+    const cardElement = botaoRefs.current[cardIndex];
+    if (cardElement) {
+      const gesto = createGesture({
+        el: cardElement,
+        gestureName: "segurar-gesto",
+        onStart: () => iniciarSegurar(idCard, nome),
+        onEnd: cancelarSegurar,
+        threshold: 0,
+        onMove: () => {},
+      });
+      gesto.enable();
+    }
+  };
+  /**/
 
   return (
     <IonPage>
@@ -191,7 +253,7 @@ const ListaMagia: React.FC = () => {
                 <IonItem color="secondary" lines="none">
                   <IonInput
                     onIonInput={capFiltro}
-                    placeholder="Ártemis de Feitiço"
+                    placeholder="🏹 Ártemis de Feitiço"
                   ></IonInput>
                 </IonItem>
               </IonCol>
@@ -205,8 +267,13 @@ const ListaMagia: React.FC = () => {
         </IonCard>
         {!carregamento ? (
           <div>
-            {magiaItens.map((magia) => (
+            {magiaItens.map((magia, indice) => (
               <IonCard
+                ref={(a) => (botaoRefs.current[indice] = a)}
+                onMouseDown={() => segurarBotao(magia.ID, magia.NOME, indice)}
+                onTouchStart={() => segurarBotao(magia.ID, magia.NOME, indice)}
+                onMouseUp={cancelarSegurar}
+                onTouchEnd={cancelarSegurar}
                 key={magia.ID}
                 color={defCorCard(magia.MANA_ID).corSecundaria}
               >
@@ -319,6 +386,57 @@ const ListaMagia: React.FC = () => {
             ))}
           </div>
         ) : null}
+        <IonModal
+          isOpen={mostraModalOpcoes}
+          onDidDismiss={() => defMostraModalOpcoes(false)}
+          className="custom-modal"
+        >
+          {" "}
+          <IonCard
+            color="primary"
+            style={{ marginTop: "auto", marginBottom: "auto" }}
+          >
+            <div>
+              <IonCardTitle
+                color="tertiary"
+                className="ion-text-center"
+                style={{ paddingBottom: "1rem", paddingTop: "1rem" }}
+              >
+                "{cardSelNome}"
+              </IonCardTitle>
+            </div>
+            <div className="ion-text-center">
+              <IonButton
+                color="warning"
+                fill="clear"
+                onClick={() => redEdicaoMagia(cardSel)}
+              >
+                <IonIcon slot="start" icon={pencil} />
+                <IonLabel>Editar</IonLabel>
+              </IonButton>
+            </div>
+            <div className="ion-text-center">
+              <IonButton
+                color="warning"
+                fill="clear"
+                onClick={() => redClonarMagia(cardSel)}
+              >
+                <IonIcon slot="start" icon={copy} />
+                <IonLabel>Clonar</IonLabel>
+              </IonButton>
+            </div>
+            <div className="ion-text-center">
+              <IonButton
+                onClick={() => deletarMagia(cardSel)}
+                color="danger"
+                fill="clear"
+              >
+                <IonIcon slot="start" icon={trash} />
+                <IonLabel>Excluir</IonLabel>
+              </IonButton>
+            </div>
+          </IonCard>
+        </IonModal>
         <IonToast
           isOpen={mostraMensagem}
           message={texto}

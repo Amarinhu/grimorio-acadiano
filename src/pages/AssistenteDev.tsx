@@ -37,8 +37,8 @@ const AssistenteDev: React.FC = () => {
   const { executarAcaoSQL, iniciado } = usaSQLiteDB();
 
   const tabelas = [
-    "MAGIA",
     "APRIMORAMENTO",
+    "MAGIA",
     "EXECUCAO",
     "ALCANCE",
     "DURACAO",

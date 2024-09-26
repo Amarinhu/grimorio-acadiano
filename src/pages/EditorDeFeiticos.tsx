@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import BarraSuperior from "../components/BarraSuperior";
 import {
   IonButton,
+  IonButtons,
   IonCard,
   IonCardContent,
   IonCardHeader,
@@ -21,13 +22,23 @@ import {
   IonText,
   IonTextarea,
   IonToast,
+  IonToolbar,
 } from "@ionic/react";
-import { brush, flame, radioButtonOff, radioButtonOn } from "ionicons/icons";
+import {
+  add,
+  brush,
+  flame,
+  helpCircle,
+  radioButtonOff,
+  radioButtonOn,
+  remove,
+  server,
+} from "ionicons/icons";
 import CirculoCarregamento from "../components/CirculoDeCarregamento";
 import usaSQLiteDB from "../composables/usaSQLiteDB";
 import { SQLiteDBConnection } from "@capacitor-community/sqlite";
 import { recarregarPagina } from "../globalConstants/globalFunctions";
-import { useLocation } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 
 const PaginaBase: React.FC = () => {
   const [carregamento, defCarregamento] = useState<boolean>(false);
@@ -60,6 +71,11 @@ const PaginaBase: React.FC = () => {
   const [nomeAlternativo, defNomesAlternativos] = useState<string>("");
   const [origem, defOrigem] = useState<string>();
   const [origemSigla, defOrigemSigla] = useState<string>();
+
+  const [qtdAprimoramento, defQtdAprimoramento] = useState<Array<number>>([1]);
+  const [aprimoramento, defAprimoramento] = useState<Array<any>>([]);
+
+  const [mostraModalAjuda, defMostraModalAjuda] = useState(false);
 
   const [manaItens, defManaItens] = useState<Array<any>>([]);
   const [manaSelecionada, defManaSelecionada] = useState<any>();
@@ -99,11 +115,14 @@ const PaginaBase: React.FC = () => {
 
   const [consoleLog, defConsoleLog] = useState<Array<string>>([]);
 
+  const navegar = useHistory();
+
   const url = useLocation();
 
   const parametros = new URLSearchParams(url.search);
 
   const idMagia = parametros.get("idMagia");
+  const copia = parametros.get("copia");
 
   useEffect(() => {
     if (idMagia) {
@@ -162,6 +181,44 @@ const PaginaBase: React.FC = () => {
             INNER JOIN DURACAO ON MAGIA.ID_DURACAO = DURACAO.ID
             INNER JOIN RESISTENCIA ON MAGIA.ID_RESISTENCIA = RESISTENCIA.ID
           WHERE MAGIA.ID = ${idMagia}`;
+
+        const comandoSQLAprim = `
+          SELECT * FROM APRIMORAMENTO WHERE ID_MAGIA = ${idMagia}`;
+
+        try {
+          let resultadoAprim: { values: any[] } | undefined;
+          await executarAcaoSQL(async (db: SQLiteDBConnection | undefined) => {
+            resultadoAprim = (await db?.query(comandoSQLAprim)) as {
+              values: any[];
+            };
+          });
+
+          if (resultadoAprim && resultadoAprim.values) {
+            console.log("RESULTADO APRIMORAMENTOS BANCO: ");
+            console.log(resultadoAprim);
+
+            for (let i = 0; i < resultadoAprim.values.length; i++) {
+              console.log("ESSE É O INDICE DO LOOP : " + i);
+              if (i > 0) {
+                console.log(i + " PASSOU");
+                addAprimoramento();
+              }
+            }
+
+            if (resultadoAprim && resultadoAprim.values) {
+              batchCapAprimoramento(
+                resultadoAprim.values.map((resultado) => ({
+                  ID: resultado.ID,
+                  CUSTO: resultado.CUSTO,
+                  DESCRICAO: resultado.DESCRICAO,
+                }))
+              );
+            }
+          }
+        } catch (erro) {
+          console.error(erro);
+        }
+
         try {
           let resultado: { values: any[] } | undefined;
           await executarAcaoSQL(async (db: SQLiteDBConnection | undefined) => {
@@ -169,7 +226,6 @@ const PaginaBase: React.FC = () => {
               values: any[];
             };
           });
-          console.log(resultado);
           if (resultado && resultado.values) {
             const valores = resultado.values?.[0];
             defNome(valores.NOME);
@@ -209,6 +265,26 @@ const PaginaBase: React.FC = () => {
       carregaDadosEdicao();
     }
   }, [iniciado]);
+
+  const batchCapAprimoramento = (results: any[]) => {
+    let alteradoAprimoramento = [...aprimoramento];
+
+    for (const resultado of results) {
+      const encontradoId = alteradoAprimoramento.findIndex(
+        (item: any) => item.ID === resultado.ID
+      );
+      if (encontradoId !== -1) {
+        alteradoAprimoramento[encontradoId] = {
+          ...alteradoAprimoramento[encontradoId],
+          ...resultado,
+        };
+      } else {
+        alteradoAprimoramento.push(resultado);
+      }
+    }
+
+    defAprimoramento(alteradoAprimoramento);
+  };
 
   useEffect(() => {
     const carregaMana = async () => {
@@ -429,7 +505,7 @@ const PaginaBase: React.FC = () => {
     }
     let comandoSQL = "";
 
-    if (idMagia) {
+    if (idMagia && Boolean(copia) !== true) {
       comandoSQL = `
       UPDATE MAGIA 
         SET 
@@ -458,7 +534,7 @@ const PaginaBase: React.FC = () => {
       (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) `;
     }
 
-    console.log(comandoSQL, [
+    /*console.log(comandoSQL, [
       manaSelecionada,
       nivelSelecionada,
       naturezaSelecionada,
@@ -486,7 +562,7 @@ const PaginaBase: React.FC = () => {
       outraNat,
       outraNiv,
       outraMan,
-    ]);
+    ]);*/
 
     if (
       manaSelecionada &&
@@ -528,14 +604,70 @@ const PaginaBase: React.FC = () => {
             outraNiv,
             outraMan,
           ]);
+
+          const resultadoID = await db?.query(
+            "SELECT last_insert_rowid() AS ID"
+          );
+          let ultimoID = resultadoID?.values?.[0].ID;
+          if (idMagia && Boolean(copia) !== true) {
+            ultimoID = idMagia;
+          }
+
+          let comandoSQLAprimoramento = "";
+
+          if (idMagia && Boolean(copia) !== true && aprimoramento.length > 0) {
+            comandoSQLAprimoramento = `
+            INSERT OR REPLACE INTO APRIMORAMENTO 
+            (ID, ID_MAGIA, CUSTO, DESCRICAO, TRUQUE) 
+            VALUES  `;
+          } else if (aprimoramento.length > 0) {
+            comandoSQLAprimoramento = `
+            INSERT INTO APRIMORAMENTO       
+            (ID_MAGIA, CUSTO, DESCRICAO, TRUQUE)
+            VALUES `;
+          }
+
+          if (aprimoramento.length > 0) {
+            let gruposInsert = "";
+            let valores = [];
+
+            if (idMagia && Boolean(copia) !== true) {
+              for (const a of aprimoramento) {
+                const idAprim = a.ID;
+                const custo = a.CUSTO;
+                const descricao = a.DESCRICAO;
+                gruposInsert += " (?, ?, ?, ?, ?),";
+                valores.push(idAprim, ultimoID, custo, descricao, 0);
+              }
+            } else {
+              for (const a of aprimoramento) {
+                const custo = a.CUSTO;
+                const descricao = a.DESCRICAO;
+                gruposInsert += " (?, ?, ?, ?),";
+                valores.push(ultimoID, custo, descricao, 0);
+              }
+            }
+
+            comandoSQLAprimoramento += gruposInsert.slice(0, -1);
+            try {
+              await db?.query(comandoSQLAprimoramento, valores);
+            } catch (erro) {
+              console.error(erro);
+            }
+          }
+
           defCorToast("success");
-          if (idMagia) {
+          if (idMagia && Boolean(copia) !== true) {
             defToastTexto(`Magia '${nome}' alterada com sucesso!`);
           } else {
             defToastTexto(`Magia '${nome}' criada com sucesso!`);
           }
 
           defMostraMensagem(true);
+
+          if (!idMagia || Boolean(copia) == true) {
+            navegar.replace(`/EditorDeFeiticos?idMagia=${ultimoID}`);
+          }
         });
       } catch (erro) {
         console.error(erro);
@@ -608,142 +740,157 @@ const PaginaBase: React.FC = () => {
       `NOME VERDADEIRO: ${nomeVerdadeiro}`,
     ];
     defConsoleLog(magiaInfo);
-    console.log(magiaInfo);
 
     defToastTexto("Informação da magia inserida no console!");
     defMostraMensagem(true);
   };
 
   const capOrigem = (valor: any) => {
-    console.log("Alvo Observacao: " + valor.detail.value);
+    /*console.log("Alvo Observacao: " + valor.detail.value);*/
     defOrigem(valor.detail.value);
   };
 
   const capOrigemSigla = (valor: any) => {
-    console.log("Alvo Observacao: " + valor.detail.value);
+    /*console.log("Alvo Observacao: " + valor.detail.value);*/
     defOrigemSigla(valor.detail.value);
   };
 
   const capObsArea = (valor: any) => {
-    console.log("Alvo Observacao: " + valor.detail.value);
+    /*console.log("Alvo Observacao: " + valor.detail.value);*/
     defObsArea(valor.detail.value);
   };
 
   const capObsResistencia = (valor: any) => {
-    console.log("Alvo Observacao: " + valor.detail.value);
+    /*console.log("Alvo Observacao: " + valor.detail.value);*/
     defObsResistencia(valor.detail.value);
   };
 
   const capArea = (valor: any) => {
-    console.log("Area: " + valor);
+    /*console.log("Area: " + valor);*/
     defAreaSelecionada(valor);
     defMostraModalArea(false);
   };
 
   const capNome = (valor: any) => {
-    console.log("Nome: " + valor.detail.value);
+    /*console.log("Nome: " + valor.detail.value);*/
     defNome(valor.detail.value);
   };
 
   const capOutraMana = (valor: any) => {
-    console.log("Outra Mana: " + valor.detail.value);
+    /*console.log("Outra Mana: " + valor.detail.value);*/
     defOutraMana(valor.detail.value);
   };
 
   const capOutraNatureza = (valor: any) => {
-    console.log("Outra Natureza: " + valor.detail.value);
+    /*console.log("Outra Natureza: " + valor.detail.value);*/
     defOutroNatureza(valor.detail.value);
   };
 
   const capOutraEscola = (valor: any) => {
-    console.log("Outra Escola: " + valor.detail.value);
+    /*console.log("Outra Escola: " + valor.detail.value);*/
     defOutroEscola(valor.detail.value);
   };
 
   const capAlvo = (valor: any) => {
-    console.log("Alvo: " + valor.detail.value);
+    /*console.log("Alvo: " + valor.detail.value);*/
     defAlvo(valor.detail.value);
   };
 
   const capOutraExecucao = (valor: any) => {
-    console.log("Outra Execucao: " + valor.detail.value);
+    /*console.log("Outra Execucao: " + valor.detail.value);*/
     defOutroExecucao(valor.detail.value);
   };
 
   const capOutroAlcance = (valor: any) => {
-    console.log("Outra Alcance: " + valor.detail.value);
+    /*console.log("Outra Alcance: " + valor.detail.value);*/
     defOutroAlcance(valor.detail.value);
   };
 
   const capOutroDuracao = (valor: any) => {
-    console.log("Outra Alcance: " + valor.detail.value);
+    /*console.log("Outra Alcance: " + valor.detail.value);*/
     defOutroDuracao(valor.detail.value);
   };
 
   const capOutroResistencia = (valor: any) => {
-    console.log("Outra Alcance: " + valor.detail.value);
+    /*console.log("Outra Alcance: " + valor.detail.value);*/
     defOutroResistencia(valor.detail.value);
   };
 
   const capOutroNivel = (valor: any) => {
-    console.log("Outra Mana: " + valor.detail.value);
+    /*console.log("Outra Mana: " + valor.detail.value);*/
     defOutroNivel(valor.detail.value);
   };
 
   const capNomesAlternativos = (valor: any) => {
-    console.log("Nomes Alternativos: " + valor.detail.value);
+    /*console.log("Nomes Alternativos: " + valor.detail.value);*/
     defNomesAlternativos(valor.detail.value);
   };
 
   const capNomeVerdadeiro = (valor: any) => {
-    console.log("Nome Verdadeiro: " + valor.detail.value);
+    /*console.log("Nome Verdadeiro: " + valor.detail.value);*/
     defNomeVerdadeiro(valor.detail.value);
   };
 
   const capDescricao = (valor: any) => {
-    console.log("Descricao: " + valor.detail.value);
+    /*console.log("Descricao: " + valor.detail.value);*/
     defDescricao(valor.detail.value);
   };
 
   const capMecanica = (valor: any) => {
-    console.log("Mecanica: " + valor.detail.value);
+    /*console.log("Mecanica: " + valor.detail.value);*/
     defMecanica(valor.detail.value);
   };
 
   const capDuracao = (valor: any) => {
-    console.log("Duracao Selecionado: " + valor);
+    /*console.log("Duracao Selecionado: " + valor);*/
     defDuracaoSelecionada(valor);
     defMostraModalDuracao(false);
   };
 
   const capAlcance = (valor: any) => {
-    console.log("Duracao Selecionado: " + valor);
+    /*console.log("Duracao Selecionado: " + valor);*/
     defAlcanceSelecionada(valor);
     defMostraModalAlcance(false);
   };
 
   const capNatureza = (valor: any) => {
-    console.log("Natureza Selecionado: " + valor);
+    /*console.log("Natureza Selecionado: " + valor);*/
     defNaturezaSelecionada(valor);
     defMostraModalNatureza(false);
   };
 
   const capEscola = (valor: any) => {
-    console.log("Escola Selecionado: " + valor);
+    /*console.log("Escola Selecionado: " + valor);*/
     defEscolaSelecionada(valor);
     defMostraModalEscola(false);
   };
 
   const capExecucao = (valor: any) => {
-    console.log("Escola Selecionado: " + valor);
+    /*console.log("Escola Selecionado: " + valor);*/
     defExecucaoSelecionada(valor);
     defMostraModalExecucao(false);
   };
 
   const capResistencia = (valor: any) => {
-    console.log("Escola Selecionado: " + valor);
+    /*console.log("Escola Selecionado: " + valor);*/
     defResistenciaSelecionada(valor);
     defMostraModalResistencia(false);
+  };
+
+  const capAprimoramento = (a: any) => {
+    const encontradoId = aprimoramento.findIndex(
+      (item: any) => item.ID === a.ID
+    );
+    if (encontradoId !== -1) {
+      const alteradoAprimoramento = [...aprimoramento];
+      alteradoAprimoramento[encontradoId] = {
+        ...alteradoAprimoramento[encontradoId],
+        ...a,
+      };
+      defAprimoramento(alteradoAprimoramento);
+    } else {
+      defAprimoramento([...aprimoramento, a]);
+    }
   };
 
   const definirCoresMana = (valor: number) => {
@@ -787,9 +934,6 @@ const PaginaBase: React.FC = () => {
   };
 
   const capMana = (valor: any) => {
-    console.log("Mana Selecionado: " + valor);
-
-    console.log(manaItens);
     definirCoresMana(valor);
 
     defManaSelecionada(valor);
@@ -797,41 +941,41 @@ const PaginaBase: React.FC = () => {
   };
 
   const capNivel = (valor: any) => {
-    console.log("Nível Selecionado: " + valor);
+    /*console.log("Nível Selecionado: " + valor);*/
     defNivelSelecionada(valor);
     defMostraModalNivel(false);
   };
 
-  const insercao = async () => {
+  const iniciaBanco = async () => {
+    /*if (itensCarregados() == false) {*/
     try {
       const comandosSQL = [
         `INSERT OR REPLACE INTO EXECUCAO (ID, DESCRICAO)
-        VALUES (1, 'Padrão'), (2, 'Livre'), (3, 'Reação'), (4, 'Completa'), (999, 'Outros');`,
+          VALUES (1, 'Padrão'), (2, 'Livre'), (3, 'Reação'), (4, 'Completa'), (5, 'Movimento'), (999, 'Outros');`,
         `INSERT OR REPLACE INTO ALCANCE (ID, DESCRICAO)
-        VALUES (1, 'Pessoal'), (2, 'Toque'), (3, 'Curto'), (4, 'Médio'), (5, 'Longo '), (6, 'Ilimitado '), (999, 'Outros');`,
+          VALUES (1, 'Pessoal'), (2, 'Toque'), (3, 'Curto'), (4, 'Médio'), (5, 'Longo '), (6, 'Ilimitado '), (999, 'Outros');`,
         `INSERT OR REPLACE INTO MANA(ID, ICONE, DESCRICAO)
-        VALUES (1,'🔴', 'Vermelho'), (2,'⚫', 'Preto'), (3,'⚪', 'Branco'), (4,'🟢', 'Verde'), 
-        (5,'🔵', 'Azul'),(6,'🟣', 'Roxo'), (998, 'x', 'Nenhum'), (999,'Ø','Outro')`,
+          VALUES (1,'🔴', 'Vermelho'), (2,'⚫', 'Preto'), (3,'⚪', 'Branco'), (4,'🟢', 'Verde'), 
+          (5,'🔵', 'Azul'),(6,'🟣', 'Roxo'), (998, 'x', 'Nenhum'), (999,'Ø','Outro')`,
         `INSERT OR REPLACE INTO NIVEL (ID, NIVEL)
-        VALUES (1, '1'), (2, '2'), (3, '3'), (4, '4'), (5, '5'), (6, '6'), (999, 'Ø');`,
+          VALUES (1, '1'), (2, '2'), (3, '3'), (4, '4'), (5, '5'), (6, '6'), (999, 'Ø');`,
         `INSERT OR REPLACE INTO NATUREZA(ID, ICONE, DESCRICAO)
-        VALUES (1,'🙏', 'Divino'), (2,'✨', 'Arcana'), (3,'📖', 'Universal'), (998, 'x', 'Nenhum'), (999,'Ø','Outro')`,
+          VALUES (1,'🙏', 'Divino'), (2,'✨', 'Arcana'), (3,'📖', 'Universal'), (998, 'x', 'Nenhum'), (999,'Ø','Outro')`,
         `INSERT OR REPLACE INTO ESCOLA(ID, ICONE, DESCRICAO)
-        VALUES (1, '🛡️', 'Abjuração'), (2, '🔮', 'Adivinhação'), (3, '🌀', 'Convocação'), 
-        (4, '❤️', 'Encantamento'), (5, '👁️‍🗨️', 'Ilusão'), (6, '🔥', 'Evocação'), (7, '☠️', 'Necromancia'), 
-        (8, '⚗️', 'Transmutação'), (998, 'x', 'Nenhum'), (999, 'Ø', 'Outro');`,
+          VALUES (1, '🛡️', 'Abjuração'), (2, '🔮', 'Adivinhação'), (3, '🌀', 'Convocação'), 
+          (4, '❤️', 'Encantamento'), (5, '👁️‍🗨️', 'Ilusão'), (6, '🔥', 'Evocação'), (7, '☠️', 'Necromancia'), 
+          (8, '⚗️', 'Transmutação'), (998, 'x', 'Nenhum'), (999, 'Ø', 'Outro');`,
         `INSERT OR REPLACE INTO DURACAO(ID, DESCRICAO)
-        VALUES (1, 'Instantânea'), (2, 'Cena'), (3, 'Sustentada'), (4, 'Permanente'), (998, 'Nenhum'), (999, 'Outro');`,
+          VALUES (1, 'Instantânea'), (2, 'Cena'), (3, 'Sustentada'), (4, 'Permanente'), (998, 'Nenhum'), (999, 'Outro');`,
         `INSERT OR REPLACE INTO RESISTENCIA (ID,DESCRICAO)
-        VALUES (1, 'Reflexos'), (2, 'Vontade'), (3, 'Fortitude'), (998, 'Nenhum'), (999, 'Outro');`,
+          VALUES (1, 'Reflexos'), (2, 'Vontade'), (3, 'Fortitude'), (998, 'Nenhum'), (999, 'Outro');`,
         `INSERT OR REPLACE INTO AREA (ID,DESCRICAO)
-          VALUES (1, 'Cilindro'), (2, 'Cone'), (3, 'Esfera'), (4, 'Linha'), (5, 'Quadrado'), (998, 'Nenhum'), (999, 'Outro');`,
+            VALUES (1, 'Cilindro'), (2, 'Cone'), (3, 'Esfera'), (4, 'Linha'), (5, 'Quadrado'), (998, 'Nenhum'), (999, 'Outro');`,
       ];
 
       await iniciaTabelas();
 
       await executarAcaoSQL(async (db: SQLiteDBConnection | undefined) => {
-        await db?.query(`SELECT * FROM MAGIA`);
         for (const comando of comandosSQL) {
           await db?.query(comando);
         }
@@ -841,6 +985,7 @@ const PaginaBase: React.FC = () => {
     } finally {
       recarregarPagina();
     }
+    /*}*/
   };
 
   const itensCarregados = () => {
@@ -867,6 +1012,22 @@ const PaginaBase: React.FC = () => {
     return verif;
   };
 
+  const addAprimoramento = () => {
+    defQtdAprimoramento((prevArray) => [...prevArray, prevArray.length + 1]);
+  };
+
+  const delAprimoramento = (valor: number) => {
+    const novoArray = qtdAprimoramento.filter((item) => item !== valor);
+    defQtdAprimoramento(novoArray);
+    /*console.log(novoArray);*/
+  };
+
+  const teste = () => {
+    console.log(aprimoramento?.[0]?.ID);
+    console.log(aprimoramento?.[1]?.ID);
+    console.log(aprimoramento?.[2]?.ID);
+  };
+
   return (
     <IonPage>
       <IonHeader>
@@ -875,15 +1036,26 @@ const PaginaBase: React.FC = () => {
           icone={flame}
           titulo={"Magias"}
         />
+        <IonToolbar color={telaCorSecundaria}>
+          <div className="flex-center">
+            <IonButtons>
+              <IonButton color={telaCorPrimaria} onClick={iniciaBanco}>
+                <IonIcon icon={server} slot="start" />
+                <IonLabel>Iniciar Banco</IonLabel>
+              </IonButton>
+              <IonButton onClick={teste} color={telaCorPrimaria}>
+                <IonIcon icon={helpCircle} slot="start" />
+                <IonLabel>Ajuda</IonLabel>
+              </IonButton>
+            </IonButtons>
+          </div>
+        </IonToolbar>
       </IonHeader>
       {!carregamento ? (
         <IonContent color={telaCorTerciaria}>
-          <IonButton color={telaCorPrimaria} onClick={insercao}>
-            <IonLabel>Iniciar Banco</IonLabel>
-          </IonButton>
-          <IonButton color={telaCorPrimaria} onClick={consoleMagiaInfo}>
+          {/*<IonButton color={telaCorPrimaria} onClick={consoleMagiaInfo}>
             <IonLabel>Log Itens - Console</IonLabel>
-          </IonButton>
+          </IonButton>*/}
           <p style={{ backgroundColor: "black", color: "green" }}>
             {consoleLog.map((item, chave) => (
               <div>
@@ -900,7 +1072,7 @@ const PaginaBase: React.FC = () => {
                 <IonCardTitle>
                   <IonInput
                     color={telaCorPrimaria}
-                    label={nome ? "" : "Insira o nome da magia"}
+                    label={nome ? "" : "Nome da Magia*"}
                     onIonInput={capNome}
                     value={nome}
                     labelPlacement="floating"
@@ -920,7 +1092,7 @@ const PaginaBase: React.FC = () => {
                         color={telaCorSecundaria}
                       >
                         <IonLabel>
-                          <h3>{manaSelecionada ? "" : "Mana"}</h3>
+                          <h3>{manaSelecionada ? "" : "Mana*"}</h3>
                           <p style={{ fontSize: "1.1rem" }}>
                             {manaSelecionada
                               ? manaItens?.find(
@@ -965,7 +1137,7 @@ const PaginaBase: React.FC = () => {
                         color={telaCorSecundaria}
                       >
                         <IonLabel>
-                          <h3>{nivelSelecionada ? "" : "Círculo"}</h3>
+                          <h3>{nivelSelecionada ? "" : "Círculo*"}</h3>
                           <p style={{ fontSize: "1.1rem" }}>
                             {nivelSelecionada
                               ? nivelItens?.find(
@@ -1007,7 +1179,7 @@ const PaginaBase: React.FC = () => {
                         color={telaCorSecundaria}
                       >
                         <IonLabel>
-                          <h3>{naturezaSelecionada ? "" : "Natureza"}</h3>
+                          <h3>{naturezaSelecionada ? "" : "Natureza*"}</h3>
                           <p style={{ fontSize: "1.1rem" }}>
                             {naturezaSelecionada
                               ? naturezaItens?.find(
@@ -1055,7 +1227,7 @@ const PaginaBase: React.FC = () => {
                         color={telaCorSecundaria}
                       >
                         <IonLabel>
-                          <h3>{escolaSelecionada ? "" : "Escola"}</h3>
+                          <h3>{escolaSelecionada ? "" : "Escola*"}</h3>
                           <p style={{ fontSize: "1.1rem" }}>
                             {escolaSelecionada
                               ? escolaItens?.find(
@@ -1101,7 +1273,7 @@ const PaginaBase: React.FC = () => {
                         color={telaCorSecundaria}
                       >
                         <IonLabel>
-                          <h3>{execucaoSelecionada ? "" : "Execução"}</h3>
+                          <h3>{execucaoSelecionada ? "" : "Execução*"}</h3>
                           <p style={{ fontSize: "1.1rem" }}>
                             {execucaoSelecionada
                               ? execucaoItens?.find(
@@ -1188,7 +1360,7 @@ const PaginaBase: React.FC = () => {
                         color={telaCorSecundaria}
                       >
                         <IonLabel>
-                          <h3>Alcance</h3>
+                          <h3>Alcance*</h3>
                           <p style={{ fontSize: "1.1rem" }}>
                             {
                               alcanceItens?.find(
@@ -1394,6 +1566,67 @@ const PaginaBase: React.FC = () => {
                       </IonItem>
                     </IonCol>
                   </IonRow>
+                  {qtdAprimoramento.map((valor, indice) => (
+                    <IonRow key={indice}>
+                      <IonCol size="2">
+                        <IonInput
+                          value={aprimoramento?.[indice]?.CUSTO || null}
+                          color={telaCorPrimaria}
+                          labelPlacement="floating"
+                          label="PM"
+                          onIonInput={(e) =>
+                            capAprimoramento({
+                              ID: aprimoramento?.[indice]?.ID || indice,
+                              CUSTO: e.detail.value,
+                            })
+                          }
+                        ></IonInput>
+                      </IonCol>
+                      <IonCol>
+                        <IonItem lines="none" color={telaCorSecundaria}>
+                          <IonTextarea
+                            value={aprimoramento?.[indice]?.DESCRICAO || null}
+                            autoGrow={true}
+                            color={telaCorPrimaria}
+                            labelPlacement="floating"
+                            label="Aprimoramento"
+                            onIonInput={(e) =>
+                              capAprimoramento({
+                                ID: aprimoramento?.[indice]?.ID || indice,
+                                DESCRICAO: e.detail.value,
+                              })
+                            }
+                          ></IonTextarea>
+                        </IonItem>
+                      </IonCol>
+                      <IonCol style={{ padding: "0px" }} size="2">
+                        <IonRow>
+                          {indice == 0 ? (
+                            <IonCol
+                              style={{ padding: "0px" }}
+                              onClick={addAprimoramento}
+                            >
+                              {" "}
+                              <IonButton color={telaCorPrimaria} fill="clear">
+                                <IonIcon icon={add} />
+                              </IonButton>
+                            </IonCol>
+                          ) : null}
+                          {indice !== 0 ? (
+                            <IonCol
+                              style={{ padding: "0px" }}
+                              onClick={() => delAprimoramento(valor)}
+                            >
+                              {" "}
+                              <IonButton color={telaCorPrimaria} fill="clear">
+                                <IonIcon icon={remove} />
+                              </IonButton>
+                            </IonCol>
+                          ) : null}
+                        </IonRow>
+                      </IonCol>
+                    </IonRow>
+                  ))}
                   <IonRow>
                     <IonCol style={{ padding: "0px" }}>
                       <div className="ion-text-center">
@@ -1732,6 +1965,15 @@ const PaginaBase: React.FC = () => {
                 </IonItem>
               ))}
             </IonList>
+          </IonModal>
+
+          <IonModal
+            isOpen={mostraModalAjuda}
+            onDidDismiss={() => defMostraModalAjuda(false)}
+          >
+            <IonList
+              style={{ marginTop: "auto", marginBottom: "auto" }}
+            ></IonList>
           </IonModal>
         </IonContent>
       ) : null}
