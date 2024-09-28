@@ -12,7 +12,9 @@ import {
   IonItem,
   IonLabel,
   IonPage,
+  IonText,
   IonTextarea,
+  IonTitle,
 } from "@ionic/react";
 import { useEffect, useState } from "react";
 import { SQLiteDBConnection } from "@capacitor-community/sqlite";
@@ -29,7 +31,24 @@ import {
   serverOutline,
   trash,
   trashBin,
+  warning,
 } from "ionicons/icons";
+
+/*
+Objetivos / Funções Novas:
+ - Ártemis: Pesquisa avançada.
+ - API de Feitiços
+ - Backup de Criações
+
+Ajustes em funções que já existem:
+- Alterar a quantidade de aprimoramentos depois de salvo.
+- Poder cadastrar truques
+- Adicionar campo para "Efeito"
+- Terminar de ajustar tela de VerMagia
+- Fazer com que o banco inicie sozinho
+
+Sugestões?
+*/
 
 const AssistenteDev: React.FC = () => {
   const [BancoItens, definirBancoItens] = useState<Array<any>>();
@@ -49,6 +68,7 @@ const AssistenteDev: React.FC = () => {
     "ESCOLA",
     "ALVO",
     "AREA",
+    "GRIMORIO",
   ];
 
   useEffect(() => {
@@ -171,7 +191,7 @@ const AssistenteDev: React.FC = () => {
       `INSERT OR REPLACE INTO RESISTENCIA (ID,DESCRICAO)
       VALUES (1, 'Reflexos'), (2, 'Vontade'), (3, 'Fortitude'), (998, 'Nenhum'), (999, 'Outro');`,
       `INSERT OR REPLACE INTO AREA (ID,DESCRICAO)
-        VALUES (1, 'Cilindro'), (2, 'Cone'), (3, 'Esfera'), (4, 'Linha'), (5, 'Quadrado'), (998, 'Nenhum'), (999, 'Outro');`
+        VALUES (1, 'Cilindro'), (2, 'Cone'), (3, 'Esfera'), (4, 'Linha'), (5, 'Quadrado'), (998, 'Nenhum'), (999, 'Outro');`,
     ];
 
     await executarAcaoSQL(async (db: SQLiteDBConnection | undefined) => {
@@ -183,8 +203,30 @@ const AssistenteDev: React.FC = () => {
 
   return (
     <IonPage>
-      <TituloBotaoVoltar titulo="Assistente" icone={build} />
+      <TituloBotaoVoltar titulo="Assistente Dev" icone={build} />
       <IonContent color="tertiary">
+        <IonCard color="warning">
+          <IonCardContent>
+            <div className="ion-text-center">
+              <p>
+                <IonIcon style={{ fontSize: "3rem" }} icon={warning} />
+              </p>
+              <p>
+                <IonText>
+                  <p style={{ fontWeight: "bold" }}>
+                    Você entrou no MENU DO DESENVOLVEDOR! Se você não sabe o que
+                    está fazendo, há grandes chances de 'fuder tudo'.
+                  </p>
+                  <br></br>
+                  <p style={{ fontWeight: "bold" }}>
+                    Então, se não souber o que está fazendo, melhor não relar a
+                    mão (e sinceramente, às vezes nem eu sei).
+                  </p>
+                </IonText>
+              </p>
+            </div>
+          </IonCardContent>
+        </IonCard>
         <IonCard color="secondary">
           <IonCardContent>
             <IonButtons>

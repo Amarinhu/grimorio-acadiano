@@ -37,11 +37,12 @@ import {
 } from "ionicons/icons";
 import CirculoCarregamento from "../components/CirculoDeCarregamento";
 import usaSQLiteDB from "../composables/usaSQLiteDB";
+import grimorioBase from "../assets/grimoiro-base.png";
 import { SQLiteDBConnection } from "@capacitor-community/sqlite";
 import { recarregarPagina } from "../globalConstants/globalFunctions";
 import { useHistory, useLocation } from "react-router-dom";
 
-const PaginaBase: React.FC = () => {
+const EditorDeFeiticos: React.FC = () => {
   const [carregamento, defCarregamento] = useState<boolean>(false);
   const [mostraMensagem, defMostraMensagem] = useState<boolean>(false);
   const [corToast, defCorToast] = useState<string>("");
@@ -973,6 +974,8 @@ const PaginaBase: React.FC = () => {
           VALUES (1, 'Reflexos'), (2, 'Vontade'), (3, 'Fortitude'), (998, 'Nenhum'), (999, 'Outro');`,
         `INSERT OR REPLACE INTO AREA (ID,DESCRICAO)
             VALUES (1, 'Cilindro'), (2, 'Cone'), (3, 'Esfera'), (4, 'Linha'), (5, 'Quadrado'), (998, 'Nenhum'), (999, 'Outro');`,
+        `INSERT OR REPLACE INTO GRIMORIO (ID, NOME, USUARIO, FOTO)
+            VALUES (1, 'Casca Vazia', 'Feiticeiro', '${grimorioBase}');`,
       ];
 
       await iniciaTabelas();
@@ -1029,6 +1032,7 @@ const PaginaBase: React.FC = () => {
   };
 
   const teste = () => {
+    console.log(grimorioBase);
     console.log(aprimoramento);
   };
 
@@ -1211,7 +1215,6 @@ const PaginaBase: React.FC = () => {
                             <IonInput
                               onIonInput={capOutraNatureza}
                               value={outroNatureza}
-                              inputMode="numeric"
                               color={telaCorPrimaria}
                               labelPlacement="floating"
                               label={outroNatureza ? "" : "Natureza?"}
@@ -1256,7 +1259,6 @@ const PaginaBase: React.FC = () => {
                           >
                             <IonInput
                               onIonInput={capOutraEscola}
-                              inputMode="numeric"
                               value={outroEscola}
                               color={telaCorPrimaria}
                               labelPlacement="floating"
@@ -1299,7 +1301,6 @@ const PaginaBase: React.FC = () => {
                           >
                             <IonInput
                               onIonInput={capOutraExecucao}
-                              inputMode="numeric"
                               value={outroExecucao}
                               color={telaCorPrimaria}
                               labelPlacement="floating"
@@ -1386,7 +1387,6 @@ const PaginaBase: React.FC = () => {
                             <IonInput
                               onIonInput={capOutroAlcance}
                               value={outroAlcance}
-                              inputMode="numeric"
                               color={telaCorPrimaria}
                               labelPlacement="floating"
                               label={outroAlcance ? "" : "Alcance?"}
@@ -1426,7 +1426,6 @@ const PaginaBase: React.FC = () => {
                           >
                             <IonInput
                               onIonInput={capOutroDuracao}
-                              inputMode="numeric"
                               value={outroDuracao}
                               color={telaCorPrimaria}
                               labelPlacement="floating"
@@ -1468,7 +1467,6 @@ const PaginaBase: React.FC = () => {
                           >
                             <IonInput
                               onIonInput={capOutroResistencia}
-                              inputMode="numeric"
                               value={outroResistencia}
                               color={telaCorPrimaria}
                               labelPlacement="floating"
@@ -1604,34 +1602,34 @@ const PaginaBase: React.FC = () => {
                           ></IonTextarea>
                         </IonItem>
                       </IonCol>
-                      <IonCol style={{ padding: "0px" }} size="2">
-                        <IonRow>
-                          {indice == 0 &&
-                          !(idMagia && Boolean(copia) !== true) ? (
-                            <IonCol
-                              style={{ padding: "0px" }}
-                              onClick={addAprimoramento}
-                            >
-                              {" "}
-                              <IonButton color={telaCorPrimaria} fill="clear">
-                                <IonIcon icon={add} />
-                              </IonButton>
-                            </IonCol>
-                          ) : null}
-                          {indice !== 0 &&
-                          !(idMagia && Boolean(copia) !== true) ? (
-                            <IonCol
-                              style={{ padding: "0px" }}
-                              onClick={() => delAprimoramento(valor)}
-                            >
-                              {" "}
-                              <IonButton color={telaCorPrimaria} fill="clear">
-                                <IonIcon icon={remove} />
-                              </IonButton>
-                            </IonCol>
-                          ) : null}
-                        </IonRow>
-                      </IonCol>
+                      {!(idMagia && Boolean(copia) !== true) ? (
+                        <IonCol style={{ padding: "0px" }} size="2">
+                          <IonRow>
+                            {indice == 0 ? (
+                              <IonCol
+                                style={{ padding: "0px" }}
+                                onClick={addAprimoramento}
+                              >
+                                {" "}
+                                <IonButton color={telaCorPrimaria} fill="clear">
+                                  <IonIcon icon={add} />
+                                </IonButton>
+                              </IonCol>
+                            ) : null}
+                            {indice !== 0 ? (
+                              <IonCol
+                                style={{ padding: "0px" }}
+                                onClick={() => delAprimoramento(valor)}
+                              >
+                                {" "}
+                                <IonButton color={telaCorPrimaria} fill="clear">
+                                  <IonIcon icon={remove} />
+                                </IonButton>
+                              </IonCol>
+                            ) : null}
+                          </IonRow>
+                        </IonCol>
+                      ) : null}
                     </IonRow>
                   ))}
                   <IonRow>
@@ -1640,7 +1638,9 @@ const PaginaBase: React.FC = () => {
                         <IonButton color={telaCorPrimaria} onClick={criarMagia}>
                           <IonIcon slot="start" icon={brush} />
                           <IonLabel>
-                            {idMagia ? "Alterar Magia!" : "Criar Magia!"}
+                            {idMagia && Boolean(copia) !== true
+                              ? "Alterar Magia!"
+                              : "Criar Magia!"}
                           </IonLabel>
                         </IonButton>
                       </div>
@@ -1655,7 +1655,7 @@ const PaginaBase: React.FC = () => {
             isOpen={mostraMensagem}
             message={toastTexto}
             onDidDismiss={() => defMostraMensagem(false)}
-            duration={5000}
+            duration={2000}
           ></IonToast>
           {carregamento ? <CirculoCarregamento /> : null}
 
@@ -2078,4 +2078,4 @@ const PaginaBase: React.FC = () => {
   );
 };
 
-export default PaginaBase;
+export default EditorDeFeiticos;

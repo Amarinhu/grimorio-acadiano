@@ -24,7 +24,10 @@ import "./BarraInferiorControles.css";
 import MenuLateral from "./MenuLateral";
 import { Capacitor } from "@capacitor/core";
 
-const botoesInformacoes = [{ nome: "Magias", url: "/", icon: flame }];
+const botoesInformacoes = [
+  { nome: "Grimório", url: "/Grimorio", icon: book },
+  { nome: "Magias", url: "/", icon: flame },
+];
 
 const iosPlat = Capacitor.getPlatform() === "ios";
 
