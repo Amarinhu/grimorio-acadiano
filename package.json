@@ -12,10 +12,11 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@capacitor-community/sqlite": "^5.0.4",
-    "@capacitor/android": "5.1.0",
-    "@capacitor/app": "5.0.5",
-    "@capacitor/core": "^5.7.6",
+    "@capacitor-community/sqlite": "^6.0.2",
+    "@capacitor/android": "^6.1.2",
+    "@capacitor/app": "^6.0.1",
+    "@capacitor/camera": "^6.0.2",
+    "@capacitor/core": "^6.0.0",
     "@capacitor/haptics": "5.0.5",
     "@capacitor/ios": "^5.7.6",
     "@capacitor/keyboard": "5.0.5",

@@ -15,36 +15,166 @@ import {
   IonInput,
   IonItem,
   IonLabel,
+  IonList,
   IonModal,
   IonPage,
   IonRow,
   IonToast,
 } from "@ionic/react";
-import { book, copy, eye, flame, pencil, search, trash } from "ionicons/icons";
+import {
+  add,
+  book,
+  closeCircle,
+  copy,
+  eye,
+  filter,
+  flame,
+  pencil,
+  remove,
+  search,
+  trash,
+} from "ionicons/icons";
 import CirculoCarregamento from "../components/CirculoDeCarregamento";
 import BarraInferior from "../components/BarraInferiorControles";
 import usaSQLiteDB from "../composables/usaSQLiteDB";
 import { SQLiteDBConnection } from "@capacitor-community/sqlite";
-import { useHistory } from "react-router";
+import { useHistory, useLocation } from "react-router";
 import { createGesture, Gesture } from "@ionic/react";
 
 const Grimorio: React.FC = () => {
   const [carregamento, defCarregamento] = useState<boolean>(false);
   const [mostraMensagem, defMostraMensagem] = useState<boolean>(false);
 
+  const [qtdFiltro, defQtdFiltro] = useState<Array<number>>([0]);
+
   const [corToast, defCorToast] = useState<string>("");
   const [toastTexto, defToastTexto] = useState<string>("");
 
   const [mostraModalOpcoes, defMostraModalOpcoes] = useState(false);
 
-  const [filtro, defFiltro] = useState<string>("");
+  const [filtro, defFiltro] = useState<Array<any>>([]);
   const [magiaItens, defMagiaItens] = useState<Array<any>>([]);
-  const { executarAcaoSQL, iniciado, iniciaTabelas } = usaSQLiteDB();
+  const { executarAcaoSQL, iniciado } = usaSQLiteDB();
   const navegar = useHistory();
+
+  const url = useLocation();
+  const parametros = new URLSearchParams(url.search);
+  const idGrimorio = parametros.get("idGrimorio");
+
+  const [modalSel, defModalSel] = useState<number>(0);
+  const [mostraModalTipo, defMostraModalTipo] = useState(false);
+
+  const [mostraFiltro, defMostraFiltro] = useState<boolean>(true);
+
+  const tiposFiltro = [
+    "Nome",
+    "Mana",
+    "Círculo",
+    "Natureza",
+    "Escola",
+    "Execução",
+    "Alvo",
+    "Área",
+    "Alcance",
+    "Duração",
+    "Resistência",
+    "Descrição",
+    "Mecânica",
+    "Nomes Alternativos",
+    "Nome Verdadeiro",
+    "Origem",
+  ];
 
   useEffect(() => {
     buscaDados();
   }, [iniciado]);
+
+  const converteParaTabela = (tipo: string, valor: string) => {
+    let tabelaTipo = [];
+    let tabelaValor = [];
+    switch (tipo) {
+      case "Nome":
+        tabelaTipo.push(" (MAGIA.NOME LIKE ?) ");
+        tabelaValor.push(valor);
+        break;
+      case "Mana":
+        tabelaTipo.push(" (MANA.DESCRICAO LIKE ? OR MAGIA.OUTROMANA LIKE ?) ");
+        tabelaValor.push(valor, valor);
+        break;
+      case "Círculo":
+        tabelaTipo.push(" (NIVEL.NIVEL LIKE ? OR MAGIA.OUTRONIVEL LIKE ?) ");
+        tabelaValor.push(valor, valor);
+        break;
+      case "Natureza":
+        tabelaTipo.push(
+          " (NATUREZA.DESCRICAO LIKE ? OR MAGIA.OUTRONATUREZA LIKE ?) "
+        );
+        tabelaValor.push(valor, valor);
+        break;
+      case "Escola":
+        tabelaTipo.push(
+          " (ESCOLA.DESCRICAO LIKE ? OR MAGIA.OUTROESCOLA LIKE ?) "
+        );
+        tabelaValor.push(valor, valor);
+        break;
+      case "Execução":
+        tabelaTipo.push(
+          " (EXECUCAO.DESCRICAO LIKE ? OR MAGIA.OUTROEXECUCAO LIKE ?) "
+        );
+        tabelaValor.push(valor, valor);
+        break;
+      case "Alvo":
+        tabelaTipo.push(" MAGIA.ALVO LIKE ? ");
+        tabelaValor.push(valor);
+        break;
+      case "Área":
+        tabelaTipo.push(" (AREA.DESCRICAO LIKE ? OR MAGIA.OUTROAREA LIKE ?) ");
+        tabelaValor.push(valor, valor);
+        break;
+      case "Alcance":
+        tabelaTipo.push(
+          " (ALCANCE.DESCRICAO LIKE ? OR MAGIA.OUTROALCANCE LIKE ?) "
+        );
+        tabelaValor.push(valor, valor);
+        break;
+      case "Duração":
+        tabelaTipo.push(
+          " (DURACAO.DESCRICAO LIKE ? OR MAGIA.OUTRODURACAO LIKE ?) "
+        );
+        tabelaValor.push(valor, valor);
+        break;
+      case "Resistência":
+        tabelaTipo.push(
+          " (RESISTENCIA.DESCRICAO LIKE ? OR MAGIA.OUTRORESISTENCIA LIKE ?) "
+        );
+        tabelaValor.push(valor, valor);
+        break;
+      case "Descrição":
+        tabelaTipo.push(" MAGIA.DESCRICAO LIKE ? ");
+        tabelaValor.push(valor);
+        break;
+      case "Mecânica":
+        tabelaTipo.push(" MAGIA.MECANICA LIKE ? ");
+        tabelaValor.push(valor);
+        break;
+      case "Nomes Alternativos":
+        tabelaTipo.push(" MAGIA.NOMEALTERNATIVO LIKE ? ");
+        tabelaValor.push(valor);
+        break;
+      case "Nome Verdadeiro":
+        tabelaTipo.push(" MAGIA.NOMEVERDADEIRO LIKE ? ");
+        tabelaValor.push(valor);
+        break;
+      case "Origem":
+        tabelaTipo.push(" (MAGIA.ORIGEM LIKE ? OR MAGIA.ORIGEMSIGLA LIKE ?) ");
+        tabelaValor.push(valor, valor);
+        break;
+    }
+
+    const retorno = [tabelaTipo, tabelaValor];
+
+    return retorno;
+  };
 
   const buscaDados = async () => {
     let comandoSQL = `SELECT 
@@ -100,13 +230,44 @@ const Grimorio: React.FC = () => {
         INNER JOIN AREA ON MAGIA.ID_AREA = AREA.ID
         INNER JOIN DURACAO ON MAGIA.ID_DURACAO = DURACAO.ID
         INNER JOIN RESISTENCIA ON MAGIA.ID_RESISTENCIA = RESISTENCIA.ID
-         WHERE MAGIA.NOME LIKE '%${filtro}%' AND MAGIA.GRIMORIO = 1 `;
+        INNER JOIN MAGIAGRIMORIO ON MAGIA.ID = MAGIAGRIMORIO.ID_MAGIA
+        INNER JOIN GRIMORIO ON MAGIAGRIMORIO.ID_GRIMORIO = GRIMORIO.ID
+         WHERE GRIMORIO.ID = ${idGrimorio} `;
+
+    let comando = [];
+    let array = [];
+
+    if (filtro && filtro.length > 0) {
+      for (const filtroSel of filtro) {
+        if (filtroSel.tipo !== "" && filtroSel.evento !== "") {
+          const tabelaConvertida = converteParaTabela(
+            filtroSel.tipo,
+            filtroSel.evento
+          );
+
+          console.log(tabelaConvertida);
+
+          comando.push(tabelaConvertida?.[0]);
+
+          for (const parametro of tabelaConvertida?.[1]) {
+            array.push(`%${parametro}%`);
+          }
+        }
+      }
+
+      if (comando.length > 0 && array.length > 0) {
+        comandoSQL += " AND ";
+        comandoSQL += comando.join(" AND ");
+      }
+    }
+
+    comandoSQL += " ORDER BY MAGIA.NOME "
 
     try {
       defCarregamento(true);
       await executarAcaoSQL(async (db: SQLiteDBConnection | undefined) => {
         console.log(comandoSQL);
-        const resultado = await db?.query(comandoSQL);
+        const resultado = await db?.query(comandoSQL, array);
         if (resultado && resultado.values) {
           defMagiaItens(resultado?.values);
         }
@@ -121,12 +282,6 @@ const Grimorio: React.FC = () => {
 
   const filtraDados = () => {
     buscaDados();
-  };
-
-  const capFiltro = (evento: CustomEvent) => {
-    const elementoHtml = evento.target as HTMLInputElement;
-    const valor = elementoHtml.value;
-    defFiltro(valor);
   };
 
   const defCorCard = (valor: number) => {
@@ -222,6 +377,100 @@ const Grimorio: React.FC = () => {
     }
   };
 
+  const selecionaModal = (id: number) => {
+    defModalSel(id);
+    defMostraModalTipo(true);
+  };
+
+  const capFiltroValor = ({
+    id,
+    tipo,
+    evento,
+  }: {
+    id: number;
+    tipo: string;
+    evento: CustomEvent;
+  }) => {
+    const valorInput = evento.detail.value;
+    defFiltro((prevArray) => {
+      const novoFiltro = [...prevArray];
+      const valorEncontradoIndice = novoFiltro.findIndex(
+        (item) => item.id === id
+      );
+
+      if (valorEncontradoIndice !== -1) {
+        novoFiltro[valorEncontradoIndice].evento = valorInput;
+      } else {
+        novoFiltro.push({ id: id, tipo: tipo, evento: valorInput });
+      }
+
+      return novoFiltro;
+    });
+  };
+
+  const capFiltroTipo = ({
+    id,
+    tipo,
+    evento,
+  }: {
+    id: number;
+    tipo: string;
+    evento: CustomEvent;
+  }) => {
+    const valorInput = evento.detail.value;
+    defFiltro((prevArray) => {
+      const novoFiltro = [...prevArray];
+      const valorEncontradoIndice = novoFiltro.findIndex(
+        (item) => item.id === id
+      );
+
+      if (valorEncontradoIndice !== -1) {
+        novoFiltro[valorEncontradoIndice].tipo = tipo;
+      } else {
+        novoFiltro.push({ id: id, tipo: tipo, evento: valorInput });
+      }
+
+      return novoFiltro;
+    });
+  };
+
+  const capTipo = (valor: string) => {
+    const id = modalSel;
+    const tipo = valor.toString();
+    const evento = new CustomEvent("placeholder", {
+      detail: { value: "" },
+    });
+    capFiltroTipo({ id: id, tipo: tipo, evento: evento });
+    defMostraModalTipo(false);
+  };
+
+  const addFiltro = () => {
+    defQtdFiltro((prevArray) => [
+      ...prevArray,
+      prevArray[prevArray.length - 1] + 1,
+    ]);
+  };
+
+  const delFiltro = (valor: number) => {
+    const novoArrayqtd = qtdFiltro.filter((item) => item !== valor);
+    console.log(novoArrayqtd);
+    defQtdFiltro(novoArrayqtd);
+
+    const novoArrayApt = filtro.filter((item, indice) => indice !== valor);
+    console.log(novoArrayApt);
+    defFiltro(novoArrayApt);
+  };
+
+  const colapsaFiltro = () => {
+    if (mostraFiltro == true) {
+      defMostraFiltro(false);
+    } else {
+      defMostraFiltro(true);
+    }
+
+    console.log(mostraFiltro);
+  };
+
   const segurarBotao = (idCard: number, nome: string, cardIndex: number) => {
     const cardElement = botaoRefs.current[cardIndex];
     if (cardElement) {
@@ -246,22 +495,81 @@ const Grimorio: React.FC = () => {
       <IonContent color="tertiary">
         <IonCard color="secondary">
           <IonGrid>
-            <IonRow>
+            <IonRow className="ion-align-items-center">
               <IonCol>
-                {" "}
-                <IonItem color="secondary" lines="none">
-                  <IonInput
-                    onIonInput={capFiltro}
-                    placeholder="🏹 Ártemis de Feitiço"
-                  ></IonInput>
-                </IonItem>
+                <IonCardTitle className="ion-text-center">
+                  <strong>🏹 Ártemis de Feitiço</strong>
+                </IonCardTitle>
               </IonCol>
-              <IonCol className="flex-center" size="2" onClick={filtraDados}>
+              <IonCol onClick={colapsaFiltro} size="2">
                 <IonButton fill="clear">
-                  <IonIcon icon={search} />
+                  <IonIcon icon={filter}></IonIcon>
                 </IonButton>
               </IonCol>
             </IonRow>
+            {mostraFiltro ? (
+              <div>
+                {qtdFiltro.map((valor, indice) => (
+                  <IonRow key={indice}>
+                    <IonCol size="4" style={{ padding: "0px" }}>
+                      <IonItem
+                        className="ion-text-center"
+                        button
+                        lines="none"
+                        color="secondary"
+                        onClick={() => selecionaModal(indice)}
+                      >
+                        <IonLabel>
+                          {filtro && filtro[indice] && filtro[indice].tipo
+                            ? filtro[indice].tipo
+                            : "TIPO"}
+                        </IonLabel>
+                      </IonItem>
+                    </IonCol>
+                    <IonCol style={{ padding: "0px" }}>
+                      {" "}
+                      <IonItem color="secondary" lines="none">
+                        <IonInput
+                          className="ion-text-center"
+                          onIonInput={(e) =>
+                            capFiltroValor({
+                              id: indice,
+                              tipo: "",
+                              evento: e,
+                            })
+                          }
+                          placeholder="Insira para pesquisar"
+                        ></IonInput>
+                      </IonItem>
+                    </IonCol>
+                    {indice === 0 ? (
+                      <IonCol style={{ padding: "0px" }} size="2">
+                        <IonButton fill="clear" onClick={addFiltro}>
+                          <IonIcon icon={add} />
+                        </IonButton>
+                      </IonCol>
+                    ) : null}
+                    {indice === qtdFiltro.length - 1 && qtdFiltro.length > 1 ? (
+                      <IonCol style={{ padding: "0px" }} size="2">
+                        <IonButton
+                          fill="clear"
+                          onClick={() => delFiltro(valor)}
+                        >
+                          <IonIcon icon={remove} />
+                        </IonButton>
+                      </IonCol>
+                    ) : null}
+                  </IonRow>
+                ))}
+                <IonRow class="ion-justify-content-center ion-align-items-center">
+                  <IonCol size="2">
+                    <IonButton fill="clear" onClick={filtraDados}>
+                      <IonIcon icon={search} />
+                    </IonButton>
+                  </IonCol>
+                </IonRow>
+              </div>
+            ) : null}
           </IonGrid>
         </IonCard>
         {!carregamento ? (
@@ -427,6 +735,34 @@ const Grimorio: React.FC = () => {
             </div>
           </IonCard>
         </IonModal>
+        <IonModal
+          isOpen={mostraModalTipo}
+          onDidDismiss={() => defMostraModalTipo(false)}
+        >
+          <IonList style={{ marginTop: "auto", marginBottom: "auto" }}>
+            {tiposFiltro?.map((tipo, indice) => (
+              <IonItem
+                className="ion-text-center"
+                button
+                key={indice}
+                color="secondary"
+                onClick={() => capTipo(tipo)}
+              >
+                <IonLabel style={{ fontSize: "1.3rem" }}>{tipo}</IonLabel>
+              </IonItem>
+            ))}
+            <div className="ion-text-center">
+              <IonButton
+                fill="clear"
+                color="secondary"
+                onClick={() => defMostraModalTipo(false)}
+              >
+                <IonIcon color="danger" slot="start" icon={closeCircle} />
+                <IonLabel color="danger">CANCELAR</IonLabel>
+              </IonButton>
+            </div>
+          </IonList>
+        </IonModal>
         <IonToast
           color={corToast}
           isOpen={mostraMensagem}
@@ -436,7 +772,6 @@ const Grimorio: React.FC = () => {
         ></IonToast>
         {carregamento ? <CirculoCarregamento /> : null}
       </IonContent>
-      <BarraInferior />
     </IonPage>
   );
 };

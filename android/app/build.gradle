@@ -3,6 +3,7 @@ apply plugin: 'com.android.application'
 android {
     namespace "domo.tarefas"
     compileSdkVersion rootProject.ext.compileSdkVersion
+    compileSdkVersion 34
     defaultConfig {
         applicationId "domo.tarefas"
         minSdkVersion rootProject.ext.minSdkVersion

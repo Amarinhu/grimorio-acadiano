@@ -12,6 +12,8 @@ import "./theme/variables.css";
 
 import EditorDeFeiticos from "./pages/EditorDeFeiticos";
 import ExploradorDeFeiticos from "./pages/ExploradorDeFeiticos";
+import ListaGrimorios from "./pages/ListaGrimorios";
+import EditorDeGrimorio from "./pages/EditorDeGrimorio";
 import Grimorio from "./pages/Grimorio";
 import VerMagia from "./pages/VerMagia";
 
@@ -39,6 +41,8 @@ const App: React.FC = () => {
         <Switch>
           <Route path="/EditorDeFeiticos" component={EditorDeFeiticos} />
           <Route path="/Grimorio" component={Grimorio} />
+          <Route path="/ListaGrimorios" component={ListaGrimorios} />
+          <Route path="/EditorDeGrimorio" component={EditorDeGrimorio} />
           <Route path="/VerMagia" component={VerMagia} />
           
           <Route path="/ExploradorDeFeiticos" component={ExploradorDeFeiticos} />

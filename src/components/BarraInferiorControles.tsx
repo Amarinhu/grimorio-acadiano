@@ -25,7 +25,7 @@ import MenuLateral from "./MenuLateral";
 import { Capacitor } from "@capacitor/core";
 
 const botoesInformacoes = [
-  { nome: "Grimório", url: "/Grimorio", icon: book },
+  { nome: "Grimório", url: "/ListaGrimorios", icon: book },
   { nome: "Magias", url: "/", icon: flame },
 ];
 

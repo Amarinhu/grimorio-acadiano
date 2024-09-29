@@ -33,6 +33,8 @@ const MenuLateral: React.FC = () => {
 
   const caminhos = [{ nome: "Dev Tools", url: "/AssistenteDev", icon: cog }];
 
+  const versao = "1.0.0"
+
   return (
     <IonMenu contentId="main">
       <IonContent color="primary">
@@ -53,7 +55,7 @@ const MenuLateral: React.FC = () => {
           </IonMenuToggle>
         ))}
         <div className="ion-text-center custom-versao">
-          <IonText>Ver. 0.1.0</IonText>
+          <IonText>Ver. {versao}</IonText>
         </div>
       </IonContent>
     </IonMenu>
