@@ -19,8 +19,6 @@ import VerMagia from "./pages/VerMagia";
 
 import AssistenteDev from "./pages/AssistenteDev";
 
-import PaginaModificarPlanejamento from "./pages/123";
-
 import "@ionic/react/css/core.css";
 import "@ionic/react/css/normalize.css";
 import "@ionic/react/css/structure.css";
@@ -47,10 +45,6 @@ const App: React.FC = () => {
           
           <Route path="/ExploradorDeFeiticos" component={ExploradorDeFeiticos} />
           <Route path="/AssistenteDev" component={AssistenteDev} />
-          <Route
-            path="/PaginaModificarPlanejamento"
-            component={PaginaModificarPlanejamento}
-          />
           <Route path="/" exact component={ExploradorDeFeiticos} />
         </Switch>
       </Router>
