@@ -79,6 +79,8 @@ const EditorDeFeiticos: React.FC = () => {
 
   const [mostraModalAjuda, defMostraModalAjuda] = useState(false);
 
+  const [primeiroAcesso, defPrimeiroAcesso] = useState(false);
+
   const [manaItens, defManaItens] = useState<Array<any>>([]);
   const [manaSelecionada, defManaSelecionada] = useState<any>();
   const [mostraModalMana, defMostraModalMana] = useState(false);
@@ -463,6 +465,28 @@ const EditorDeFeiticos: React.FC = () => {
     }
   }, [iniciado]);
 
+  useEffect(() => {
+    const verificaPrimeiroAcesso = async () => {
+      if (itensCarregados()) {
+        defPrimeiroAcesso(false);
+      } else {
+        defPrimeiroAcesso(true);
+      }
+    };
+
+    verificaPrimeiroAcesso();
+  }, [
+    manaItens,
+    nivelItens,
+    naturezaItens,
+    escolaItens,
+    execucaoItens,
+    duracaoItens,
+    resistenciaItens,
+    alcanceItens,
+    areaItens,
+  ]);
+
   const verificaOutros = (id: number) => {
     if (id == 999) {
       return true;
@@ -535,36 +559,6 @@ const EditorDeFeiticos: React.FC = () => {
       VALUES 
       (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) `;
     }
-
-    /*console.log(comandoSQL, [
-      manaSelecionada,
-      nivelSelecionada,
-      naturezaSelecionada,
-      escolaSelecionada,
-      execucaoSelecionada,
-      alvo,
-      areaSelecionada ?? 998,
-      obsArea,
-      alcanceSelecionada,
-      duracaoSelecionada ?? 998,
-      resistenciaSelecionada ?? 998,
-      obsResistencia,
-      descricao,
-      mecanica,
-      nomeAlternativo,
-      nomeVerdadeiro,
-      nome,
-      origem == "" || origem == null ? "Desconhecido" : origem,
-      origemSigla == "" || origemSigla == null ? "N.N." : origemSigla,
-      outraRes,
-      outraDur,
-      outraAlc,
-      outraExe,
-      outraEsc,
-      outraNat,
-      outraNiv,
-      outraMan,
-    ]);*/
 
     if (
       manaSelecionada &&
@@ -702,50 +696,6 @@ const EditorDeFeiticos: React.FC = () => {
       defToastTexto("DADOS OBRIGATÓRIOS FALTANDO: " + dadosFaltando.join(", "));
       defMostraMensagem(true);
     }
-  };
-
-  const consoleMagiaInfo = () => {
-    const magiaInfo = [
-      `NOME: ${nome}`,
-      `ID_MANA: ${manaSelecionada} - ${manaItens
-        .filter((item) => item.ID === manaSelecionada)
-        .map((item) => item.DESCRICAO)}`,
-      `ID_NIVEL: ${nivelSelecionada} - ${nivelItens
-        .filter((item) => item.ID === nivelSelecionada)
-        .map((item) => item.NIVEL)}º Círculo`,
-      `ID_NATUREZA: ${naturezaSelecionada} - ${naturezaItens
-        .filter((item) => item.ID === naturezaSelecionada)
-        .map((item) => item.DESCRICAO)}`,
-      `ID_ESCOLA: ${escolaSelecionada} - ${escolaItens
-        .filter((item) => item.ID === escolaSelecionada)
-        .map((item) => item.DESCRICAO)}`,
-      `ID_EXECUCAO: ${execucaoSelecionada} - ${execucaoItens
-        .filter((item) => item.ID === execucaoSelecionada)
-        .map((item) => item.DESCRICAO)}`,
-      `ALVO: ${alvo}`,
-      `ID_AREA: ${areaSelecionada} - ${areaItens
-        .filter((item) => item.ID === areaSelecionada)
-        .map((item) => item.DESCRICAO)}`,
-      `OBS_AREA: ${obsArea}`,
-      `ID_ALCANCE: ${alcanceSelecionada} - ${alcanceItens
-        .filter((item) => item.ID === alcanceSelecionada)
-        .map((item) => item.DESCRICAO)}`,
-      `ID_DURACAO: ${duracaoSelecionada} - ${duracaoItens
-        .filter((item) => item.ID === duracaoSelecionada)
-        .map((item) => item.DESCRICAO)}`,
-      `ID_RESISTENCIA: ${resistenciaSelecionada} - ${resistenciaItens
-        .filter((item) => item.ID === resistenciaSelecionada)
-        .map((item) => item.DESCRICAO)}`,
-      `OBS_RESISTENCIA: ${obsResistencia}`,
-      `DESCRICAO: ${descricao}`,
-      `MECANICA: ${mecanica}`,
-      `NOMES ALTERNATIVOS: ${nomeAlternativo}`,
-      `NOME VERDADEIRO: ${nomeVerdadeiro}`,
-    ];
-    defConsoleLog(magiaInfo);
-
-    defToastTexto("Informação da magia inserida no console!");
-    defMostraMensagem(true);
   };
 
   const capOrigem = (valor: any) => {
@@ -950,7 +900,6 @@ const EditorDeFeiticos: React.FC = () => {
   };
 
   const iniciaBanco = async () => {
-    /*if (itensCarregados() == false) {*/
     try {
       const comandosSQL = [
         `INSERT OR REPLACE INTO EXECUCAO (ID, DESCRICAO)
@@ -990,7 +939,6 @@ const EditorDeFeiticos: React.FC = () => {
     } finally {
       recarregarPagina();
     }
-    /*}*/
   };
 
   const itensCarregados = () => {
@@ -1013,7 +961,6 @@ const EditorDeFeiticos: React.FC = () => {
       alcanceItens.length > 0 &&
       duracaoItens.length > 0 &&
       resistenciaItens.length > 0;
-
     return verif;
   };
 
@@ -1044,20 +991,25 @@ const EditorDeFeiticos: React.FC = () => {
           icone={flame}
           titulo={"Magias"}
         />
-        <IonToolbar color={telaCorSecundaria}>
-          <div className="flex-center">
-            <IonButtons>
-              <IonButton color={telaCorPrimaria} onClick={iniciaBanco}>
-                <IonIcon icon={server} slot="start" />
-                <IonLabel>Iniciar Banco</IonLabel>
-              </IonButton>
-              <IonButton onClick={teste} color={telaCorPrimaria}>
+        {primeiroAcesso ? (
+          <IonToolbar color={telaCorSecundaria}>
+            <div className="flex-center">
+              <IonLabel color="warning" style={{ fontSize: "1rem" }}>
+                Oops! Aparentemente é seu primeiro acesso. Por gentileza, clique aqui:{" "}
+              </IonLabel>
+              <IonButtons>
+                <IonButton color={telaCorPrimaria} onClick={iniciaBanco}>
+                  <IonIcon icon={server} slot="start" />
+                  <IonLabel>Iniciar Banco</IonLabel>
+                </IonButton>
+                {/*<IonButton onClick={teste} color={telaCorPrimaria}>
                 <IonIcon icon={helpCircle} slot="start" />
                 <IonLabel>Ajuda</IonLabel>
-              </IonButton>
-            </IonButtons>
-          </div>
-        </IonToolbar>
+              </IonButton>*/}
+              </IonButtons>
+            </div>
+          </IonToolbar>
+        ) : null}
       </IonHeader>
       {!carregamento ? (
         <IonContent color={telaCorTerciaria}>

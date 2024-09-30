@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">Assistente Acadiano</string>
-    <string name="title_activity_main">Assistente Acadiano T20</string>
+    <string name="app_name">Assistente Acadiano T20</string>
+    <string name="title_activity_main">assistente-acadiano</string>
     <string name="package_name">assistente.acadiano</string>
     <string name="custom_url_scheme">assistente.acadiano</string>
 </resources>

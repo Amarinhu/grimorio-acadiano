@@ -17,14 +17,14 @@ const usaSQLiteDB = () => {
       sqlite.current = new SQLiteConnection(CapacitorSQLite);
       const consistencia = await sqlite.current.checkConnectionsConsistency();
       const verificacaoConexao = (
-        await sqlite.current.isConnection("DomoBD", false)
+        await sqlite.current.isConnection("AssistenteT20", false)
       ).result;
 
       if (consistencia.result && verificacaoConexao) {
-        db.current = await sqlite.current.retrieveConnection("DomoBD", false);
+        db.current = await sqlite.current.retrieveConnection("AssistenteT20", false);
       } else {
         db.current = await sqlite.current.createConnection(
-          "DomoBD",
+          "AssistenteT20",
           false,
           "no-encryption",
           1,
