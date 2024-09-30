@@ -33,22 +33,7 @@ import {
   trashBin,
   warning,
 } from "ionicons/icons";
-
-/*
-Objetivos / Funções Novas:
- - Ártemis: Pesquisa avançada.
- - API de Feitiços
- - Backup de Criações
-
-Ajustes em funções que já existem:
-- Alterar a quantidade de aprimoramentos depois de salvo.
-- Poder cadastrar truques
-- Adicionar campo para "Efeito"
-- Terminar de ajustar tela de VerMagia
-- Fazer com que o banco inicie sozinho
-
-Sugestões?
-*/
+import { useHistory } from "react-router";
 
 const AssistenteDev: React.FC = () => {
   const [BancoItens, definirBancoItens] = useState<Array<any>>();
@@ -202,6 +187,11 @@ const AssistenteDev: React.FC = () => {
     });
   };
 
+  const navegar = useHistory();
+  const voltarMagias = () => {
+    navegar.goBack();
+  };
+
   return (
     <IonPage>
       <TituloBotaoVoltar titulo="Assistente Dev" icone={build} />
@@ -215,40 +205,17 @@ const AssistenteDev: React.FC = () => {
               <p>
                 <IonText>
                   <p style={{ fontWeight: "bold" }}>
-                    Você entrou no MENU DO DESENVOLVEDOR! Se você não sabe o que
-                    está fazendo, há grandes chances de 'fuder tudo'.
+                    Você entrou no Menu Do Desenvolvedor! Prossiga apenas se
+                    estiver absolutamente certo do que está fazendo.
                   </p>
                   <br></br>
-                  <p style={{ fontWeight: "bold" }}>
-                    Então, se não souber o que está fazendo, melhor não relar a
-                    mão (e sinceramente, às vezes nem eu sei).
-                  </p>
+                  <p style={{ fontWeight: "bold" }}>Você foi avisado</p>
                 </IonText>
               </p>
+              <IonButton onClick={voltarMagias}>
+                <IonLabel>Sair</IonLabel>
+              </IonButton>
             </div>
-          </IonCardContent>
-        </IonCard>
-        <IonCard color="secondary">
-          <IonCardContent>
-            <IonButtons>
-              <IonButton onClick={recarregarPagina}>
-                <IonIcon
-                  slot="start"
-                  className="icon-large"
-                  icon={reloadCircle}
-                ></IonIcon>
-                <IonLabel>Recarregar</IonLabel>
-              </IonButton>
-
-              <IonButton onClick={paraCarregamento}>
-                <IonIcon
-                  slot="start"
-                  className="icon-large"
-                  icon={closeCircle}
-                ></IonIcon>
-                <IonLabel>On/Off</IonLabel>
-              </IonButton>
-            </IonButtons>
           </IonCardContent>
         </IonCard>
 
@@ -287,21 +254,6 @@ const AssistenteDev: React.FC = () => {
                 ></IonIcon>
                 <IonLabel>Wild Card</IonLabel>
               </IonButton>
-              <IonButton onClick={insercao}>
-                <IonIcon
-                  slot="start"
-                  className="icon-large"
-                  icon={bug}
-                ></IonIcon>
-                <IonLabel>Inserção</IonLabel>
-              </IonButton>
-            </IonButtons>
-          </IonCardContent>
-        </IonCard>
-
-        <IonCard color="secondary">
-          <IonCardContent>
-            <IonButtons>
               <IonButton onClick={mostraBanco}>
                 <IonIcon
                   slot="start"
