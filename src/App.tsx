@@ -16,6 +16,8 @@ import EditorDeGrimorio from "./pages/EditorDeGrimorio";
 import Grimorio from "./pages/Grimorio";
 import VerMagia from "./pages/VerMagia";
 
+import Configuracao from "./pages/Configuracao";
+
 import AssistenteDev from "./pages/AssistenteDev";
 
 import "@ionic/react/css/core.css";
@@ -44,6 +46,7 @@ const App: React.FC = () => {
           
           <Route path="/ExploradorDeFeiticos" component={ExploradorDeFeiticos} />
           <Route path="/AssistenteDev" component={AssistenteDev} />
+          <Route path="/Configuracao" component={Configuracao} />
           <Route path="/" exact component={ExploradorDeFeiticos} />
         </Switch>
       </Router>

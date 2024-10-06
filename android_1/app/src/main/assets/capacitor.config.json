@@ -1,0 +1,8 @@
+{
+	"appId": "domo.tarefas",
+	"appName": "domo-tarefas",
+	"webDir": "dist",
+	"server": {
+		"androidScheme": "https"
+	}
+}

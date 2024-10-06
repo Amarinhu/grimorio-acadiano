@@ -218,7 +218,8 @@ const Grimorio: React.FC = () => {
       RESISTENCIA.DESCRICAO AS RESISTENCIA_DESCRICAO,
       RESISTENCIA.ID AS RESISTENCIA_ID,
       MAGIA.ORIGEM AS MAGIA_ORIGEM,
-      MAGIA.ORIGEMSIGLA AS MAGIA_ORIGEMSIGLA
+      MAGIA.ORIGEMSIGLA AS MAGIA_ORIGEMSIGLA,
+      MAGIA.EFEITO AS MAGIA_EFEITO
         FROM 
             MAGIA
         INNER JOIN MANA ON MAGIA.ID_MANA = MANA.ID
@@ -261,7 +262,7 @@ const Grimorio: React.FC = () => {
       }
     }
 
-    comandoSQL += " ORDER BY MAGIA.NOME "
+    comandoSQL += " ORDER BY MAGIA.NOME ";
 
     try {
       defCarregamento(true);
@@ -336,9 +337,10 @@ const Grimorio: React.FC = () => {
   const retirarMagia = async (idMagia: number) => {
     try {
       await executarAcaoSQL(async (db: SQLiteDBConnection | undefined) => {
-        await db?.query(` UPDATE MAGIA SET GRIMORIO = 0 WHERE ID = ? `, [
-          idMagia,
-        ]);
+        await db?.query(
+          ` DELETE FROM MAGIAGRIMORIO WHERE ID_MAGIA = ? AND ID_GRIMORIO = ? `,
+          [idMagia, idGrimorio]
+        );
       });
     } catch (erro) {
       console.error(erro);
@@ -647,6 +649,11 @@ const Grimorio: React.FC = () => {
                         {magia.ALCANCE_ID !== 999
                           ? magia.ALCANCE_DESCRICAO + "; "
                           : magia.OUTROALCANCE + "; "}
+                      </>
+                    ) : null}
+                    {magia.MAGIA_EFEITO && magia.MAGIA_EFEITO !== "" ? (
+                      <>
+                        <strong>Efeito:</strong> {magia.MAGIA_EFEITO + "; "}
                       </>
                     ) : null}
                     {magia.ALVO && magia.ALVO !== "" ? (

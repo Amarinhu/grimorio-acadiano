@@ -56,6 +56,8 @@ const EditorDeFeiticos: React.FC = () => {
   const [descricao, defDescricao] = useState<string>("");
   const [mecanica, defMecanica] = useState<string>("");
 
+  const [efeito, defEfeito] = useState<string>("");
+
   const [outroMana, defOutraMana] = useState<string>("");
   const [outroNivel, defOutroNivel] = useState<string>("");
   const [outroNatureza, defOutroNatureza] = useState<string>("");
@@ -172,7 +174,8 @@ const EditorDeFeiticos: React.FC = () => {
           RESISTENCIA.DESCRICAO AS RESISTENCIA_DESCRICAO,
           RESISTENCIA.ID AS RESISTENCIA_ID,
           MAGIA.ORIGEM AS MAGIA_ORIGEM,
-          MAGIA.ORIGEMSIGLA AS MAGIA_ORIGEMSIGLA
+          MAGIA.ORIGEMSIGLA AS MAGIA_ORIGEMSIGLA,
+          MAGIA.EFEITO AS MAGIA_EFEITO
             FROM 
                 MAGIA
             INNER JOIN MANA ON MAGIA.ID_MANA = MANA.ID
@@ -260,6 +263,7 @@ const EditorDeFeiticos: React.FC = () => {
             defNomeVerdadeiro(valores.NOMEVERDADEIRO);
             defOrigemSigla(valores.MAGIA_ORIGEMSIGLA);
             defOrigem(valores.MAGIA_ORIGEM);
+            defEfeito(valores.MAGIA_EFEITO);
           }
         } catch (erro) {
           console.error(erro);
@@ -543,7 +547,7 @@ const EditorDeFeiticos: React.FC = () => {
         NOMEVERDADEIRO = ?, NOME = ?, ORIGEM = ?, 
         ORIGEMSIGLA = ?, OUTRORESISTENCIA = ?, OUTRODURACAO = ?, 
         OUTROALCANCE = ?, OUTROEXECUCAO = ?, OUTROESCOLA = ?, 
-        OUTRONATUREZA = ?, OUTRONIVEL = ?, OUTROMANA = ? 
+        OUTRONATUREZA = ?, OUTRONIVEL = ?, OUTROMANA = ?, EFEITO = ? 
       WHERE MAGIA.ID = ${idMagia} `;
     } else {
       comandoSQL = ` INSERT INTO MAGIA 
@@ -555,9 +559,9 @@ const EditorDeFeiticos: React.FC = () => {
       NOMEVERDADEIRO, NOME, ORIGEM, ORIGEMSIGLA,
       OUTRORESISTENCIA, OUTRODURACAO, OUTROALCANCE, 
       OUTROEXECUCAO, OUTROESCOLA, OUTRONATUREZA, 
-      OUTRONIVEL, OUTROMANA) 
+      OUTRONIVEL, OUTROMANA, EFEITO) 
       VALUES 
-      (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) `;
+      (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) `;
     }
 
     if (
@@ -599,6 +603,7 @@ const EditorDeFeiticos: React.FC = () => {
             outraNat,
             outraNiv,
             outraMan,
+            efeito,
           ]);
 
           const resultadoID = await db?.query(
@@ -711,6 +716,11 @@ const EditorDeFeiticos: React.FC = () => {
   const capObsArea = (valor: any) => {
     /*console.log("Alvo Observacao: " + valor.detail.value);*/
     defObsArea(valor.detail.value);
+  };
+
+  const capEfeito = (valor: any) => {
+    console.log("Efeito: " + valor.detail.value);
+    defEfeito(valor.detail.value);
   };
 
   const capObsResistencia = (valor: any) => {
@@ -1303,6 +1313,19 @@ const EditorDeFeiticos: React.FC = () => {
                           value={obsArea}
                           color={telaCorPrimaria}
                           label="Observação Área"
+                          labelPlacement="floating"
+                        ></IonInput>
+                      </IonItem>
+                    </IonCol>
+                  </IonRow>
+                  <IonRow>
+                    <IonCol style={{ padding: "0px" }}>
+                      <IonItem lines="none" color={telaCorSecundaria}>
+                        <IonInput
+                          onIonInput={capEfeito}
+                          value={efeito}
+                          color={telaCorPrimaria}
+                          label="Efeito"
                           labelPlacement="floating"
                         ></IonInput>
                       </IonItem>

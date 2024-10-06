@@ -68,6 +68,7 @@ type Magia = {
   RESISTENCIA_ID: number;
   MAGIA_ORIGEM: string;
   MAGIA_ORIGEMSIGLA: string;
+  MAGIA_EFEITO: string;
 };
 
 const Grimorio: React.FC = () => {
@@ -131,7 +132,8 @@ const Grimorio: React.FC = () => {
             RESISTENCIA.DESCRICAO AS RESISTENCIA_DESCRICAO,
             RESISTENCIA.ID AS RESISTENCIA_ID,
             MAGIA.ORIGEM AS MAGIA_ORIGEM,
-            MAGIA.ORIGEMSIGLA AS MAGIA_ORIGEMSIGLA
+            MAGIA.ORIGEMSIGLA AS MAGIA_ORIGEMSIGLA,
+            MAGIA.EFEITO AS MAGIA_EFEITO
               FROM 
                   MAGIA
               INNER JOIN MANA ON MAGIA.ID_MANA = MANA.ID
@@ -296,6 +298,14 @@ const Grimorio: React.FC = () => {
                       <div>
                         <strong>Alvos: </strong>
                         {magiaSelecionada.ALVO}
+                      </div>
+                    ) : null}{" "}
+                    {magiaSelecionada &&
+                    magiaSelecionada.MAGIA_EFEITO &&
+                    magiaSelecionada.MAGIA_EFEITO !== "" ? (
+                      <div>
+                        <strong>Efeito: </strong>
+                        {magiaSelecionada.MAGIA_EFEITO}
                       </div>
                     ) : null}{" "}
                     {magiaSelecionada &&

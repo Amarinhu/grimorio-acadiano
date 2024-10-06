@@ -12,7 +12,7 @@ import {
   IonText,
 } from "@ionic/react";
 import { useHistory } from "react-router";
-import { exit, cog } from "ionicons/icons";
+import { exit, cog, key } from "ionicons/icons";
 import "./MenuLateral.css";
 import armazenamento from "../armazenamento";
 import LogoAssistente from "../assets/logo-assistente-acadiano.png";
@@ -31,9 +31,12 @@ const MenuLateral: React.FC = () => {
     }
   };
 
-  const caminhos = [{ nome: "Dev Tools", url: "/AssistenteDev", icon: cog }];
+  const caminhos = [
+    { nome: "Configurações", url: "/Configuracao", icon: cog },
+    { nome: "Dev Tools", url: "/AssistenteDev", icon: key },
+  ];
 
-  const versao = "1.0.0"
+  const versao = "1.0.0";
 
   return (
     <IonMenu contentId="main">
@@ -49,7 +52,7 @@ const MenuLateral: React.FC = () => {
               routerLink={item.url}
               onClick={() => caminhosMenu(item.url, item.nome)}
             >
-              <IonIcon color="primary" icon={item.icon} slot="start" />
+              <IonIcon icon={item.icon} slot="start" />
               <IonLabel>{item.nome}</IonLabel>
             </IonItem>
           </IonMenuToggle>

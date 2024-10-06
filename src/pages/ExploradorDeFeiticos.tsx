@@ -28,8 +28,11 @@ import {
   closeCircle,
   copy,
   eye,
+  fileTray,
   filter,
   flame,
+  folder,
+  grid,
   pencil,
   remove,
   search,
@@ -218,7 +221,8 @@ const ListaMagia: React.FC = () => {
       RESISTENCIA.DESCRICAO AS RESISTENCIA_DESCRICAO,
       RESISTENCIA.ID AS RESISTENCIA_ID,
       MAGIA.ORIGEM AS MAGIA_ORIGEM,
-      MAGIA.ORIGEMSIGLA AS MAGIA_ORIGEMSIGLA
+      MAGIA.ORIGEMSIGLA AS MAGIA_ORIGEMSIGLA,
+      MAGIA.EFEITO AS MAGIA_EFEITO
         FROM 
             MAGIA
         INNER JOIN MANA ON MAGIA.ID_MANA = MANA.ID
@@ -263,7 +267,7 @@ const ListaMagia: React.FC = () => {
 
     console.log(comandoSQL, array);
 
-    comandoSQL += ` ORDER BY MAGIA.NOME `
+    comandoSQL += ` ORDER BY MAGIA.NOME `;
 
     try {
       defCarregamento(true);
@@ -628,10 +632,12 @@ const ListaMagia: React.FC = () => {
                 key={magia.ID}
                 color={defCorCard(magia.MANA_ID).corSecundaria}
               >
-                <IonCardHeader>
+                <IonCardHeader
+                  style={{ paddingBottom: "0px" }}
+                >
                   <IonCardTitle>
                     <IonRow>
-                      <IonCol size="10">
+                      <IonCol style={{ padding: "0px" }} size="10">
                         {magia.MANA_ID !== 999
                           ? magia.MANA_ICONE + " "
                           : `[${magia.OUTROMANA}]` + " "}
@@ -648,7 +654,7 @@ const ListaMagia: React.FC = () => {
                   </IonCardTitle>
                   <IonCardSubtitle>
                     <IonRow>
-                      <IonCol size="10">
+                      <IonCol size="10" style={{ padding: "0px" }}>
                         {magia.NATUREZA_ID !== 999
                           ? magia.NATUREZA_ICONE + " "
                           : null}
@@ -667,71 +673,93 @@ const ListaMagia: React.FC = () => {
                           : magia.OUTROESCOLA}
                         )
                       </IonCol>
-                      <IonCol className="ion-text-center" size="2">
-                        <strong>{magia.MAGIA_ORIGEMSIGLA}</strong>
+                      <IonCol
+                        style={{ padding: "0px" }}
+                        onClick={() => iniciarSegurar(magia.ID, magia.NOME)}
+                        className="ion-text-center"
+                        size="2"
+                      >
+                        <IonIcon style={{ height: "1.3rem", width: "1.3rem" }} icon={grid}></IonIcon>
                       </IonCol>
                     </IonRow>
                   </IonCardSubtitle>
                 </IonCardHeader>
                 <IonCardContent>
-                  <p style={{ paddingBottom: "0.3rem" }}>
-                    {magia.EXECUCAO_DESCRICAO &&
-                    magia.EXECUCAO_DESCRICAO !== "" ? (
-                      <>
-                        <strong>Execução:</strong>{" "}
-                        {magia.EXECUCAO_ID !== 999
-                          ? magia.EXECUCAO_DESCRICAO + "; "
-                          : magia.OUTROEXECUCAO + "; "}
-                      </>
-                    ) : null}
-                    {magia.ALCANCE_DESCRICAO &&
-                    magia.ALCANCE_DESCRICAO !== "" ? (
-                      <>
-                        <strong>Alcance:</strong>{" "}
-                        {magia.ALCANCE_ID !== 999
-                          ? magia.ALCANCE_DESCRICAO + "; "
-                          : magia.OUTROALCANCE + "; "}
-                      </>
-                    ) : null}
-                    {magia.ALVO && magia.ALVO !== "" ? (
-                      <>
-                        <strong>Alvo:</strong> {magia.ALVO + "; "}
-                      </>
-                    ) : null}
-                    {magia.AREA_DESCRICAO &&
-                    magia.AREA_DESCRICAO !== "" &&
-                    magia.AREA_ID !== 998 ? (
-                      <>
-                        <strong>Area: </strong>{" "}
-                        {magia.AREA_ID !== 999
-                          ? magia.AREA_DESCRICAO + " "
-                          : null}
-                        {magia.OBSAREA + "; "}
-                      </>
-                    ) : null}
-                    {magia.DURACAO_DESCRICAO &&
-                    magia.DURACAO_DESCRICAO !== "" &&
-                    magia.DURACAO_ID !== 998 ? (
-                      <>
-                        <strong>Duração:</strong>{" "}
-                        {magia.DURACAO_ID !== 999
-                          ? magia.DURACAO_DESCRICAO + " "
-                          : magia.OUTRODURACAO + "; "}
-                      </>
-                    ) : null}
-                    {magia.RESISTENCIA_DESCRICAO &&
-                    magia.RESISTENCIA_DESCRICAO !== "" &&
-                    magia.RESISTENCIA_ID !== 998 ? (
-                      <>
-                        <strong>Resistência:</strong>{" "}
-                        {magia.RESISTENCIA_ID !== 999
-                          ? magia.RESISTENCIA_DESCRICAO + " "
-                          : magia.OUTRORESISTENCIA + " "}
-                        {magia.OBSRESISTENCIA + "; "}
-                      </>
-                    ) : null}
-                  </p>
-                  <p>{magia.MAGIA_MECANICA}</p>
+                  <IonRow>
+                    <IonCol size="10" style={{ padding: "0px" }}>
+                      {" "}
+                      <p style={{ paddingBottom: "0.3rem" }}>
+                        {magia.EXECUCAO_DESCRICAO &&
+                        magia.EXECUCAO_DESCRICAO !== "" ? (
+                          <>
+                            <strong>Execução:</strong>{" "}
+                            {magia.EXECUCAO_ID !== 999
+                              ? magia.EXECUCAO_DESCRICAO + "; "
+                              : magia.OUTROEXECUCAO + "; "}
+                          </>
+                        ) : null}
+                        {magia.ALCANCE_DESCRICAO &&
+                        magia.ALCANCE_DESCRICAO !== "" ? (
+                          <>
+                            <strong>Alcance:</strong>{" "}
+                            {magia.ALCANCE_ID !== 999
+                              ? magia.ALCANCE_DESCRICAO + "; "
+                              : magia.OUTROALCANCE + "; "}
+                          </>
+                        ) : null}
+                        {magia.ALVO && magia.ALVO !== "" ? (
+                          <>
+                            <strong>Alvo:</strong> {magia.ALVO + "; "}
+                          </>
+                        ) : null}
+                        {magia.MAGIA_EFEITO && magia.MAGIA_EFEITO !== "" ? (
+                          <>
+                            <strong>Efeito:</strong> {magia.MAGIA_EFEITO + "; "}
+                          </>
+                        ) : null}
+                        {magia.AREA_DESCRICAO &&
+                        magia.AREA_DESCRICAO !== "" &&
+                        magia.AREA_ID !== 998 ? (
+                          <>
+                            <strong>Area: </strong>{" "}
+                            {magia.AREA_ID !== 999
+                              ? magia.AREA_DESCRICAO + " "
+                              : null}
+                            {magia.OBSAREA + "; "}
+                          </>
+                        ) : null}
+                        {magia.DURACAO_DESCRICAO &&
+                        magia.DURACAO_DESCRICAO !== "" &&
+                        magia.DURACAO_ID !== 998 ? (
+                          <>
+                            <strong>Duração:</strong>{" "}
+                            {magia.DURACAO_ID !== 999
+                              ? magia.DURACAO_DESCRICAO + " "
+                              : magia.OUTRODURACAO + "; "}
+                          </>
+                        ) : null}
+                        {magia.RESISTENCIA_DESCRICAO &&
+                        magia.RESISTENCIA_DESCRICAO !== "" &&
+                        magia.RESISTENCIA_ID !== 998 ? (
+                          <>
+                            <strong>Resistência:</strong>{" "}
+                            {magia.RESISTENCIA_ID !== 999
+                              ? magia.RESISTENCIA_DESCRICAO + " "
+                              : magia.OUTRORESISTENCIA + " "}
+                            {magia.OBSRESISTENCIA + "; "}
+                          </>
+                        ) : null}
+                      </p>
+                    </IonCol>
+                    <IonCol className="ion-text-center">
+                      <strong>{magia.MAGIA_ORIGEMSIGLA}</strong>
+                    </IonCol>
+                  </IonRow>
+                  <IonRow>
+                    <IonCol style={{ padding: "0px" }}>
+                      <p>{magia.MAGIA_MECANICA}</p>
+                    </IonCol>
+                  </IonRow>
                 </IonCardContent>
               </IonCard>
             ))}
