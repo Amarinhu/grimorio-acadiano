@@ -12,7 +12,7 @@ import {
   IonText,
 } from "@ionic/react";
 import { useHistory } from "react-router";
-import { exit, cog, key } from "ionicons/icons";
+import { exit, cog, key, colorPalette, diamond } from "ionicons/icons";
 import "./MenuLateral.css";
 import armazenamento from "../armazenamento";
 import LogoAssistente from "../assets/logo-assistente-acadiano.png";
@@ -34,9 +34,14 @@ const MenuLateral: React.FC = () => {
   const caminhos = [
     { nome: "Configurações", url: "/Configuracao", icon: cog },
     { nome: "Dev Tools", url: "/AssistenteDev", icon: key },
+    /*{ nome: "Me Apoie!!", url: "/Apoio", icon: colorPalette },*/
   ];
 
-  const versao = "1.0.0";
+  const redApoio = () => {
+    navegar.push("/Apoio");
+  };
+
+  const versao = "1.1.0";
 
   return (
     <IonMenu contentId="main">
@@ -57,6 +62,11 @@ const MenuLateral: React.FC = () => {
             </IonItem>
           </IonMenuToggle>
         ))}
+        <IonItem onClick={redApoio} button lines="none" color="ouroprimario" detail={true}>
+          <IonIcon icon={diamond} slot="start" size="large" />
+          <IonLabel>Me Apoie!</IonLabel>
+        </IonItem>
+
         <div className="ion-text-center custom-versao">
           <IonText>Ver. {versao}</IonText>
         </div>

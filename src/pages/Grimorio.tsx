@@ -369,7 +369,7 @@ const Grimorio: React.FC = () => {
       defCardSelNome(nome);
       defMostraModalOpcoes(true);
       console.log(`Botão ${idCard} ${cardSel} foi segurado`);
-    }, 1000);
+    }, 500);
   };
 
   const cancelarSegurar = () => {

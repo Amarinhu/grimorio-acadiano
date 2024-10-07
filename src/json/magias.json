@@ -4,10 +4,14 @@
     "ALCANCE_ID": 3,
     "ALVO": "alimento para 1 criatura",
     "APRIMORAMENTO": [
-      { "CUSTO": 1, "DESCRICAO": "aumenta o n\u00famero de alvos em" },
+      { "CUSTO": "1", "DESCRICAO": "aumenta o n\u00famero de alvos em +1." },
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "muda a dura\u00e7\u00e3o para permanente, o alvo para 1 frasco com \u00e1gua e adiciona componente material (p\u00f3 de prata no valor de T$ 5). Em vez do normal, cria um frasco de \u00e1gua benta."
+      },
+      {
+        "CUSTO": "Truque",
+        "DESCRICAO": "o alimento \u00e9 purificado (n\u00e3o causa nenhum efeito nocivo se estava estragado ou envenenado), mas n\u00e3o fornece b\u00f4nus ao ser consumido."
       }
     ],
     "AREA_DESCRICAO": "Nenhum",
@@ -23,7 +27,7 @@
     "ID_SINCRONISMO": 1,
     "MAGIA_DESCRICAO": "",
     "MAGIA_EFEITO": "",
-    "MAGIA_MECANICA": "Voc\u00ea purifica e aben\u00e7oa uma por\u00e7\u00e3o de comida ou dose de bebida. Isso torna um alimento sujo, estragado ou envenenado pr\u00f3prio para consumo. Al\u00e9m disso, se for consumido at\u00e9 o final da dura\u00e7\u00e3o, o alimento oferece 5 PV tempor\u00e1rios ou 1 PM tempor\u00e1rio (al\u00e9m de quaisquer b\u00f4nus que j\u00e1 oferecesse). B\u00f4nus de alimenta\u00e7\u00e3o duram um dia e cada personagem s\u00f3 pode receber um b\u00f4nus de alimenta\u00e7\u00e3o por dia. Truque: o alimento \u00e9 purificado (n\u00e3o causa nenhum efeito nocivo se estava estragado ou envenenado), mas n\u00e3o fornece b\u00f4nus ao ser consumido.",
+    "MAGIA_MECANICA": "Voc\u00ea purifica e aben\u00e7oa uma por\u00e7\u00e3o de comida ou dose de bebida. Isso torna um alimento sujo, estragado ou envenenado pr\u00f3prio para consumo. Al\u00e9m disso, se for consumido at\u00e9 o final da dura\u00e7\u00e3o, o alimento oferece 5 PV tempor\u00e1rios ou 1 PM tempor\u00e1rio (al\u00e9m de quaisquer b\u00f4nus que j\u00e1 oferecesse). B\u00f4nus de alimenta\u00e7\u00e3o duram um dia e cada personagem s\u00f3 pode receber um b\u00f4nus de alimenta\u00e7\u00e3o por dia. ",
     "MAGIA_ORIGEM": "Tormenta 20 - Jogo do Ano",
     "MAGIA_ORIGEMSIGLA": "T20",
     "MANA_DESCRICAO": "Nenhum",
@@ -55,14 +59,14 @@
     "ALCANCE_ID": 3,
     "ALVO": "1 animal",
     "APRIMORAMENTO": [
-      { "CUSTO": 1, "DESCRICAO": "muda o alcance para m\u00e9dio." },
+      { "CUSTO": "1", "DESCRICAO": "muda o alcance para m\u00e9dio." },
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "muda o alvo para 1 monstro ou esp\u00edrito com Intelig\u00eancia \u20135 ou \u20134. Descri\u00e7\u00e3o das magias"
       },
-      { "CUSTO": 2, "DESCRICAO": "aumenta o n\u00famero de alvos em" },
+      { "CUSTO": "2", "DESCRICAO": "aumenta o n\u00famero de alvos em" },
       {
-        "CUSTO": 5,
+        "CUSTO": "5",
         "DESCRICAO": "muda o alvo para 1 monstro ou esp\u00edrito. Requer 3\u00ba c\u00edrculo."
       }
     ],
@@ -112,14 +116,14 @@
     "ALVO": "1 criatura",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "voc\u00ea lan\u00e7a a magia sem gesticular ou pronunciar palavras (o que permite lan\u00e7ar esta magia de armadura) e a adaga se torna invis\u00edvel. Se o alvo falhar no teste de resist\u00eancia, n\u00e3o percebe que voc\u00ea lan\u00e7ou uma magia contra ele."
       },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "muda a dura\u00e7\u00e3o para um dia. Al\u00e9m do normal, voc\u00ea \u201cfinca\u201d a adaga na mente do alvo. Enquanto a magia durar, voc\u00ea sabe a dire\u00e7\u00e3o e localiza\u00e7\u00e3o do alvo, desde que ele esteja no mesmo mundo."
       },
-      { "CUSTO": 2, "DESCRICAO": "aumenta o dano em" }
+      { "CUSTO": "2", "DESCRICAO": "aumenta o dano em" }
     ],
     "AREA_DESCRICAO": "Nenhum",
     "AREA_ID": 998,
@@ -167,15 +171,15 @@
     "ALVO": "",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "muda o alcance para pessoal. A \u00e1rea \u00e9 emanada a partir de voc\u00ea."
       },
       {
-        "CUSTO": 5,
+        "CUSTO": "5",
         "DESCRICAO": "al\u00e9m do normal, voc\u00ea tamb\u00e9m percebe qualquer efeito de adivinha\u00e7\u00e3o que seja usado dentro da \u00e1rea ou atravesse a \u00e1rea. Voc\u00ea pode fazer um teste oposto de Misticismo contra quem usou o efeito; se passar, tem um vislumbre de seu rosto e uma ideia aproximada de sua localiza\u00e7\u00e3o (\u201ctr\u00eas dias de viagem ao norte\u201d, por exemplo)."
       },
       {
-        "CUSTO": 9,
+        "CUSTO": "9",
         "DESCRICAO": "muda a dura\u00e7\u00e3o para um dia ou at\u00e9 ser descarregada e a resist\u00eancia para Vontade anula. Quando um intruso entra na \u00e1rea, voc\u00ea pode descarregar a magia. Se o intruso falhar na resist\u00eancia, ficar\u00e1 paralisado por 1d4 rodadas. Al\u00e9m disso, pelas pr\u00f3ximas 24 horas voc\u00ea e as criaturas escolhidas ganham"
       }
     ],
@@ -225,15 +229,15 @@
     "ALVO": "1 animal prestativo",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "muda o alvo para 1 animal Min\u00fasculo e a dura\u00e7\u00e3o para 1 semana. Em vez do normal, o animal se desloca no melhor de suas capacidades at\u00e9 um local designado por voc\u00ea \u2014 em geral, para levar um item, carta ou similar. Quando o animal chega ao destino, fica esperando at\u00e9 o fim da magia, permitindo apenas que uma ou mais criaturas escolhidas por voc\u00ea se aproximem e peguem o que ele estiver carregando."
       },
       {
-        "CUSTO": 7,
+        "CUSTO": "7",
         "DESCRICAO": "muda o parceiro para mestre. Requer 3\u00ba c\u00edrculo."
       },
       {
-        "CUSTO": 12,
+        "CUSTO": "12",
         "DESCRICAO": "muda o alvo para 2 animais prestativos. Cada animal funciona como um parceiro de um tipo diferente, e voc\u00ea pode receber a ajuda de ambos (mas ainda precisa seguir o limite de parceiros de acordo com o seu n\u00edvel de personagem). Requer 4\u00ba c\u00edrculo."
       }
     ],
@@ -250,7 +254,7 @@
     "ID_SINCRONISMO": 5,
     "MAGIA_DESCRICAO": "",
     "MAGIA_EFEITO": "",
-    "MAGIA_MECANICA": "",
+    "MAGIA_MECANICA": "Voc\u00ea cria um v\u00ednculo mental com umanimal prestativo em rela\u00e7\u00e3o a voc\u00ea.O Aliado Animal obedece a voc\u00ea nomelhor de suas capacidades, mesmoque isso arrisque a vida dele. Ele funciona como um parceiro veterano, deum tipo a sua escolha entre ajudante,combatente, fort\u00e3o, guardi\u00e3o, montaria ou perseguidor.",
     "MAGIA_ORIGEM": "Tormenta 20 - Jogo do Ano",
     "MAGIA_ORIGEMSIGLA": "T20",
     "MANA_DESCRICAO": "Nenhum",
@@ -328,11 +332,11 @@
     "ALVO": "1 criatura",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "muda o alcance para pessoal e o alvo para \u00e1rea cone de 4,5m."
       },
       {
-        "CUSTO": 5,
+        "CUSTO": "5",
         "DESCRICAO": "voc\u00ea pode alterar ou apagar as mem\u00f3rias das \u00faltimas 24 horas."
       }
     ],
@@ -381,17 +385,17 @@
     "ALCANCE_ID": 3,
     "ALVO": "1 objeto",
     "APRIMORAMENTO": [
-      { "CUSTO": 1, "DESCRICAO": "aumenta o n\u00famero de alvos em" },
+      { "CUSTO": "1", "DESCRICAO": "aumenta o n\u00famero de alvos em" },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "muda o alcance para toque e o alvo para 1 criatura. Em vez do normal, o alvo aumenta uma categoria de tamanho (seu equipamento se ajusta ao novo tamanho). O alvo tamb\u00e9m recebe For\u00e7a"
       },
       {
-        "CUSTO": 3,
+        "CUSTO": "3",
         "DESCRICAO": "muda o alcance para toque e o alvo para 1 criatura. Em vez do normal, o alvo diminui uma categoria de tamanho (seu equipamento se ajusta ao novo tamanho). O alvo tamb\u00e9m recebe Destreza"
       },
       {
-        "CUSTO": 7,
+        "CUSTO": "7",
         "DESCRICAO": "muda o alcance para toque, o alvo para 1 criatura, a dura\u00e7\u00e3o para permanente e a resist\u00eancia para Fortitude anula. Em vez do normal, se falhar na resist\u00eancia o alvo e seu equipamento t\u00eam seu tamanho mudado para Min\u00fasculo. O alvo tem seu valor de For\u00e7a reduzido a \u20135 e seus deslocamentos reduzidos a 3m. Requer 4\u00ba c\u00edrculo."
       }
     ],
@@ -440,13 +444,13 @@
     "ALCANCE_ID": 4,
     "ALVO": "1 criatura",
     "APRIMORAMENTO": [
-      { "CUSTO": 2, "DESCRICAO": "aumenta o n\u00famero de alvos em" },
+      { "CUSTO": "2", "DESCRICAO": "aumenta o n\u00famero de alvos em" },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "aumenta o n\u00famero de la\u00e7os em um alvo a sua escolha em"
       },
       {
-        "CUSTO": 3,
+        "CUSTO": "3",
         "DESCRICAO": "em vez do normal, cada la\u00e7o \u00e9 destru\u00eddo automaticamente com um \u00fanico ataque bem-sucedido; por\u00e9m, cada la\u00e7o destru\u00eddo libera um choque de energia que causa 1d8"
       }
     ],
@@ -496,12 +500,12 @@
     "ALVO": "1 animal ou humanoide",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "alvos que falhem na resist\u00eancia ficam apavorados por 1d4"
       },
-      { "CUSTO": 2, "DESCRICAO": "muda o alvo para 1 criatura." },
+      { "CUSTO": "2", "DESCRICAO": "muda o alvo para 1 criatura." },
       {
-        "CUSTO": 5,
+        "CUSTO": "5",
         "DESCRICAO": "afeta todos os alvos v\u00e1lidos a sua escolha dentro do alcance."
       }
     ],
@@ -551,23 +555,23 @@
     "ALVO": "1 criatura ou objeto",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "muda o alcance para m\u00e9dio, a \u00e1rea para esfera com 3m de raio e o alvo para criaturas escolhidas."
       },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "muda o efeito para criar um fio de energia cor de esmeralda que prende o alvo a um ponto no espa\u00e7o dentro do alcance. O ponto precisa ser fixo, mas n\u00e3o precisa de nenhum apoio ou superf\u00edcie (pode simplesmente flutuar no ar). O alvo n\u00e3o pode se afastar mais de 3m do ponto, nem fisicamente, nem com movimento planar. O fio possui 20 PV e redu\u00e7\u00e3o de dano 20 (mas pode ser dissipado por efeitos que libertam criaturas, como o Julgamento Divino: Liberta\u00e7\u00e3o do paladino)."
       },
       {
-        "CUSTO": 4,
+        "CUSTO": "4",
         "DESCRICAO": "como acima, mas em vez de um fio, cria uma corrente de energia, com 20 PV e redu\u00e7\u00e3o de dano 40."
       },
       {
-        "CUSTO": 4,
+        "CUSTO": "4",
         "DESCRICAO": "muda o alvo para \u00e1rea de cubo de 9m, a dura\u00e7\u00e3o para permanente e adiciona componente material (chave de esmeralda no valor de T$ 2. 000). Em vez do normal, nenhum tipo de movimento planar pode ser feito para entrar ou sair da \u00e1rea."
       },
       {
-        "CUSTO": 9,
+        "CUSTO": "9",
         "DESCRICAO": "muda o alcance para m\u00e9dio, a \u00e1rea para esfera com 3m de raio e o alvo para criaturas escolhidas. Cria um fio de energia (veja acima) que prende todos os alvos ao centro da \u00e1rea."
       }
     ],
@@ -584,7 +588,7 @@
     "ID_SINCRONISMO": 11,
     "MAGIA_DESCRICAO": "",
     "MAGIA_EFEITO": "",
-    "MAGIA_MECANICA": "",
+    "MAGIA_MECANICA": "O alvo \u00e9 envolvido por um campo defor\u00e7a cor de esmeralda que impedequalquer movimento planar. Isso inclui magias de convoca\u00e7\u00e3o (como Salto Dimensional e Teletransporte), viagensastrais e a habilidade incorp\u00f3reo.",
     "MAGIA_ORIGEM": "Tormenta 20 - Jogo do Ano",
     "MAGIA_ORIGEMSIGLA": "T20",
     "MANA_DESCRICAO": "Nenhum",
@@ -617,7 +621,7 @@
     "ALVO": "",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 5,
+        "CUSTO": "5",
         "DESCRICAO": "muda a dura\u00e7\u00e3o para permanente e adiciona componente material (prataria no valor de T$ 1. 000). Voc\u00ea pode ter um m\u00e1ximo de objetos animados igual \u00e0 metade do seu n\u00edvel. Estat\u00edsticas de objetos animados Min\u00fasculo: For \u20133, Des 4, 5 PV; Assassino ou Combatente Iniciante. Pequeno: For \u20132, Des 2, 10 PV; Combatente ou Guardi\u00e3o Iniciante. M\u00e9dio: For 0, Des 1, 20 PV; Combatente ou Guardi\u00e3o Veterano. Grande: For 2, Des 0, 40 PV; Fort\u00e3o, Guardi\u00e3o ou Montaria (cavalo) Veterano. Enorme: For 4, Des \u20132, 80 PV; Fort\u00e3o, Guardi\u00e3o ou Montaria (cavalo) Mestre."
       }
     ],
@@ -666,13 +670,13 @@
     "ALCANCE_ID": 1,
     "ALVO": "",
     "APRIMORAMENTO": [
-      { "CUSTO": 2, "DESCRICAO": "aumenta o b\u00f4nus na Defesa em" },
+      { "CUSTO": "2", "DESCRICAO": "aumenta o b\u00f4nus na Defesa em" },
       {
-        "CUSTO": 4,
+        "CUSTO": "4",
         "DESCRICAO": "muda as magias dissipadas para at\u00e9 4\u00ba c\u00edrculo. Requer 4\u00ba c\u00edrculo."
       },
       {
-        "CUSTO": 9,
+        "CUSTO": "9",
         "DESCRICAO": "muda as magias dissipadas para at\u00e9 5\u00ba c\u00edrculo. Requer 5\u00ba c\u00edrculo."
       }
     ],
@@ -722,7 +726,7 @@
     "ALVO": "voc\u00ea",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "muda o alcance para toque e o alvo para 1 humanoide."
       }
     ],
@@ -816,9 +820,15 @@
     "ALCANCE_ID": 3,
     "ALVO": "",
     "APRIMORAMENTO": [
-      { "CUSTO": 1, "DESCRICAO": "aumenta a \u00e1rea em" },
-      { "CUSTO": 2, "DESCRICAO": "muda a CD dos testes de Acrobacia para 15." },
-      { "CUSTO": 5, "DESCRICAO": "muda a CD dos testes de Acrobacia para 20." }
+      { "CUSTO": "1", "DESCRICAO": "aumenta a \u00e1rea em" },
+      {
+        "CUSTO": "2",
+        "DESCRICAO": "muda a CD dos testes de Acrobacia para 15."
+      },
+      {
+        "CUSTO": "5",
+        "DESCRICAO": "muda a CD dos testes de Acrobacia para 20."
+      }
     ],
     "AREA_DESCRICAO": "Nenhum",
     "AREA_ID": 998,
@@ -866,21 +876,21 @@
     "ALVO": "voc\u00ea",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "al\u00e9m do normal, a arma o protege. Voc\u00ea recebe"
       },
-      { "CUSTO": 2, "DESCRICAO": "aumenta o b\u00f4nus na Defesa em" },
+      { "CUSTO": "2", "DESCRICAO": "aumenta o b\u00f4nus na Defesa em" },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "muda a dura\u00e7\u00e3o para sustentada. Al\u00e9m do normal, uma vez por rodada, voc\u00ea pode gastar uma a\u00e7\u00e3o livre para fazer a arma acertar automaticamente um alvo adjacente. Se a arma atacar, n\u00e3o poder\u00e1 contra-atacar at\u00e9 seu pr\u00f3ximo turno. Requer 2\u00ba c\u00edrculo."
       },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "muda o tipo do dano para ess\u00eancia. Requer 2\u00ba c\u00edrculo."
       },
-      { "CUSTO": 2, "DESCRICAO": "aumenta o dano causado pela arma em" },
+      { "CUSTO": "2", "DESCRICAO": "aumenta o dano causado pela arma em" },
       {
-        "CUSTO": 5,
+        "CUSTO": "5",
         "DESCRICAO": "invoca duas armas, permitindo que voc\u00ea contra-ataque (ou ataque, se usar o aprimoramento acima) duas vezes por rodada. Requer 3\u00ba c\u00edrculo."
       }
     ],
@@ -929,10 +939,10 @@
     "ALCANCE_ID": 2,
     "ALVO": "",
     "APRIMORAMENTO": [
-      { "CUSTO": 2, "DESCRICAO": "aumenta o b\u00f4nus em" },
-      { "CUSTO": 2, "DESCRICAO": "a arma causa" },
+      { "CUSTO": "2", "DESCRICAO": "aumenta o b\u00f4nus em" },
+      { "CUSTO": "2", "DESCRICAO": "a arma causa" },
       {
-        "CUSTO": 3,
+        "CUSTO": "3",
         "DESCRICAO": "muda o b\u00f4nus de dano do aprimoramento acima para"
       }
     ],
@@ -982,11 +992,11 @@
     "ALVO": "voc\u00ea",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "muda a execu\u00e7\u00e3o para rea\u00e7\u00e3o. Em vez do normal, quando sofre um ataque, voc\u00ea cria um escudo m\u00e1gico que fornece"
       },
-      { "CUSTO": 2, "DESCRICAO": "aumenta o b\u00f4nus na Defesa em" },
-      { "CUSTO": 2, "DESCRICAO": "muda a dura\u00e7\u00e3o para um dia." }
+      { "CUSTO": "2", "DESCRICAO": "aumenta o b\u00f4nus na Defesa em" },
+      { "CUSTO": "2", "DESCRICAO": "muda a dura\u00e7\u00e3o para um dia." }
     ],
     "AREA_DESCRICAO": "Nenhum",
     "AREA_ID": 998,
@@ -1033,16 +1043,16 @@
     "ALCANCE_ID": 2,
     "ALVO": "",
     "APRIMORAMENTO": [
-      { "CUSTO": 1, "DESCRICAO": "fornece" },
+      { "CUSTO": "1", "DESCRICAO": "fornece" },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "muda a execu\u00e7\u00e3o para a\u00e7\u00e3o de movimento."
       },
       {
-        "CUSTO": 3,
+        "CUSTO": "3",
         "DESCRICAO": "aumenta o b\u00f4nus nos testes de ataque em"
       },
-      { "CUSTO": 5, "DESCRICAO": "aumenta o dano da arma em mais um passo." }
+      { "CUSTO": "5", "DESCRICAO": "aumenta o dano da arma em mais um passo." }
     ],
     "AREA_DESCRICAO": "Nenhum",
     "AREA_ID": 998,
@@ -1057,7 +1067,7 @@
     "ID_SINCRONISMO": 20,
     "MAGIA_DESCRICAO": "",
     "MAGIA_EFEITO": "",
-    "MAGIA_MECANICA": "",
+    "MAGIA_MECANICA": "Voc\u00ea fortalece uma arma mundana primitiva (sem custo em T$, como bord\u00e3o, clava, funda ou tacape), uma armanatural ou um ataque desarmado. Odano da arma aumenta em um passoe ela \u00e9 considerada m\u00e1gica. Ao lan\u00e7ar amagia, voc\u00ea pode mudar o tipo de danoda arma (escolhendo entre corte, impacto ou perfura\u00e7\u00e3o).",
     "MAGIA_ORIGEM": "Tormenta 20 - Jogo do Ano",
     "MAGIA_ORIGEMSIGLA": "T20",
     "MANA_DESCRICAO": "Nenhum",
@@ -1135,19 +1145,19 @@
     "ALVO": "voc\u00ea",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 3,
+        "CUSTO": "3",
         "DESCRICAO": "muda a execu\u00e7\u00e3o para 1 minuto. Em vez do normal, voc\u00ea pode consultar uma divindade, fazendo uma pergunta sobre um evento que acontecer\u00e1 at\u00e9 um dia no futuro. O mestre rola a chance de falha; com um resultado de 2 a 6, voc\u00ea recebe uma resposta, desde uma simples frase at\u00e9 uma profecia ou enigma. Em geral, este uso sempre oferece pistas, indicando um caminho a tomar para descobrir a resposta que se procura. Numa falha voc\u00ea n\u00e3o recebe resposta alguma. Requer 3\u00ba c\u00edrculo."
       },
       {
-        "CUSTO": 7,
+        "CUSTO": "7",
         "DESCRICAO": "muda a execu\u00e7\u00e3o para 10 minutos e a dura\u00e7\u00e3o para 1 minuto. Em vez do normal, voc\u00ea consulta uma divindade, podendo fazer uma pergunta por rodada, desde que ela possa ser respondida com \u201csim\u201d, \u201cn\u00e3o\u201d ou \u201cn\u00e3o sei\u201d (embora poderosos, os deuses n\u00e3o s\u00e3o oniscientes). O mestre rola a chance de falha para cada pergunta. Em caso de falha, a resposta tamb\u00e9m \u00e9 \u201cn\u00e3o sei\u201d. Requer 4\u00ba c\u00edrculo."
       },
       {
-        "CUSTO": 7,
+        "CUSTO": "7",
         "DESCRICAO": "o mestre rola 1d12; a magia s\u00f3 falha em um resultado 1."
       },
       {
-        "CUSTO": 12,
+        "CUSTO": "12",
         "DESCRICAO": "o mestre rola 1d20; a magia s\u00f3 falha em um resultado 1."
       }
     ],
@@ -1197,7 +1207,7 @@
     "ALVO": "",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "aumenta os b\u00f4nus na Defesa e em testes de resist\u00eancia em"
       }
     ],
@@ -1214,7 +1224,7 @@
     "ID_SINCRONISMO": 23,
     "MAGIA_DESCRICAO": "",
     "MAGIA_EFEITO": "",
-    "MAGIA_MECANICA": "",
+    "MAGIA_MECANICA": "Voc\u00ea se torna um condu\u00edte da energia de sua divindade, emanando uma aura brilhante. Voc\u00ea e aliados devotos da mesma divindade ficam imunes a encantamento e recebem +10 na Defesa e em testes de resist\u00eancia. Aliados n\u00e3o devotos da mesma divindade recebem +5 na Defesa e em testes de resist\u00eancia. Al\u00e9m disso, inimigos que entrem na \u00e1rea devem fazer um teste de Vontade; em caso de falha, recebem uma condi\u00e7\u00e3o a sua escolha entre esmorecido, debilitado ou lento at\u00e9 o fim da cena. O teste deve ser refeito cada vez que a criatura entrar novamente na \u00e1rea.",
     "MAGIA_ORIGEM": "Tormenta 20 - Jogo do Ano",
     "MAGIA_ORIGEMSIGLA": "T20",
     "MANA_DESCRICAO": "Nenhum",
@@ -1247,18 +1257,18 @@
     "ALVO": "1 criatura",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "aumenta o alcance em um fator de 10 (90m para 900m, 900m para 9km e assim por diante)."
       },
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "se escolher mensagem, o alvo pode enviar uma resposta de at\u00e9 25 palavras para voc\u00ea at\u00e9 o fim de seu pr\u00f3ximo turno."
       },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "se escolher localiza\u00e7\u00e3o, muda a dura\u00e7\u00e3o para cena. O alvo sabe onde voc\u00ea est\u00e1 mesmo que voc\u00ea mude de posi\u00e7\u00e3o."
       },
-      { "CUSTO": 3, "DESCRICAO": "aumenta o n\u00famero de alvos em" }
+      { "CUSTO": "3", "DESCRICAO": "aumenta o n\u00famero de alvos em" }
     ],
     "AREA_DESCRICAO": "Nenhum",
     "AREA_ID": 998,
@@ -1306,7 +1316,7 @@
     "ALVO": "1 criatura",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 0,
+        "CUSTO": "0",
         "DESCRICAO": "muda a resist\u00eancia para nenhum. Em vez do normal, devolve automaticamente uma criatura conjurada (como por uma magia de convoca\u00e7\u00e3o) para seu plano de origem."
       }
     ],
@@ -1355,9 +1365,9 @@
     "ALCANCE_ID": 5,
     "ALVO": "",
     "APRIMORAMENTO": [
-      { "CUSTO": 5, "DESCRICAO": "aumenta o dano de cada esfera em" },
+      { "CUSTO": "5", "DESCRICAO": "aumenta o dano de cada esfera em" },
       {
-        "CUSTO": 5,
+        "CUSTO": "5",
         "DESCRICAO": "muda o tipo de dano de todas as esferas para ess\u00eancia (mas elas ainda causam os outros efeitos como se seu tipo de dano n\u00e3o mudasse)."
       }
     ],
@@ -1407,10 +1417,10 @@
     "ALVO": "",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "muda o alvo para 1 cad\u00e1ver e a dura\u00e7\u00e3o para 1 semana. O cad\u00e1ver n\u00e3o se decomp\u00f5e nem pode ser transformado em morto-vivo."
       },
-      { "CUSTO": 2, "DESCRICAO": "aumenta os b\u00f4nus em" }
+      { "CUSTO": "2", "DESCRICAO": "aumenta os b\u00f4nus em" }
     ],
     "AREA_DESCRICAO": "Nenhum",
     "AREA_ID": 998,
@@ -1457,13 +1467,13 @@
     "ALCANCE_ID": 4,
     "ALVO": "",
     "APRIMORAMENTO": [
-      { "CUSTO": 2, "DESCRICAO": "aumenta o dano em" },
+      { "CUSTO": "2", "DESCRICAO": "aumenta o dano em" },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "muda a \u00e1rea para efeito de esfera flamejante com tamanho M\u00e9dio e a dura\u00e7\u00e3o para cena. Em vez do normal, cria uma esfera flamejante com 1,5m de di\u00e2metro que causa 3d6 pontos de dano a qualquer criatura no mesmo espa\u00e7o. Voc\u00ea pode gastar uma a\u00e7\u00e3o de movimento para fazer a esfera voar 9m em qualquer dire\u00e7\u00e3o. Ela \u00e9 imune a dano, mas pode ser apagada com \u00e1gua. Uma criatura s\u00f3 pode sofrer dano da esfera uma vez por rodada."
       },
       {
-        "CUSTO": 3,
+        "CUSTO": "3",
         "DESCRICAO": "muda a dura\u00e7\u00e3o para um dia ou at\u00e9 ser descarregada. Em vez do normal, voc\u00ea cria uma pequena pedra flamejante, que pode detonar como uma rea\u00e7\u00e3o, descarregando a magia. A pedra pode ser usada como uma arma de arremesso com alcance curto. Uma vez detonada, causa o dano da magia numa \u00e1rea de esfera com 6m de raio."
       }
     ],
@@ -1513,7 +1523,7 @@
     "ALVO": "",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 5,
+        "CUSTO": "5",
         "DESCRICAO": "muda o efeito para que voc\u00ea n\u00e3o seja afetado."
       }
     ],
@@ -1563,10 +1573,10 @@
     "ALVO": "",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "al\u00e9m do normal, a CD para rastrear os alvos em terreno natural aumenta em"
       },
-      { "CUSTO": 2, "DESCRICAO": "aumenta o b\u00f4nus de deslocamento em" }
+      { "CUSTO": "2", "DESCRICAO": "aumenta o b\u00f4nus de deslocamento em" }
     ],
     "AREA_DESCRICAO": "Nenhum",
     "AREA_ID": 998,
@@ -1659,23 +1669,23 @@
     "ALVO": "voc\u00ea",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "muda a execu\u00e7\u00e3o para rea\u00e7\u00e3o e a dura\u00e7\u00e3o para instant\u00e2nea. Em vez do normal, voc\u00ea recebe RD 30 contra o pr\u00f3ximo dano que sofrer."
       },
       {
-        "CUSTO": 3,
+        "CUSTO": "3",
         "DESCRICAO": "muda os PV tempor\u00e1rios ou a RD para 50. Requer 3\u00ba c\u00edrculo."
       },
       {
-        "CUSTO": 7,
+        "CUSTO": "7",
         "DESCRICAO": "muda os PV tempor\u00e1rios ou a RD para 70. Requer 4\u00ba c\u00edrculo."
       },
       {
-        "CUSTO": 7,
+        "CUSTO": "7",
         "DESCRICAO": "muda o alcance para curto, o alvo para outra criatura ou objeto solto Enorme ou menor e a dura\u00e7\u00e3o para sustentada. Em vez do normal, cria uma esfera im\u00f3vel e tremeluzente ao redor do alvo. Nenhuma criatura, objeto ou efeito de dano pode passar pela esfera, embora criaturas possam respirar normalmente. Criaturas na \u00e1rea podem fazer um teste de Reflexos para evitar serem aprisionadas e sempre que voc\u00ea se concentrar. Requer 4\u00ba c\u00edrculo."
       },
       {
-        "CUSTO": 9,
+        "CUSTO": "9",
         "DESCRICAO": "como o aprimoramento acima, mas tudo dentro da esfera fica praticamente sem peso. Uma vez por rodada, voc\u00ea pode gastar uma a\u00e7\u00e3o livre para flutuar a esfera e seu conte\u00fado 9m em uma dire\u00e7\u00e3o. Requer 4\u00ba c\u00edrculo."
       }
     ],
@@ -1725,11 +1735,11 @@
     "ALVO": "1 criatura",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 3,
+        "CUSTO": "3",
         "DESCRICAO": "muda a dura\u00e7\u00e3o para sustentada. A imagem do alvo fica mais distorcida, aumentando a chance de falha da camuflagem leve para 50%."
       },
       {
-        "CUSTO": 7,
+        "CUSTO": "7",
         "DESCRICAO": "muda o alcance para curto e o alvo para criaturas escolhidas. Requer 4\u00ba c\u00edrculo."
       }
     ],
@@ -1779,7 +1789,7 @@
     "ALVO": "",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "aumenta o n\u00famero de meteoros que atingem a \u00e1rea, o que aumenta o dano em"
       }
     ],
@@ -1829,15 +1839,15 @@
     "ALVO": "",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "muda a execu\u00e7\u00e3o para a\u00e7\u00e3o padr\u00e3o, o alcance para pessoal, o alvo para voc\u00ea, a dura\u00e7\u00e3o para cena e a resist\u00eancia para nenhuma. Em vez do normal, qualquer criatura ou objeto invis\u00edvel em alcance curto se torna vis\u00edvel. Isso n\u00e3o dissipa o efeito m\u00e1gico; se sair do seu alcance, a criatura ou objeto voltam a ficar invis\u00edveis."
       },
       {
-        "CUSTO": 3,
+        "CUSTO": "3",
         "DESCRICAO": "muda a penalidade nas per\u00edcias para \u201310 (se passar na resist\u00eancia) e \u201320 (se falhar). Requer 4\u00ba c\u00edrculo."
       },
       {
-        "CUSTO": 7,
+        "CUSTO": "7",
         "DESCRICAO": "muda a dura\u00e7\u00e3o para permanente e adiciona componente material (balan\u00e7a de prata no valor de T$ 5. 000)."
       }
     ],
@@ -1854,7 +1864,7 @@
     "ID_SINCRONISMO": 35,
     "MAGIA_DESCRICAO": "",
     "MAGIA_EFEITO": "",
-    "MAGIA_MECANICA": "",
+    "MAGIA_MECANICA": "Tamb\u00e9m conhecida como L\u00e1grimas de Hyninn, esta magia \u00e9 usada em tribunais e para proteger \u00e1reas sens\u00edveis. Criaturas na \u00e1rea sofrem \u201310 em testes de Acrobacia, Engana\u00e7\u00e3o, Furtividade e Ladinagem e n\u00e3o podem mentir deliberadamente \u2014 mas podem tentar evitar perguntas que normalmente responderiam com uma mentira (sendo evasivas ou cometendo omiss\u00f5es, por exemplo). Uma criatura que passe na resist\u00eancia tem as penalidades reduzidas para \u20135 e pode mentir.",
     "MAGIA_ORIGEM": "Tormenta 20 - Jogo do Ano",
     "MAGIA_ORIGEMSIGLA": "T20",
     "MANA_DESCRICAO": "Nenhum",
@@ -1887,7 +1897,7 @@
     "ALVO": "",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "aumenta a regenera\u00e7\u00e3o de PV em 1d8"
       }
     ],
@@ -1936,10 +1946,10 @@
     "ALCANCE_ID": 4,
     "ALVO": "",
     "APRIMORAMENTO": [
-      { "CUSTO": 2, "DESCRICAO": "aumenta o dano em" },
-      { "CUSTO": 2, "DESCRICAO": "aumenta a \u00e1rea em" },
+      { "CUSTO": "2", "DESCRICAO": "aumenta o dano em" },
+      { "CUSTO": "2", "DESCRICAO": "aumenta a \u00e1rea em" },
       {
-        "CUSTO": 5,
+        "CUSTO": "5",
         "DESCRICAO": "a luz purificadora do Deus-Sol dissipa todas as magias de necromancia ativas na \u00e1rea. Requer 5\u00ba c\u00edrculo."
       }
     ],
@@ -1956,7 +1966,7 @@
     "ID_SINCRONISMO": 37,
     "MAGIA_DESCRICAO": "",
     "MAGIA_EFEITO": "",
-    "MAGIA_MECANICA": "",
+    "MAGIA_MECANICA": "Voc\u00ea cria um fulgor dourado e intenso. Criaturas na \u00e1rea ficam cegas por 1d4 rodadas e em chamas, e sofrem 10d6 pontos de dano de fogo (mortos-vivos sofrem 10d8 pontos de dano). Uma criatura que passe no teste de resist\u00eancia n\u00e3o fica cega nem em chamas e sofre metade do dano.",
     "MAGIA_ORIGEM": "Tormenta 20 - Jogo do Ano",
     "MAGIA_ORIGEMSIGLA": "T20",
     "MANA_DESCRICAO": "Nenhum",
@@ -1988,8 +1998,8 @@
     "ALCANCE_ID": 5,
     "ALVO": "",
     "APRIMORAMENTO": [
-      { "CUSTO": 1, "DESCRICAO": "aumenta o dano de fogo em" },
-      { "CUSTO": 1, "DESCRICAO": "aumenta o dano de luz em" }
+      { "CUSTO": "1", "DESCRICAO": "aumenta o dano de fogo em" },
+      { "CUSTO": "1", "DESCRICAO": "aumenta o dano de luz em" }
     ],
     "AREA_DESCRICAO": "Cilindro",
     "AREA_ID": 1,
@@ -2036,8 +2046,8 @@
     "ALCANCE_ID": 3,
     "ALVO": "1 humanoide",
     "APRIMORAMENTO": [
-      { "CUSTO": 1, "DESCRICAO": "muda o alvo para 1 criatura." },
-      { "CUSTO": 2, "DESCRICAO": "aumenta a quantidade de alvos em" }
+      { "CUSTO": "1", "DESCRICAO": "muda o alvo para 1 criatura." },
+      { "CUSTO": "2", "DESCRICAO": "aumenta a quantidade de alvos em" }
     ],
     "AREA_DESCRICAO": "Nenhum",
     "AREA_ID": 998,
@@ -2084,17 +2094,17 @@
     "ALCANCE_ID": 2,
     "ALVO": "1 criatura ou texto",
     "APRIMORAMENTO": [
-      { "CUSTO": 1, "DESCRICAO": "muda o alcance para curto." },
+      { "CUSTO": "1", "DESCRICAO": "muda o alcance para curto." },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "muda o alcance para curto e o alvo para criaturas escolhidas. Voc\u00ea pode entender todas as criaturas afetadas, mas s\u00f3 pode ouvir os pensamentos de uma por vez."
       },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "muda o alvo para 1 criatura. Em vez do normal, pode vasculhar os pensamentos do alvo para extrair informa\u00e7\u00f5es. O alvo tem direito a um teste de Vontade para anular este efeito. O mestre decide se a criatura sabe ou n\u00e3o a informa\u00e7\u00e3o que voc\u00ea procura. Requer 2\u00ba c\u00edrculo."
       },
       {
-        "CUSTO": 5,
+        "CUSTO": "5",
         "DESCRICAO": "muda o alcance para pessoal e o alvo para voc\u00ea. Em vez do normal, voc\u00ea pode falar, entender e escrever qualquer idioma. Requer 3\u00ba c\u00edrculo."
       }
     ],
@@ -2111,7 +2121,7 @@
     "ID_SINCRONISMO": 40,
     "MAGIA_DESCRICAO": "",
     "MAGIA_EFEITO": "",
-    "MAGIA_MECANICA": "",
+    "MAGIA_MECANICA": "Essa magia lhe confere compreens\u00e3o sobrenatural. Voc\u00ea pode tocar um texto e entender as palavras mesmo que n\u00e3o conhe\u00e7a o idioma. Se tocar numa criatura inteligente, pode se comunicar com ela mesmo que n\u00e3o tenham um idioma em comum. Se tocar uma criatura n\u00e3o inteligente, como um animal, pode perceber seus sentimentos. Voc\u00ea tamb\u00e9m pode gastar uma a\u00e7\u00e3o de movimento para ouvir os pensamentos de uma criatura tocada (voc\u00ea \u201couve\u201d o que o alvo est\u00e1 pensando), mas um alvo involunt\u00e1rio tem direito a um teste de Vontade para proteger seus pensamentos e evitar este efeito.",
     "MAGIA_ORIGEM": "Tormenta 20 - Jogo do Ano",
     "MAGIA_ORIGEMSIGLA": "T20",
     "MANA_DESCRICAO": "Nenhum",
@@ -2144,19 +2154,19 @@
     "ALVO": "voc\u00ea",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "muda a execu\u00e7\u00e3o para 1 minuto e a dura\u00e7\u00e3o para instant\u00e2nea. Em vez do normal, voc\u00ea descobre 1d4"
       },
       {
-        "CUSTO": 3,
+        "CUSTO": "3",
         "DESCRICAO": "aumenta o n\u00famero de dados de aux\u00edlio em"
       },
       {
-        "CUSTO": 4,
+        "CUSTO": "4",
         "DESCRICAO": "muda o tipo dos dados de aux\u00edlio para d6."
       },
       {
-        "CUSTO": 8,
+        "CUSTO": "8",
         "DESCRICAO": "muda o tipo dos dados de aux\u00edlio para d8."
       }
     ],
@@ -2206,7 +2216,7 @@
     "ALVO": "1 criatura",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 4,
+        "CUSTO": "4",
         "DESCRICAO": "muda o c\u00edrculo da magia concedida para 3\u00ba e a penalidade de PM para \u20136."
       }
     ],
@@ -2256,19 +2266,19 @@
     "ALVO": "voc\u00ea",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "muda a execu\u00e7\u00e3o para padr\u00e3o e a dura\u00e7\u00e3o para cena. Requer 2\u00ba c\u00edrculo."
       },
       {
-        "CUSTO": 5,
+        "CUSTO": "5",
         "DESCRICAO": "al\u00e9m do normal, ao atacar voc\u00ea, um inimigo deve rolar dois dados e usar o pior resultado. Requer 3\u00ba c\u00edrculo."
       },
       {
-        "CUSTO": 9,
+        "CUSTO": "9",
         "DESCRICAO": "muda a execu\u00e7\u00e3o para padr\u00e3o, o alcance para curto, o alvo para criaturas escolhidas e a dura\u00e7\u00e3o para cena. Requer 4\u00ba c\u00edrculo."
       },
       {
-        "CUSTO": 14,
+        "CUSTO": "14",
         "DESCRICAO": "muda a execu\u00e7\u00e3o para padr\u00e3o e a dura\u00e7\u00e3o para um dia. Al\u00e9m do normal, voc\u00ea recebe um sexto sentido que o avisa de qualquer perigo ou amea\u00e7a. Voc\u00ea fica imune \u00e0s condi\u00e7\u00f5es surpreendido e desprevenido e recebe"
       }
     ],
@@ -2317,8 +2327,8 @@
     "ALCANCE_ID": 3,
     "ALVO": "at\u00e9 5 criaturas",
     "APRIMORAMENTO": [
-      { "CUSTO": 1, "DESCRICAO": "aumenta o n\u00famero de alvos em" },
-      { "CUSTO": 1, "DESCRICAO": "muda a dura\u00e7\u00e3o para um dia." }
+      { "CUSTO": "1", "DESCRICAO": "aumenta o n\u00famero de alvos em" },
+      { "CUSTO": "1", "DESCRICAO": "muda a dura\u00e7\u00e3o para um dia." }
     ],
     "AREA_DESCRICAO": "Nenhum",
     "AREA_ID": 998,
@@ -2366,11 +2376,11 @@
     "ALVO": "",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 5,
+        "CUSTO": "5",
         "DESCRICAO": "o elemental muda para Enorme e recebe dois tipos de parceiro indicados no seu elemento."
       },
       {
-        "CUSTO": 5,
+        "CUSTO": "5",
         "DESCRICAO": "voc\u00ea convoca um elemental de cada tipo. Quando lan\u00e7a a magia, voc\u00ea pode escolher se cada elemental vai auxiliar voc\u00ea ou um aliado no alcance. Requer 5\u00ba c\u00edrculo."
       }
     ],
@@ -2387,7 +2397,7 @@
     "ID_SINCRONISMO": 45,
     "MAGIA_DESCRICAO": "",
     "MAGIA_EFEITO": "parceiro elemental",
-    "MAGIA_MECANICA": "",
+    "MAGIA_MECANICA": "Esta magia transforma uma por\u00e7\u00e3o de um elemento inerte em uma criatura elemental Grande do tipo do elemento alvo. Por exemplo, lan\u00e7ar esta magia numa fogueira ou tocha cria um elemental do fogo. Voc\u00ea pode criar elementais do ar, \u00e1gua, fogo e terra com essa magia. O elemental obedece a todos os seus comandos e pode funcionar como um parceiro do tipo destruidor (cuja habilidade custa apenas 2 PM para ser usada) e mais um tipo entre os indicados na lista abaixo, ambos mestres. O elemental auxilia apenas voc\u00ea e n\u00e3o conta em seu limite de parceiros. Ar: assassino, perseguidor ou vigilante. Dano de eletricidade. \u00c1gua: ajudante, guardi\u00e3o ou m\u00e9dico. Dano de frio. Fogo: atirador, combatente ou fort\u00e3o. Dano de fogo. Terra: combatente, guardi\u00e3o ou montaria. Dano de impacto.",
     "MAGIA_ORIGEM": "Tormenta 20 - Jogo do Ano",
     "MAGIA_ORIGEMSIGLA": "T20",
     "MANA_DESCRICAO": "Nenhum",
@@ -2420,45 +2430,45 @@
     "ALVO": "",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "o monstro ganha deslocamento de escalada ou nata\u00e7\u00e3o igual ao seu deslocamento terrestre."
       },
-      { "CUSTO": 1, "DESCRICAO": "aumenta o deslocamento do monstro em" },
+      { "CUSTO": "1", "DESCRICAO": "aumenta o deslocamento do monstro em" },
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "muda o tipo de dano do ataque do monstro para \u00e1cido, fogo, frio ou eletricidade."
       },
-      { "CUSTO": 2, "DESCRICAO": "aumenta os PV do monstro em" },
+      { "CUSTO": "2", "DESCRICAO": "aumenta os PV do monstro em" },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "aumenta o tamanho do monstro para M\u00e9dio. Ele tem For 4, Des 3, 45 PV, deslocamento 12m e seu ataque causa 2d6"
       },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "o monstro ganha resist\u00eancia 5 contra dois tipos de dano (por exemplo, corte e frio)."
       },
       {
-        "CUSTO": 4,
+        "CUSTO": "4",
         "DESCRICAO": "o monstro ganha uma nova ordem: Arma de Sopro. Para dar essa ordem voc\u00ea gasta 1 PM, e faz o monstro causar o dobro de seu dano de ataque em um cone de 6m a partir de si (Reflexos reduz \u00e0 metade)."
       },
       {
-        "CUSTO": 5,
+        "CUSTO": "5",
         "DESCRICAO": "aumenta o tamanho do monstro para Grande. Ele tem For 7, Des 2, 75 PV, deslocamento 12m e seu ataque causa 4d6"
       },
       {
-        "CUSTO": 9,
+        "CUSTO": "9",
         "DESCRICAO": "o monstro ganha deslocamento de voo igual ao dobro do deslocamento."
       },
       {
-        "CUSTO": 9,
+        "CUSTO": "9",
         "DESCRICAO": "o monstro ganha imunidade contra dois tipos de dano."
       },
       {
-        "CUSTO": 9,
+        "CUSTO": "9",
         "DESCRICAO": "aumenta o tamanho do monstro para Enorme. Ele tem For 11, Des 1, 110 PV, deslocamento 15m e seu ataque causa 4d8"
       },
       {
-        "CUSTO": 14,
+        "CUSTO": "14",
         "DESCRICAO": "aumenta o tamanho do monstro para Colossal. Ele tem For 15, Des 0, 180 PV, deslocamento 15m e seu ataque causa 4d12"
       }
     ],
@@ -2475,7 +2485,7 @@
     "ID_SINCRONISMO": 46,
     "MAGIA_DESCRICAO": "",
     "MAGIA_EFEITO": "1 criatura conjurada",
-    "MAGIA_MECANICA": "",
+    "MAGIA_MECANICA": "Voc\u00ea conjura um monstro Pequeno que ataca seus inimigos. Voc\u00ea escolhe a apar\u00eancia do monstro e o tipo de dano que ele pode causar, entre corte, impacto e perfura\u00e7\u00e3o. No entanto, ele n\u00e3o \u00e9 uma criatura real, e sim um construto feito de energia. Se for destru\u00eddo, ou quando a magia acaba, desaparece com um brilho, sem deixar nada para tr\u00e1s. Voc\u00ea s\u00f3 pode ter um monstro conjurado por esta magia por vez. O monstro surge em um espa\u00e7o desocupado a sua escolha dentro do alcance e age no in\u00edcio de cada um de seus turnos, a partir da pr\u00f3xima rodada. O monstro tem deslocamento 9m e pode fazer uma a\u00e7\u00e3o de movimento por rodada. Voc\u00ea pode gastar uma a\u00e7\u00e3o padr\u00e3o para dar uma das seguintes ordens a ele. Mover: o monstro se movimenta o dobro do deslocamento nessa rodada. Atacar: o monstro causa 2d4+2 pontos de dano a uma criatura adjacente. Lan\u00e7ar Magia: o monstro pode servir como ponto de origem para uma magia lan\u00e7ada por voc\u00ea com execu\u00e7\u00e3o de uma a\u00e7\u00e3o padr\u00e3o ou menor. Ele pode descarregar um Toque Chocante em um inimigo distante, ou mesmo \u201ccuspir\u201d uma Bola de Fogo! Voc\u00ea gasta PM normalmente para lan\u00e7ar a magia. Outros usos criativos para monstros conjurados ficam a crit\u00e9rio do mestre. O monstro n\u00e3o age sem receber uma ordem. Para efeitos de jogo, o monstro conjurado tem For 2, Des 3 e todos os outros atributos nulos. Ele tem Defesa igual a sua, 20 pontos de vida e usa o seu valor para teste de Reflexos. Ele \u00e9 imune a efeitos que pedem um teste de Fortitude ou Vontade.",
     "MAGIA_ORIGEM": "Tormenta 20 - Jogo do Ano",
     "MAGIA_ORIGEMSIGLA": "T20",
     "MANA_DESCRICAO": "Nenhum",
@@ -2508,15 +2518,15 @@
     "ALVO": "",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "aumenta o n\u00famero de mortos- -vivos conjurados em"
       },
       {
-        "CUSTO": 3,
+        "CUSTO": "3",
         "DESCRICAO": "em vez de esqueletos, conjura carni\u00e7ais. Requer 3\u00ba c\u00edrculo."
       },
       {
-        "CUSTO": 7,
+        "CUSTO": "7",
         "DESCRICAO": "em vez de esqueletos, conjura sombras. Requer 4\u00ba c\u00edrculo. Carni\u00e7al: como esqueletos, mas t\u00eam For 3, Des 3, Defesa 27 e causam 1d8"
       }
     ],
@@ -2533,7 +2543,7 @@
     "ID_SINCRONISMO": 47,
     "MAGIA_DESCRICAO": "",
     "MAGIA_EFEITO": "",
-    "MAGIA_MECANICA": "",
+    "MAGIA_MECANICA": "Voc\u00ea conjura seis esqueletos capangas de tamanho M\u00e9dio feitos de energia negativa em espa\u00e7os desocupados dentro do alcance. Voc\u00ea pode gastar uma a\u00e7\u00e3o de movimento para fazer os mortos-vivos andarem (eles t\u00eam deslocamento 9m) ou uma a\u00e7\u00e3o padr\u00e3o para faz\u00ea-los causar dano a criaturas adjacentes (1d6+2 pontos de dano de trevas cada). Os esqueletos t\u00eam For 2, Des 2, Defesa 18 e todos os outros atributos nulos; eles t\u00eam 1 PV e falham automaticamente em qualquer teste de resist\u00eancia ou oposto, mas s\u00e3o imunes a atordoamento, dano n\u00e3o letal, doen\u00e7a, encantamento, fadiga, frio, ilus\u00e3o, paralisia, sono e veneno. Eles desaparecem quando s\u00e3o reduzidos a 0 PV ou no fim da cena. Os mortos-o -vivos n\u00e3o agem sem receber uma ordem. Usos criativos para capangas fora de combate ficam a crit\u00e9rio do mestre",
     "MAGIA_ORIGEM": "Tormenta 20 - Jogo do Ano",
     "MAGIA_ORIGEMSIGLA": "T20",
     "MANA_DESCRICAO": "Nenhum",
@@ -2566,15 +2576,15 @@
     "ALVO": "",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "al\u00e9m do normal, mortos-vivos na \u00e1rea sofrem \u20132 em testes e Defesa."
       },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "aumenta as penalidades para mortos-vivos em \u20131 (penalidade m\u00e1xima limitada pelo c\u00edrculo m\u00e1ximo de magia que voc\u00ea pode lan\u00e7ar)."
       },
       {
-        "CUSTO": 9,
+        "CUSTO": "9",
         "DESCRICAO": "muda a execu\u00e7\u00e3o para 1 hora, a dura\u00e7\u00e3o para permanente e adiciona componente material (incenso e \u00f3leos no valor de T$ 1. 000). Requer 4\u00ba c\u00edrculo."
       }
     ],
@@ -2624,11 +2634,11 @@
     "ALVO": "voc\u00ea",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "aumenta o n\u00famero de dados de aux\u00edlio em"
       },
       {
-        "CUSTO": 8,
+        "CUSTO": "8",
         "DESCRICAO": "Muda os dados de aux\u00edlio para d12. Sempre que rolar um resultado 12 num desses dados, a entidade \u201csuga\u201d 2 PM de voc\u00ea. Requer 4\u00ba c\u00edrculo."
       }
     ],
@@ -2690,7 +2700,7 @@
     "ID_SINCRONISMO": 50,
     "MAGIA_DESCRICAO": "",
     "MAGIA_EFEITO": "",
-    "MAGIA_MECANICA": "",
+    "MAGIA_MECANICA": "Voc\u00ea controla os efeitos da gravidade dentro da \u00e1rea. Ao lan\u00e7ar a magia, escolha um dos efeitos abaixo. Enquanto a magia durar, voc\u00ea pode gastar uma a\u00e7\u00e3o padr\u00e3o para mudar o efeito. Aumentar: no in\u00edcio de seus turnos, cada criatura na \u00e1rea deve fazer um teste de Atletismo. Se passar, fica fatigada. Se falhar, fica fatigada e ca\u00edda. Inverter: inverte a gravidade da \u00e1rea, fazendo com que criaturas e objetos \u201ccaiam\u201d para cima, atingindo o topo (12m) em uma rodada. Se um obst\u00e1culo (como um teto) impedir o movimento das criaturas, elas sofrem 1d6 pontos de dano de impacto para cada 1,5m de \u201cqueda\u201d. Elas podem ent\u00e3o se levantar e caminhar no obst\u00e1culo, de cabe\u00e7a para baixo. Se n\u00e3o houver obst\u00e1culo, as criaturas e objetos ficam flutuando no topo da \u00e1rea afetada, sem poder sair do lugar. Criaturas voadoras podem se movimentar normalmente. Algu\u00e9m adjacente a algo que possa agarrar tem direito a um teste de Reflexos para evitar a \u201cqueda\u201d. A criatura deve permanecer presa pela dura\u00e7\u00e3o da magia; caso contr\u00e1rio \u201ccair\u00e1\u201d. Reduzir: criaturas ou objetos livres M\u00e9dios ou menores flutuam para cima e para baixo conforme sua vontade, com deslocamento de voo 6m. Criaturas na \u00e1rea recebem +20 em testes de Atletismo para escalar e saltar. Uma criatura levitando fica inst\u00e1vel, sofrendo \u20132 em testes de ataque.",
     "MAGIA_ORIGEM": "Tormenta 20 - Jogo do Ano",
     "MAGIA_ORIGEMSIGLA": "T20",
     "MANA_DESCRICAO": "Nenhum",
@@ -2721,7 +2731,7 @@
     "ALCANCE_DESCRICAO": "Longo",
     "ALCANCE_ID": 5,
     "ALVO": "",
-    "APRIMORAMENTO": [{ "CUSTO": 2, "DESCRICAO": "aumenta o dano em" }],
+    "APRIMORAMENTO": [{ "CUSTO": "2", "DESCRICAO": "aumenta o dano em" }],
     "AREA_DESCRICAO": "Esfera",
     "AREA_ID": 3,
     "DURACAO_DESCRICAO": "Cena",
@@ -2768,12 +2778,12 @@
     "ALVO": "veja texto",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "muda a dura\u00e7\u00e3o para sustentada e a resist\u00eancia para Reflexos reduz \u00e0 metade. Em vez do normal, voc\u00ea deve escolher o seguinte efeito. Labaredas: a cada rodada, voc\u00ea pode gastar uma a\u00e7\u00e3o de movimento para projetar uma labareda, acertando um alvo em alcance curto a partir da chama. O alvo sofre 4d6 pontos de dano de fogo (Reflexos reduz \u00e0 metade)."
       },
-      { "CUSTO": 2, "DESCRICAO": "aumenta o dano em" },
+      { "CUSTO": "2", "DESCRICAO": "aumenta o dano em" },
       {
-        "CUSTO": 3,
+        "CUSTO": "3",
         "DESCRICAO": "muda o alvo para 1 criatura composta principalmente por fogo, lava ou magma (como um elemental do fogo) e a resist\u00eancia para Fortitude parcial. Em vez do normal, se a criatura falhar no teste de resist\u00eancia, \u00e9 reduzida a 0 PV. Se passar, sofre 5d6 pontos de dano."
       }
     ],
@@ -2823,19 +2833,19 @@
     "ALVO": "1 objeto de madeira Grande ou menor",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "muda o alcance para pessoal, o alvo para voc\u00ea e a dura\u00e7\u00e3o para um dia. Voc\u00ea e seu equipamento se transformam em uma \u00e1rvore de tamanho Grande. Nessa forma, voc\u00ea n\u00e3o pode falar ou fazer a\u00e7\u00f5es f\u00edsicas, mas consegue perceber seus arredores normalmente. Se for atacado nessa forma, a magia \u00e9 dissipada. Um teste de Sobreviv\u00eancia (CD 30) revela que voc\u00ea n\u00e3o \u00e9 uma \u00e1rvore verdadeira."
       },
       {
-        "CUSTO": 3,
+        "CUSTO": "3",
         "DESCRICAO": "muda o alvo para \u00e1rea de quadrado com 9m de lado e a dura\u00e7\u00e3o para cena. Em vez do normal, qualquer vegeta\u00e7\u00e3o na \u00e1rea fica r\u00edgida e afiada. A \u00e1rea \u00e9 considerada terreno dif\u00edcil e criaturas que andem nela sofrem 1d6 pontos de dano de corte para cada 1,5m que avancem."
       },
       {
-        "CUSTO": 7,
+        "CUSTO": "7",
         "DESCRICAO": "muda o tamanho do alvo para Enorme ou menor. Requer 3\u00ba c\u00edrculo."
       },
       {
-        "CUSTO": 12,
+        "CUSTO": "12",
         "DESCRICAO": "muda o tamanho do alvo para Colossal ou menor. Requer 4\u00ba c\u00edrculo."
       }
     ],
@@ -2975,15 +2985,15 @@
     "ALVO": "",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "muda a dura\u00e7\u00e3o para instant\u00e2nea. Em vez do normal, as plantas na \u00e1rea diminuem, como se tivessem sido podadas. Terreno dif\u00edcil muda para terreno normal e n\u00e3o fornece camuflagem. Esse efeito dissipa o uso normal de Controlar Plantas."
       },
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "al\u00e9m do normal, criaturas que falhem na resist\u00eancia tamb\u00e9m ficam im\u00f3veis."
       },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "muda o alcance para pessoal, a \u00e1rea para alvo (voc\u00ea) e a resist\u00eancia para nenhuma. Em vez do normal, voc\u00ea consegue se comunicar com plantas, que come\u00e7am com atitude prestativa em rela\u00e7\u00e3o a voc\u00ea. Al\u00e9m disso, voc\u00ea pode fazer testes de Diplomacia com plantas. Em geral, plantas t\u00eam uma percep\u00e7\u00e3o limitada de seus arredores e normalmente fornecem respostas simpl\u00f3rias."
       }
     ],
@@ -3032,9 +3042,12 @@
     "ALCANCE_ID": 5,
     "ALVO": "",
     "APRIMORAMENTO": [
-      { "CUSTO": 1, "DESCRICAO": "aumenta o n\u00famero de cubos de 1,5m em" },
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
+        "DESCRICAO": "aumenta o n\u00famero de cubos de 1,5m em"
+      },
+      {
+        "CUSTO": "1",
         "DESCRICAO": "muda o alcance para pessoal, o alvo para voc\u00ea e a dura\u00e7\u00e3o para um dia. Voc\u00ea e seu equipamento fundem-se a uma superf\u00edcie ou objeto adjacente feito de pedra, terra, argila ou areia que possa acomod\u00e1-lo. Voc\u00ea pode voltar ao espa\u00e7o adjacente como uma a\u00e7\u00e3o livre, dissipando a magia. Enquanto mesclado, voc\u00ea n\u00e3o pode falar ou fazer a\u00e7\u00f5es f\u00edsicas, mas consegue perceber seus arredores normalmente. Pequenos danos n\u00e3o o afetam, mas se o objeto (ou o trecho onde voc\u00ea est\u00e1 imerso) for destru\u00eddo, a magia \u00e9 dissipada, voc\u00ea volta a um espa\u00e7o livre adjacente e sofre 10d6 pontos de dano de impacto."
       }
     ],
@@ -3084,16 +3097,16 @@
     "ALVO": "1 objeto de at\u00e9 2 espa\u00e7os",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "al\u00e9m do normal, at\u00e9 1 hora ap\u00f3s ter lan\u00e7ado a magia, voc\u00ea pode gastar uma a\u00e7\u00e3o de movimento para enviar o objeto de volta para o local em que ele estava antes."
       },
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "muda o alvo para um ba\u00fa M\u00e9dio, a dura\u00e7\u00e3o para permanente e adiciona sacrif\u00edcio de 1 PM. Em vez do normal, voc\u00ea esconde o ba\u00fa no \u00c9ter Entre Mundos, com at\u00e9 20 espa\u00e7os de equipamento. A magia faz com que qualquer objeto caiba no ba\u00fa, independentemente do seu tamanho. Uma vez escondido, voc\u00ea pode convocar o ba\u00fa para um espa\u00e7o livre adjacente, ou de volta para o \u00c9ter, com uma a\u00e7\u00e3o padr\u00e3o. Componente material: ba\u00fa constru\u00eddo com mat\u00e9ria- -prima da melhor qualidade (T$ 1. 000). Voc\u00ea deve ter em m\u00e3os uma miniatura do ba\u00fa, no valor de T$ 100, para invocar o ba\u00fa verdadeiro."
       },
-      { "CUSTO": 2, "DESCRICAO": "aumenta o n\u00famero de alvos em" },
+      { "CUSTO": "2", "DESCRICAO": "aumenta o n\u00famero de alvos em" },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "muda o alvo para 1 objeto de at\u00e9 10 espa\u00e7os. Um objeto muito grande ou pesado para aparecer em suas m\u00e3os surge em um espa\u00e7o adjacente a sua escolha."
       }
     ],
@@ -3142,8 +3155,8 @@
     "ALCANCE_ID": 4,
     "ALVO": "1 criatura",
     "APRIMORAMENTO": [
-      { "CUSTO": 2, "DESCRICAO": "aumenta o dano em" },
-      { "CUSTO": 2, "DESCRICAO": "aumenta o n\u00famero de alvos em" }
+      { "CUSTO": "2", "DESCRICAO": "aumenta o dano em" },
+      { "CUSTO": "2", "DESCRICAO": "aumenta o n\u00famero de alvos em" }
     ],
     "AREA_DESCRICAO": "Nenhum",
     "AREA_ID": 998,
@@ -3191,15 +3204,15 @@
     "ALVO": "",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "aumenta a quantidade do elemento em um passo (uma categoria de tamanho para \u00e1gua ou terra,"
       },
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "muda o efeito para alvo 1 criatura ou objeto e a resist\u00eancia para Reflexos reduz \u00e0 metade. Se escolher \u00e1gua ou terra, voc\u00ea arremessa o cubo ou objeto criado no alvo, causando 2d4 pontos de dano de impacto. Para cada categoria de tamanho acima de Min\u00fasculo, o dano aumenta em um passo. O cubo se desfaz em seguida."
       },
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "se escolheu fogo, aumenta o dano inicial de cada chama em"
       }
     ],
@@ -3216,7 +3229,7 @@
     "ID_SINCRONISMO": 60,
     "MAGIA_DESCRICAO": "",
     "MAGIA_EFEITO": "elemento escolhido",
-    "MAGIA_MECANICA": "",
+    "MAGIA_MECANICA": "Voc\u00ea cria uma pequena por\u00e7\u00e3o de um elemento, a sua escolha. Os elementos criados s\u00e3o reais, n\u00e3o m\u00e1gicos. Elementos f\u00edsicos devem surgir em uma superf\u00edcie. Em vez de um cubo, pode- -se criar objetos simples (sem partes m\u00f3veis) feitos de gelo, terra ou pedra. \u00c1gua: enche um recipiente de tamanho Min\u00fasculo (como um odre) com \u00e1gua pot\u00e1vel ou cria um cubo de gelo de tamanho Min\u00fasculo. Ar: cria um vento fraco em um quadrado de 1,5m. Isso purifica a \u00e1rea de qualquer g\u00e1s ou fuma\u00e7a, ou remove n\u00e9voa por uma rodada. Fogo: cria uma chama que ilumina como uma tocha. Voc\u00ea pode segur\u00e1-la na palma de sua m\u00e3o sem se queimar, ou faz\u00ea-la surgir em um quadrado de 1,5m. Se uma criatura ou objeto estiver no quadrado, sofre 1d6 pontos de dano de fogo; se falhar num teste de Reflexos, fica em chamas. Terra: cria um cubo de tamanho Min\u00fasculo feito de terra, argila ou pedra. ",
     "MAGIA_ORIGEM": "Tormenta 20 - Jogo do Ano",
     "MAGIA_ORIGEMSIGLA": "T20",
     "MANA_DESCRICAO": "Nenhum",
@@ -3249,32 +3262,32 @@
     "ALVO": "",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "muda a dura\u00e7\u00e3o para sustentada. A cada rodada voc\u00ea pode gastar uma a\u00e7\u00e3o livre para mover a imagem ou alterar levemente o som, como aumentar o volume ou fazer com que pare\u00e7a se afastar ou se aproximar, ainda dentro dos limites do efeito. Voc\u00ea pode, por exemplo, criar a ilus\u00e3o de um fantasma que anda pela sala, controlando seus movimentos. Quando voc\u00ea para de sustentar a magia, a imagem ou som persistem por mais uma rodada antes de a magia se dissipar."
       },
-      { "CUSTO": 1, "DESCRICAO": "aumenta o efeito da ilus\u00e3o em" },
+      { "CUSTO": "1", "DESCRICAO": "aumenta o efeito da ilus\u00e3o em" },
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "tamb\u00e9m pode criar ilus\u00f5es de imagem e sons combinados."
       },
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "tamb\u00e9m pode criar sons complexos com volume m\u00e1ximo equivalente ao que cinco pessoas podem produzir para cada cubo de 1,5m no efeito. Com uma a\u00e7\u00e3o livre, voc\u00ea pode alterar o volume do som ou faz\u00ea-lo se aproximar ou se afastar dentro do alcance."
       },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "tamb\u00e9m pode criar odores e sensa\u00e7\u00f5es t\u00e9rmicas, que s\u00e3o percebidos a uma dist\u00e2ncia igual ao dobro do tamanho m\u00e1ximo do efeito. Por exemplo, uma miragem de uma fogueira com 4 cubos de 1,5m poderia emanar calor e cheiro de queimado a at\u00e9 12m."
       },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "muda o alcance para longo e o efeito para esfera com 30m de raio. Em vez do normal, voc\u00ea cria um som muito alto, equivalente a uma multid\u00e3o. Criaturas na \u00e1rea lan\u00e7am magias como se estivessem em uma condi\u00e7\u00e3o ruim e a CD de testes de Percep\u00e7\u00e3o para ouvir aumenta em"
       },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "tamb\u00e9m criar sensa\u00e7\u00f5es t\u00e1teis, como texturas; criaturas que n\u00e3o saibam que \u00e9 uma ilus\u00e3o n\u00e3o conseguem atravess\u00e1-la sem passar em um teste de Vontade (objetos ainda a atravessam). A ilus\u00e3o ainda \u00e9 incapaz de causar ou sofrer dano. Requer 2\u00ba c\u00edrculo."
       },
       {
-        "CUSTO": 5,
+        "CUSTO": "5",
         "DESCRICAO": "muda a dura\u00e7\u00e3o para sustentada. Al\u00e9m do normal, voc\u00ea pode gastar uma a\u00e7\u00e3o livre para modificar livremente a ilus\u00e3o (mas n\u00e3o pode acrescentar novos aprimoramentos ap\u00f3s lan\u00e7\u00e1-la). Requer 3\u00ba c\u00edrculo."
       }
     ],
@@ -3324,11 +3337,11 @@
     "ALVO": "voc\u00ea",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "a c\u00fapula impede criaturas de se aproximarem a menos de 4,5m de voc\u00ea (ou seja, deve haver dois quadrados entre voc\u00ea e as criaturas)."
       },
       {
-        "CUSTO": 5,
+        "CUSTO": "5",
         "DESCRICAO": "al\u00e9m do normal, criaturas afetadas tamb\u00e9m precisam fazer o teste de resist\u00eancia se fizerem um ataque ou efeito \u00e0 dist\u00e2ncia voc\u00ea. Se falharem, o efeito \u00e9 desviado pela c\u00fapula. Requer 5\u00ba c\u00edrculo."
       }
     ],
@@ -3377,14 +3390,14 @@
     "ALCANCE_ID": 2,
     "ALVO": "1 criatura",
     "APRIMORAMENTO": [
-      { "CUSTO": 1, "DESCRICAO": "aumenta a cura em" },
+      { "CUSTO": "1", "DESCRICAO": "aumenta a cura em" },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "tamb\u00e9m remove uma condi\u00e7\u00e3o de fadiga do alvo."
       },
-      { "CUSTO": 2, "DESCRICAO": "muda o alcance para curto." },
+      { "CUSTO": "2", "DESCRICAO": "muda o alcance para curto." },
       {
-        "CUSTO": 5,
+        "CUSTO": "5",
         "DESCRICAO": "muda o alcance para curto e o alvo para criaturas escolhidas."
       }
     ],
@@ -3433,8 +3446,8 @@
     "ALCANCE_ID": 1,
     "ALVO": "",
     "APRIMORAMENTO": [
-      { "CUSTO": 1, "DESCRICAO": "aumenta o dano em" },
-      { "CUSTO": 5, "DESCRICAO": "afeta apenas criaturas a sua escolha." }
+      { "CUSTO": "1", "DESCRICAO": "aumenta o dano em" },
+      { "CUSTO": "5", "DESCRICAO": "afeta apenas criaturas a sua escolha." }
     ],
     "AREA_DESCRICAO": "Esfera",
     "AREA_ID": 3,
@@ -3527,15 +3540,15 @@
     "ALVO": "",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "em vez do normal, as condi\u00e7\u00f5es adquiridas s\u00e3o debilitado e esmorecido."
       },
       {
-        "CUSTO": 3,
+        "CUSTO": "3",
         "DESCRICAO": "em vez do normal, afeta qualquer tipo de criatura."
       },
       {
-        "CUSTO": 3,
+        "CUSTO": "3",
         "DESCRICAO": "al\u00e9m do normal, criaturas que falhem na resist\u00eancia ficam aos prantos (pasmos) por 1 rodada (apenas uma vez por cena). Requer 3\u00ba c\u00edrculo."
       }
     ],
@@ -3583,7 +3596,7 @@
     "ALCANCE_DESCRICAO": "M\u00e9dio",
     "ALCANCE_ID": 4,
     "ALVO": "1 criatura ou objeto",
-    "APRIMORAMENTO": [{ "CUSTO": 4, "DESCRICAO": "aumenta o dano total em" }],
+    "APRIMORAMENTO": [{ "CUSTO": "4", "DESCRICAO": "aumenta o dano total em" }],
     "AREA_DESCRICAO": "Nenhum",
     "AREA_ID": 998,
     "DURACAO_DESCRICAO": "Nenhum",
@@ -3597,7 +3610,7 @@
     "ID_SINCRONISMO": 67,
     "MAGIA_DESCRICAO": "",
     "MAGIA_EFEITO": "",
-    "MAGIA_MECANICA": "",
+    "MAGIA_MECANICA": "Voc\u00ea dispara um raio fino e esverdeado que causa 10d12 pontos de dano de ess\u00eancia. Se o alvo passar no teste de resist\u00eancia, em vez disso sofre 2d12 pontos de dano. Independentemente do resultado do teste de Fortitude, se os PV do alvo forem reduzidos a 0 ou menos, ele ser\u00e1 completamente desintegrado, restando apenas p\u00f3.",
     "MAGIA_ORIGEM": "Tormenta 20 - Jogo do Ano",
     "MAGIA_ORIGEMSIGLA": "T20",
     "MANA_DESCRICAO": "Nenhum",
@@ -3629,25 +3642,25 @@
     "ALCANCE_ID": 3,
     "ALVO": "1 criatura ou objeto mundano Pequeno",
     "APRIMORAMENTO": [
-      { "CUSTO": 2, "DESCRICAO": "aumenta o dano em" },
+      { "CUSTO": "2", "DESCRICAO": "aumenta o dano em" },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "muda o alvo para objeto mundano M\u00e9dio. Requer 2\u00ba c\u00edrculo."
       },
       {
-        "CUSTO": 5,
+        "CUSTO": "5",
         "DESCRICAO": "muda o alvo para objeto mundano Grande. Requer 3\u00ba c\u00edrculo."
       },
       {
-        "CUSTO": 9,
+        "CUSTO": "9",
         "DESCRICAO": "muda o alvo para objeto mundano Enorme. Requer 4\u00ba c\u00edrculo."
       },
       {
-        "CUSTO": 14,
+        "CUSTO": "14",
         "DESCRICAO": "muda o alvo para objeto mundano Colossal. Requer 5\u00ba c\u00edrculo."
       },
       {
-        "CUSTO": 5,
+        "CUSTO": "5",
         "DESCRICAO": "muda o alcance para pessoal e a \u00e1rea para esfera com 6m de raio. Todas as criaturas e objetos mundanos na \u00e1rea s\u00e3o afetados."
       }
     ],
@@ -3697,11 +3710,11 @@
     "ALVO": "1 animal ou planta",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 4,
+        "CUSTO": "4",
         "DESCRICAO": "muda o alvo para 1 escultura mundana inanimada. Al\u00e9m do normal, o alvo tem as mesmas caracter\u00edsticas de um construto."
       },
       {
-        "CUSTO": 4,
+        "CUSTO": "4",
         "DESCRICAO": "muda a dura\u00e7\u00e3o para permanente e adiciona penalidade de \u20133 PM."
       }
     ],
@@ -3718,7 +3731,7 @@
     "ID_SINCRONISMO": 69,
     "MAGIA_DESCRICAO": "",
     "MAGIA_EFEITO": "",
-    "MAGIA_MECANICA": "",
+    "MAGIA_MECANICA": "Voc\u00ea desperta a consci\u00eancia de um animal ou planta. O alvo se torna um parceiro veterano de um tipo a sua escolha entre ajudante, combatente, fort\u00e3o, guardi\u00e3o, m\u00e9dico, perseguidor ou vigilante. Se usar esta magia em outro parceiro que j\u00e1 possua, o n\u00edvel de poder de um de seus tipos aumenta em um passo (apenas uma vez por parceiro). Se j\u00e1 for um parceiro mestre, recebe o b\u00f4nus de outro tipo de parceiro iniciante (entre as escolhas acima). O alvo se torna uma criatura racional, com Intelig\u00eancia \u20131, e pode falar.",
     "MAGIA_ORIGEM": "Tormenta 20 - Jogo do Ano",
     "MAGIA_ORIGEMSIGLA": "T20",
     "MANA_DESCRICAO": "Nenhum",
@@ -3751,11 +3764,11 @@
     "ALVO": "",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "voc\u00ea descobre tamb\u00e9m a ra\u00e7a ou esp\u00e9cie e o poder da criatura detectada (determinado pela aura dela). Criaturas de 1\u00ba a 6\u00ba n\u00edvel ou ND geram aura t\u00eanue, criaturas de 7\u00ba a 12\u00ba n\u00edvel ou ND geram aura moderada e criaturas de 13\u00ba ao 20\u00ba n\u00edvel ou ND geram aura poderosa. Criaturas acima do 20\u00ba n\u00edvel ou ND geram aura avassaladora."
       },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "al\u00e9m do normal, voc\u00ea n\u00e3o fica surpreendido contra perigos detectados com sucesso e recebe"
       }
     ],
@@ -3805,10 +3818,10 @@
     "ALVO": "1 criatura ou objeto",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 4,
+        "CUSTO": "4",
         "DESCRICAO": "muda o alvo para \u00e1rea de cubo de 9m. Qualquer criatura ou objeto na \u00e1rea recebe o efeito da magia enquanto estiver dentro dela."
       },
-      { "CUSTO": 4, "DESCRICAO": "muda a dura\u00e7\u00e3o para 1 semana." }
+      { "CUSTO": "4", "DESCRICAO": "muda a dura\u00e7\u00e3o para 1 semana." }
     ],
     "AREA_DESCRICAO": "Nenhum",
     "AREA_ID": 998,
@@ -3823,7 +3836,7 @@
     "ID_SINCRONISMO": 71,
     "MAGIA_DESCRICAO": "",
     "MAGIA_EFEITO": "",
-    "MAGIA_MECANICA": "",
+    "MAGIA_MECANICA": "Esta magia oculta a presen\u00e7a do alvo contra qualquer meio m\u00e1gico de detec\u00e7\u00e3o, inclusive detectar magia. Um conjurador que lance uma magia de adivinha\u00e7\u00e3o para detectar a presen\u00e7a ou localiza\u00e7\u00e3o do alvo deve fazer um teste de Vontade. Se falhar, a magia n\u00e3o funciona, mas os PM s\u00e3o gastos mesmo assim. Se for lan\u00e7ada sobre uma criatura, Dificultar Detec\u00e7\u00e3o protege tanto a criatura quanto seu equipamento. ",
     "MAGIA_ORIGEM": "Tormenta 20 - Jogo do Ano",
     "MAGIA_ORIGEMSIGLA": "T20",
     "MANA_DESCRICAO": "Nenhum",
@@ -3856,19 +3869,19 @@
     "ALVO": "voc\u00ea",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "muda o alcance para curto e o alvo para 1 objeto. Voc\u00ea pode, por exemplo, transformar peda\u00e7os de ferro em moedas de ouro. Voc\u00ea recebe"
       },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "muda o alcance para curto e o alvo para 1 criatura. Uma criatura involunt\u00e1ria pode anular o efeito com um teste de Vontade."
       },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "a ilus\u00e3o inclui odores e sensa\u00e7\u00f5es. Isso muda o b\u00f4nus em testes de Engana\u00e7\u00e3o para disfarce para"
       },
       {
-        "CUSTO": 3,
+        "CUSTO": "3",
         "DESCRICAO": "muda o alcance para curto e o alvo para criaturas escolhidas. Cada criatura pode ter uma apar\u00eancia diferente. Criaturas involunt\u00e1rias podem anular o efeito com um teste de Vontade. Requer 2\u00ba c\u00edrculo."
       }
     ],
@@ -3918,19 +3931,19 @@
     "ALVO": "",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "aumenta o b\u00f4nus nas resist\u00eancias em"
       },
       {
-        "CUSTO": 4,
+        "CUSTO": "4",
         "DESCRICAO": "muda o alcance para curto, a \u00e1rea para alvo 1 criatura e a dura\u00e7\u00e3o para cena. O alvo fica imune a efeitos de trevas."
       },
       {
-        "CUSTO": 4,
+        "CUSTO": "4",
         "DESCRICAO": "muda o c\u00edrculo m\u00e1ximo de magias dissipadas para 4\u00ba. Requer 4\u00ba c\u00edrculo."
       },
       {
-        "CUSTO": 9,
+        "CUSTO": "9",
         "DESCRICAO": "muda o c\u00edrculo m\u00e1ximo de magias dissipadas para 5\u00ba. Requer 5\u00ba c\u00edrculo."
       }
     ],
@@ -3980,7 +3993,7 @@
     "ALVO": "",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 12,
+        "CUSTO": "12",
         "DESCRICAO": "muda a \u00e1rea para esfera com 9m de raio. Em vez do normal, cria um efeito de disjun\u00e7\u00e3o. Todas as magias na \u00e1rea s\u00e3o automaticamente dissipadas e todos os itens m\u00e1gicos na \u00e1rea, exceto aqueles que voc\u00ea estiver carregando, viram itens mundanos por uma cena (com direito a um teste de Vontade para evitar esse efeito). Requer 5\u00ba c\u00edrculo."
       }
     ],
@@ -4029,7 +4042,7 @@
     "ALCANCE_ID": 4,
     "ALVO": "",
     "APRIMORAMENTO": [
-      { "CUSTO": 3, "DESCRICAO": "cria uma c\u00f3pia adicional." }
+      { "CUSTO": "3", "DESCRICAO": "cria uma c\u00f3pia adicional." }
     ],
     "AREA_DESCRICAO": "Nenhum",
     "AREA_ID": 998,
@@ -4077,14 +4090,14 @@
     "ALVO": "1 humanoide",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "em vez do normal, voc\u00ea sugere uma a\u00e7\u00e3o para o alvo e ele obedece. A sugest\u00e3o deve ser feita de modo que pare\u00e7a aceit\u00e1vel, a crit\u00e9rio do mestre. Pedir ao alvo que pule de um precip\u00edcio, por exemplo, dissipa a magia. J\u00e1 sugerir a um guarda que descanse um pouco, de modo que voc\u00ea e seus aliados passem por ele, \u00e9 aceit\u00e1vel. Quando o alvo executa a a\u00e7\u00e3o, a magia termina. Voc\u00ea pode determinar uma condi\u00e7\u00e3o espec\u00edfica para a sugest\u00e3o: por exemplo, que um rico mercador doe suas moedas para o primeiro mendigo que encontrar."
       },
       {
-        "CUSTO": 5,
+        "CUSTO": "5",
         "DESCRICAO": "muda o alvo para 1 esp\u00edrito ou monstro. Requer 3\u00ba c\u00edrculo."
       },
-      { "CUSTO": 5, "DESCRICAO": "afeta todos os alvos dentro do alcance." }
+      { "CUSTO": "5", "DESCRICAO": "afeta todos os alvos dentro do alcance." }
     ],
     "AREA_DESCRICAO": "Nenhum",
     "AREA_ID": 998,
@@ -4132,10 +4145,10 @@
     "ALVO": "",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "em vez de flutuar no ponto em que foi conjurado, o disco flutua atr\u00e1s de voc\u00ea, mantendo-se sempre adjacente."
       },
-      { "CUSTO": 4, "DESCRICAO": "muda a dura\u00e7\u00e3o para um dia." }
+      { "CUSTO": "4", "DESCRICAO": "muda a dura\u00e7\u00e3o para um dia." }
     ],
     "AREA_DESCRICAO": "Nenhum",
     "AREA_ID": 998,
@@ -4182,14 +4195,14 @@
     "ALCANCE_ID": 4,
     "ALVO": "",
     "APRIMORAMENTO": [
-      { "CUSTO": 2, "DESCRICAO": "aumenta o dano em" },
+      { "CUSTO": "2", "DESCRICAO": "aumenta o dano em" },
       {
-        "CUSTO": 3,
+        "CUSTO": "3",
         "DESCRICAO": "muda a resist\u00eancia para Reflexos reduz \u00e0 metade e o enxame para criaturas maiores, como gatos, guaxinins, compsognatos ou kobolds. Ele causa 3d12 pontos de dano (a sua escolha entre corte, impacto ou perfura\u00e7\u00e3o). O resto da magia segue normal."
       },
-      { "CUSTO": 5, "DESCRICAO": "aumenta o n\u00famero de enxames em" },
+      { "CUSTO": "5", "DESCRICAO": "aumenta o n\u00famero de enxames em" },
       {
-        "CUSTO": 7,
+        "CUSTO": "7",
         "DESCRICAO": "muda a resist\u00eancia para Reflexos reduz \u00e0 metade e o enxame para criaturas elementais. Ele causa 5d12 pontos do dano (a sua escolha entre \u00e1cido, eletricidade, fogo ou frio). O resto da magia segue normal. Requer 4\u00ba c\u00edrculo."
       }
     ],
@@ -4239,21 +4252,21 @@
     "ALVO": "",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "al\u00e9m do normal, uma criatura que falhe no teste de Reflexos fica agarrada (o enxame escala e cobre o corpo dela). A criatura pode gastar uma a\u00e7\u00e3o padr\u00e3o e fazer um teste de Acrobacia ou Atletismo para escapar. Se voc\u00ea mover o enxame, a criatura fica livre."
       },
-      { "CUSTO": 2, "DESCRICAO": "aumenta o dano em" },
-      { "CUSTO": 2, "DESCRICAO": "muda o dano para trevas." },
+      { "CUSTO": "2", "DESCRICAO": "aumenta o dano em" },
+      { "CUSTO": "2", "DESCRICAO": "muda o dano para trevas." },
       {
-        "CUSTO": 3,
+        "CUSTO": "3",
         "DESCRICAO": "o enxame vira Enorme (quadrado de 6m de lado)."
       },
       {
-        "CUSTO": 3,
+        "CUSTO": "3",
         "DESCRICAO": "o enxame ganha deslocamento de voo 18m e passa a ocupar um cubo ao inv\u00e9s de um quadrado."
       },
       {
-        "CUSTO": 4,
+        "CUSTO": "4",
         "DESCRICAO": "o enxame inclui parasitas que explodem e criam novos enxames. No in\u00edcio de cada um de seus turnos, role 1d6. Em um resultado 5 ou 6, um novo enxame surge adjacente a um j\u00e1 existente \u00e0 sua escolha. Voc\u00ea pode mover todos os enxames com uma \u00fanica a\u00e7\u00e3o de movimento, mas eles n\u00e3o podem ocupar o mesmo espa\u00e7o. Requer 4\u00ba c\u00edrculo."
       }
     ],
@@ -4302,9 +4315,9 @@
     "ALCANCE_ID": 4,
     "ALVO": "",
     "APRIMORAMENTO": [
-      { "CUSTO": 3, "DESCRICAO": "aumenta o dano de frio em" },
+      { "CUSTO": "3", "DESCRICAO": "aumenta o dano de frio em" },
       {
-        "CUSTO": 4,
+        "CUSTO": "4",
         "DESCRICAO": "muda a \u00e1rea para cilindro com 6m de raio e 6m de altura e a dura\u00e7\u00e3o para sustentada. Em vez do normal, a magia cria uma tempestade de granizo que causa 3d6 pontos de dano de impacto e 3d6 pontos de dano de frio em todas as criaturas na \u00e1rea (sem teste de resist\u00eancia). A tempestade fornece camuflagem leve \u00e0s criaturas dentro dela e deixa o piso escorregadio. Piso escorregadio conta como terreno dif\u00edcil e obriga criaturas na \u00e1rea a fazer testes de Acrobacia para equil\u00edbrio (veja o Cap\u00edtulo 2). Requer 4\u00ba c\u00edrculo."
       }
     ],
@@ -4354,20 +4367,20 @@
     "ALVO": "1 criatura",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "muda a execu\u00e7\u00e3o para a\u00e7\u00e3o padr\u00e3o, o alcance para toque e a dura\u00e7\u00e3o para cena."
       },
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "tamb\u00e9m fornece ao alvo camuflagem leve contra ataques \u00e0 dist\u00e2ncia."
       },
-      { "CUSTO": 2, "DESCRICAO": "aumenta o b\u00f4nus na Defesa em" },
+      { "CUSTO": "2", "DESCRICAO": "aumenta o b\u00f4nus na Defesa em" },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "muda a execu\u00e7\u00e3o para a\u00e7\u00e3o padr\u00e3o, o alcance para toque e a dura\u00e7\u00e3o para cena. A magia cria uma conex\u00e3o m\u00edstica entre voc\u00ea e o alvo. Al\u00e9m do efeito normal, o alvo sofre metade do dano por ataques e efeitos; a outra metade do dano \u00e9 transferida a voc\u00ea. Se o alvo sair de alcance curto de voc\u00ea, a magia \u00e9 dissipada. Requer 2\u00ba c\u00edrculo."
       },
       {
-        "CUSTO": 3,
+        "CUSTO": "3",
         "DESCRICAO": "muda a dura\u00e7\u00e3o para um dia. Requer 2\u00ba c\u00edrculo."
       }
     ],
@@ -4416,7 +4429,7 @@
     "ALCANCE_ID": 4,
     "ALVO": "1 criatura ou objeto",
     "APRIMORAMENTO": [
-      { "CUSTO": 2, "DESCRICAO": "aumenta o n\u00famero de alvos em" }
+      { "CUSTO": "2", "DESCRICAO": "aumenta o n\u00famero de alvos em" }
     ],
     "AREA_DESCRICAO": "Nenhum",
     "AREA_ID": 998,
@@ -4431,7 +4444,7 @@
     "ID_SINCRONISMO": 82,
     "MAGIA_DESCRICAO": "",
     "MAGIA_EFEITO": "",
-    "MAGIA_MECANICA": "",
+    "MAGIA_MECANICA": "Esta magia altera os sons emitidos pelo alvo. Ela n\u00e3o \u00e9 capaz de criar sons, mas pode omiti-los (como fazer uma carro\u00e7a ficar silenciosa) ou transform\u00e1-los (como fazer uma pessoa ficar com voz de passarinho). Voc\u00ea n\u00e3o pode criar sons que n\u00e3o conhece (n\u00e3o pode fazer uma criatura falar num idioma que n\u00e3o conhe\u00e7a). Uma vez que escolha a altera\u00e7\u00e3o, ela n\u00e3o pode ser mudada. Um conjurador que tenha a voz modificada drasticamente n\u00e3o poder\u00e1 lan\u00e7ar magias.",
     "MAGIA_ORIGEM": "Tormenta 20 - Jogo do Ano",
     "MAGIA_ORIGEMSIGLA": "T20",
     "MANA_DESCRICAO": "Nenhum",
@@ -4463,18 +4476,18 @@
     "ALCANCE_ID": 3,
     "ALVO": "1 objeto",
     "APRIMORAMENTO": [
-      { "CUSTO": 1, "DESCRICAO": "aumenta a \u00e1rea da escurid\u00e3o em" },
+      { "CUSTO": "1", "DESCRICAO": "aumenta a \u00e1rea da escurid\u00e3o em" },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "muda o efeito para fornecer camuflagem total por escurid\u00e3o total. As sombras bloqueiam a vis\u00e3o na \u00e1rea e atrav\u00e9s dela."
       },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "muda o alvo para 1 criatura e a resist\u00eancia para Fortitude parcial. Voc\u00ea lan\u00e7a a magia nos olhos do alvo, que fica cego pela cena. Se passar na resist\u00eancia, fica cego por 1 rodada. Requer 2\u00ba c\u00edrculo."
       },
-      { "CUSTO": 3, "DESCRICAO": "muda a dura\u00e7\u00e3o para um dia." },
+      { "CUSTO": "3", "DESCRICAO": "muda a dura\u00e7\u00e3o para um dia." },
       {
-        "CUSTO": 5,
+        "CUSTO": "5",
         "DESCRICAO": "muda o alcance para pessoal e o alvo para voc\u00ea. Em vez do normal, voc\u00ea \u00e9 coberto por sombras, recebendo"
       }
     ],
@@ -4568,9 +4581,9 @@
     "ALCANCE_ID": 1,
     "ALVO": "",
     "APRIMORAMENTO": [
-      { "CUSTO": 1, "DESCRICAO": "aumenta o dano em" },
+      { "CUSTO": "1", "DESCRICAO": "aumenta o dano em" },
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "muda a resist\u00eancia para Reflexos parcial. Se passar, a criatura reduz o dano \u00e0 metade; se falhar, fica em chamas (veja Condi\u00e7\u00f5es, na p\u00e1gina 394)."
       }
     ],
@@ -4619,9 +4632,9 @@
     "ALCANCE_ID": 3,
     "ALVO": "1 criatura",
     "APRIMORAMENTO": [
-      { "CUSTO": 2, "DESCRICAO": "aumenta o dano em" },
+      { "CUSTO": "2", "DESCRICAO": "aumenta o dano em" },
       {
-        "CUSTO": 9,
+        "CUSTO": "9",
         "DESCRICAO": "muda alvo para criaturas escolhidas. Requer 5\u00ba c\u00edrculo."
       }
     ],
@@ -4671,12 +4684,12 @@
     "ALVO": "1 criatura",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 3,
+        "CUSTO": "3",
         "DESCRICAO": "muda o alcance para curto e o alvo para criaturas escolhidas."
       },
-      { "CUSTO": 3, "DESCRICAO": "em vez do normal, o alvo recebe" },
-      { "CUSTO": 7, "DESCRICAO": "em vez do normal, o alvo recebe" },
-      { "CUSTO": 12, "DESCRICAO": "em vez do normal, o alvo recebe" }
+      { "CUSTO": "3", "DESCRICAO": "em vez do normal, o alvo recebe" },
+      { "CUSTO": "7", "DESCRICAO": "em vez do normal, o alvo recebe" },
+      { "CUSTO": "12", "DESCRICAO": "em vez do normal, o alvo recebe" }
     ],
     "AREA_DESCRICAO": "Nenhum",
     "AREA_ID": 998,
@@ -4724,12 +4737,12 @@
     "ALVO": "1 criatura ou objeto",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "al\u00e9m do normal, se o alvo coberto pelo muco \u00e1cido estiver usando armadura ou escudo, o item \u00e9 corro\u00eddo. Isso reduz o b\u00f4nus na Defesa do item em 1 ponto permanentemente. O item pode ser consertado, restaurando seu b\u00f4nus (veja Of\u00edcio, na p\u00e1gina 121)."
       },
-      { "CUSTO": 2, "DESCRICAO": "aumenta a redu\u00e7\u00e3o na Defesa em" },
+      { "CUSTO": "2", "DESCRICAO": "aumenta a redu\u00e7\u00e3o na Defesa em" },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "aumenta o dano inicial e o dano por rodada em"
       }
     ],
@@ -4746,7 +4759,7 @@
     "ID_SINCRONISMO": 88,
     "MAGIA_DESCRICAO": "",
     "MAGIA_EFEITO": "",
-    "MAGIA_MECANICA": "",
+    "MAGIA_MECANICA": "Voc\u00ea dispara um proj\u00e9til que causa 4d6 pontos de dano de \u00e1cido. Se falhar no teste de resist\u00eancia, o alvo fica coberto por um muco corrosivo, sofrendo mais 2d6 de dano de \u00e1cido no in\u00edcio de seus dois pr\u00f3ximos turnos. Se lan\u00e7ada contra um objeto que n\u00e3o esteja em posse de uma criatura a magia causa dano dobrado e ignora a RD do objeto",
     "MAGIA_ORIGEM": "Tormenta 20 - Jogo do Ano",
     "MAGIA_ORIGEMSIGLA": "T20",
     "MANA_DESCRICAO": "Nenhum",
@@ -4779,7 +4792,7 @@
     "ALVO": "voc\u00ea",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 5,
+        "CUSTO": "5",
         "DESCRICAO": "muda o alcance para toque e o alvo para at\u00e9 5 criaturas volunt\u00e1rias que estejam de m\u00e3os dadas. Depois que a magia \u00e9 lan\u00e7ada, as criaturas podem soltar as m\u00e3os. Requer 5\u00ba c\u00edrculo."
       }
     ],
@@ -4874,16 +4887,16 @@
     "ALVO": "",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "o globo mostra uma cena vista at\u00e9 um m\u00eas atr\u00e1s."
       },
-      { "CUSTO": 2, "DESCRICAO": "como acima, at\u00e9 um ano atr\u00e1s." },
+      { "CUSTO": "2", "DESCRICAO": "como acima, at\u00e9 um ano atr\u00e1s." },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "ao lan\u00e7ar a magia, voc\u00ea pode tocar um cad\u00e1ver. O globo mostra a \u00faltima cena vista por essa criatura."
       },
       {
-        "CUSTO": 4,
+        "CUSTO": "4",
         "DESCRICAO": "muda o alcance para longo e o efeito para 10 globos. Todos mostram a mesma cena."
       }
     ],
@@ -4933,11 +4946,11 @@
     "ALVO": "voc\u00ea",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 4,
+        "CUSTO": "4",
         "DESCRICAO": "muda o efeito para afetar magias de at\u00e9 3\u00ba c\u00edrculo. Requer 4\u00ba c\u00edrculo."
       },
       {
-        "CUSTO": 9,
+        "CUSTO": "9",
         "DESCRICAO": "muda o efeito para afetar magias de at\u00e9 4\u00ba c\u00edrculo. Requer 5\u00ba c\u00edrculo."
       }
     ],
@@ -5030,7 +5043,7 @@
     "ALCANCE_DESCRICAO": "Toque",
     "ALCANCE_ID": 2,
     "ALVO": "1 criatura",
-    "APRIMORAMENTO": [{ "CUSTO": 2, "DESCRICAO": "muda o b\u00f4nus para" }],
+    "APRIMORAMENTO": [{ "CUSTO": "2", "DESCRICAO": "muda o b\u00f4nus para" }],
     "AREA_DESCRICAO": "Nenhum",
     "AREA_ID": 998,
     "DURACAO_DESCRICAO": "Nenhum",
@@ -5077,20 +5090,23 @@
     "ALVO": "",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "como o normal, mas alvos que passem na resist\u00eancia n\u00e3o sabem que foram v\u00edtimas de uma magia."
       },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "muda o alvo para animais ou humanoides escolhidos."
       },
-      { "CUSTO": 2, "DESCRICAO": "muda a dura\u00e7\u00e3o para sustentada." },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
+        "DESCRICAO": "muda a dura\u00e7\u00e3o para sustentada."
+      },
+      {
+        "CUSTO": "2",
         "DESCRICAO": "tamb\u00e9m afeta esp\u00edritos e monstros na \u00e1rea. Requer 2\u00ba c\u00edrculo."
       },
       {
-        "CUSTO": 5,
+        "CUSTO": "5",
         "DESCRICAO": "tamb\u00e9m afeta construtos, esp\u00edritos, monstros e mortos-vivos na \u00e1rea. Requer 3\u00ba c\u00edrculo."
       }
     ],
@@ -5139,9 +5155,9 @@
     "ALCANCE_ID": 4,
     "ALVO": "",
     "APRIMORAMENTO": [
-      { "CUSTO": 3, "DESCRICAO": "aumenta o dano em" },
+      { "CUSTO": "3", "DESCRICAO": "aumenta o dano em" },
       {
-        "CUSTO": 4,
+        "CUSTO": "4",
         "DESCRICAO": "muda a \u00e1rea para um cubo de 90m. Requer 4\u00ba c\u00edrculo."
       }
     ],
@@ -5190,9 +5206,9 @@
     "ALCANCE_ID": 1,
     "ALVO": "voc\u00ea",
     "APRIMORAMENTO": [
-      { "CUSTO": 2, "DESCRICAO": "aumenta o n\u00famero de c\u00f3pias em" },
+      { "CUSTO": "2", "DESCRICAO": "aumenta o n\u00famero de c\u00f3pias em" },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "al\u00e9m do normal, toda vez que uma c\u00f3pia \u00e9 destru\u00edda, emite um clar\u00e3o de luz. A criatura que destruiu a c\u00f3pia fica ofuscada por uma rodada. Requer 2\u00ba c\u00edrculo."
       }
     ],
@@ -5241,10 +5257,10 @@
     "ALCANCE_ID": 3,
     "ALVO": "1 humanoide ou animal",
     "APRIMORAMENTO": [
-      { "CUSTO": 1, "DESCRICAO": "muda o alvo para 1 esp\u00edrito." },
-      { "CUSTO": 2, "DESCRICAO": "aumenta o n\u00famero de alvos em" },
+      { "CUSTO": "1", "DESCRICAO": "muda o alvo para 1 esp\u00edrito." },
+      { "CUSTO": "2", "DESCRICAO": "aumenta o n\u00famero de alvos em" },
       {
-        "CUSTO": 3,
+        "CUSTO": "3",
         "DESCRICAO": "muda o alvo para 1 criatura. Requer 4\u00ba c\u00edrculo."
       }
     ],
@@ -5294,16 +5310,16 @@
     "ALVO": "1 criatura",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "al\u00e9m do normal, se falhar na resist\u00eancia, o alvo fica fraco pela cena."
       },
-      { "CUSTO": 2, "DESCRICAO": "aumenta o dano em" },
+      { "CUSTO": "2", "DESCRICAO": "aumenta o dano em" },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "muda a resist\u00eancia para nenhum. Como parte da execu\u00e7\u00e3o da magia, voc\u00ea pode fazer um ataque corpo a corpo contra o alvo. Se acertar, causa o dano do ataque e o efeito da magia."
       },
       {
-        "CUSTO": 5,
+        "CUSTO": "5",
         "DESCRICAO": "muda o alcance para curto e o alvo para criaturas escolhidas."
       }
     ],
@@ -5398,19 +5414,19 @@
     "ALVO": "voc\u00ea",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "muda a execu\u00e7\u00e3o para a\u00e7\u00e3o padr\u00e3o, o alcance para toque e o alvo para 1 criatura ou 1 objeto Grande ou menor."
       },
       {
-        "CUSTO": 3,
+        "CUSTO": "3",
         "DESCRICAO": "muda a dura\u00e7\u00e3o para cena. Requer 3\u00ba c\u00edrculo."
       },
       {
-        "CUSTO": 3,
+        "CUSTO": "3",
         "DESCRICAO": "muda a dura\u00e7\u00e3o para sustentada. Em vez do normal, o alvo gera uma esfera de invisibilidade. N\u00e3o pode ser usado em conjunto com outros aprimoramentos. O alvo e todas as criaturas a at\u00e9 3m dele se tornam invis\u00edveis, como no efeito normal da magia (ainda ficam vis\u00edveis caso fa\u00e7am uma a\u00e7\u00e3o hostial). A esfera se move juntamente com o alvo; qualquer coisa que saia da esfera fica vis\u00edvel. Requer 3\u00ba c\u00edrculo."
       },
       {
-        "CUSTO": 7,
+        "CUSTO": "7",
         "DESCRICAO": "muda a execu\u00e7\u00e3o para a\u00e7\u00e3o padr\u00e3o, o alcance para toque e o alvo para 1 criatura. A magia n\u00e3o \u00e9 dissipada caso o alvo fa\u00e7a uma a\u00e7\u00e3o hostil. Requer 4\u00ba c\u00edrculo."
       }
     ],
@@ -5460,7 +5476,7 @@
     "ALVO": "voc\u00ea",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 5,
+        "CUSTO": "5",
         "DESCRICAO": "muda o alcance para curto e o alvo para 1 criatura."
       }
     ],
@@ -5510,11 +5526,11 @@
     "ALVO": "1 criatura",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "muda a \u00e1rea para esfera com 6m de raio e o alvo para criaturas escolhidas."
       },
       {
-        "CUSTO": 5,
+        "CUSTO": "5",
         "DESCRICAO": "muda a execu\u00e7\u00e3o para um dia e adiciona custo adicional (sacrif\u00edcio de 1 PM). O alvo da magia precisa ser mantido em alcance curto do conjurador durante toda a execu\u00e7\u00e3o. Ao t\u00e9rmino, faz um teste de Vontade. Se falhar, perde a habilidade de lan\u00e7ar magias arcanas permanentemente. Se passar, resiste, mas ainda pode ser alvo da magia no dia seguinte. Nenhum poder mortal \u00e9 capaz de reverter essa perda. Os cl\u00e9rigos de Wynna dizem que a deusa chora cada vez que este ritual \u00e9 realizado."
       }
     ],
@@ -5563,9 +5579,9 @@
     "ALCANCE_ID": 4,
     "ALVO": "1 criatura",
     "APRIMORAMENTO": [
-      { "CUSTO": 3, "DESCRICAO": "aumenta o dano inicial em" },
+      { "CUSTO": "3", "DESCRICAO": "aumenta o dano inicial em" },
       {
-        "CUSTO": 4,
+        "CUSTO": "4",
         "DESCRICAO": "muda a dura\u00e7\u00e3o para cena ou at\u00e9 ser descarregada. Em vez do efeito normal, a magia cria quatro dardos de lava que flutuam ao lado do conjurador. Uma vez por rodada, como uma a\u00e7\u00e3o livre, voc\u00ea pode disparar um dos dardos em uma criatura, causando o efeito normal da magia. Requer 4\u00ba c\u00edrculo."
       }
     ],
@@ -5614,7 +5630,7 @@
     "ALCANCE_ID": 4,
     "ALVO": "at\u00e9 10 criaturas na \u00e1rea",
     "APRIMORAMENTO": [
-      { "CUSTO": 1, "DESCRICAO": "aumenta o n\u00famero de alvos em" }
+      { "CUSTO": "1", "DESCRICAO": "aumenta o n\u00famero de alvos em" }
     ],
     "AREA_DESCRICAO": "Nenhum",
     "AREA_ID": 998,
@@ -5662,7 +5678,7 @@
     "ALVO": "",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 4,
+        "CUSTO": "4",
         "DESCRICAO": "muda a execu\u00e7\u00e3o para um dia, o alcance para ilimitado e adiciona componente material (cuba de ouro cheia d\u2019\u00e1gua e ingredientes m\u00e1gicos, no valor de T$ 1. 000). Voc\u00ea ainda precisa ter alguma informa\u00e7\u00e3o sobre o alvo, como um nome, descri\u00e7\u00e3o ou localiza\u00e7\u00e3o."
       }
     ],
@@ -5712,15 +5728,15 @@
     "ALVO": "",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "al\u00e9m do normal, as criaturas afetadas ficam vulner\u00e1veis pela cena."
       },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "tamb\u00e9m afeta esp\u00edritos e monstros na \u00e1rea. Requer 2\u00ba c\u00edrculo."
       },
       {
-        "CUSTO": 5,
+        "CUSTO": "5",
         "DESCRICAO": "tamb\u00e9m afeta construtos, esp\u00edritos, monstros e mortos-vivos na \u00e1rea. Requer 3\u00ba c\u00edrculo."
       }
     ],
@@ -5770,22 +5786,22 @@
     "ALVO": "1 criatura",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "al\u00e9m do normal, o alvo pode caminhar sobre a \u00e1gua ou outros l\u00edquidos com seu deslocamento normal. Entretanto, isso n\u00e3o protege contra qualquer efeito que o l\u00edquido possa causar (o alvo pode andar sobre lava, mas ainda vai sofrer dano)."
       },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "al\u00e9m do normal, o alvo pode escolher 20 em todos os testes de Atletismo."
       },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "al\u00e9m do normal, o alvo pode escolher 20 em todos os testes de Acrobacia e pode fazer todas as manobras desta per\u00edcia mesmo sem treinamento."
       },
       {
-        "CUSTO": 5,
+        "CUSTO": "5",
         "DESCRICAO": "muda o alcance para curto e o alvo para at\u00e9 5 criaturas."
       },
-      { "CUSTO": 5, "DESCRICAO": "pode dissipar Aprisionamento." }
+      { "CUSTO": "5", "DESCRICAO": "pode dissipar Aprisionamento." }
     ],
     "AREA_DESCRICAO": "Nenhum",
     "AREA_ID": 998,
@@ -5833,7 +5849,7 @@
     "ALVO": "1 criatura",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 5,
+        "CUSTO": "5",
         "DESCRICAO": "a magia n\u00e3o termina se o alvo chegar a 0 PV (o que significa que dano causado por essa magia pode mat\u00e1-lo)."
       }
     ],
@@ -5882,9 +5898,9 @@
     "ALCANCE_ID": 2,
     "ALVO": "2 criaturas volunt\u00e1rias",
     "APRIMORAMENTO": [
-      { "CUSTO": 2, "DESCRICAO": "aumenta o n\u00famero de alvos em" },
+      { "CUSTO": "2", "DESCRICAO": "aumenta o n\u00famero de alvos em" },
       {
-        "CUSTO": 3,
+        "CUSTO": "3",
         "DESCRICAO": "muda o alvo para 1 criatura. Em vez do normal, voc\u00ea cria um elo mental que permite que voc\u00ea veja e ou\u00e7a pelos sentidos da criatura, se gastar uma a\u00e7\u00e3o de movimento. Uma criatura involunt\u00e1ria pode fazer um teste de Vontade para suprimir a magia por uma hora. Requer 3\u00ba c\u00edrculo."
       }
     ],
@@ -5934,7 +5950,7 @@
     "ALVO": "",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 5,
+        "CUSTO": "5",
         "DESCRICAO": "aumenta a \u00e1rea em um fator de 10 (90m para 900m, 900m para 9km e assim por diante)."
       }
     ],
@@ -5983,10 +5999,10 @@
     "ALCANCE_ID": 3,
     "ALVO": "1 objeto",
     "APRIMORAMENTO": [
-      { "CUSTO": 1, "DESCRICAO": "aumenta a \u00e1rea iluminada em" },
-      { "CUSTO": 2, "DESCRICAO": "muda a dura\u00e7\u00e3o para um dia." },
+      { "CUSTO": "1", "DESCRICAO": "aumenta a \u00e1rea iluminada em" },
+      { "CUSTO": "2", "DESCRICAO": "muda a dura\u00e7\u00e3o para um dia." },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "muda a dura\u00e7\u00e3o para permanente e adiciona componente material (p\u00f3 de rubi no valor de T$ 50). N\u00e3o pode ser usado em conjunto com outros aprimoramentos. Requer 2\u00ba c\u00edrculo."
       }
     ],
@@ -6036,7 +6052,7 @@
     "ALVO": "voc\u00ea",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 4,
+        "CUSTO": "4",
         "DESCRICAO": "muda o alcance para toque e o alvo para 1 criatura. Requer 4\u00ba c\u00edrculo."
       }
     ],
@@ -6130,9 +6146,9 @@
     "ALCANCE_ID": 4,
     "ALVO": "",
     "APRIMORAMENTO": [
-      { "CUSTO": 2, "DESCRICAO": "aumenta o dano em" },
+      { "CUSTO": "2", "DESCRICAO": "aumenta o dano em" },
       {
-        "CUSTO": 5,
+        "CUSTO": "5",
         "DESCRICAO": "muda o b\u00f4nus adicional em Misticismo para"
       }
     ],
@@ -6182,7 +6198,7 @@
     "ALVO": "",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 3,
+        "CUSTO": "3",
         "DESCRICAO": "muda o alvo para 1 criatura e a dura\u00e7\u00e3o para 1 hora. Em vez do normal, a criatura tocada descobre o caminho mais direto para entrar ou sair de um lugar. Assim, a magia pode ser usada para descobrir a rota at\u00e9 o relic\u00e1rio de uma catedral ou a sa\u00edda mais pr\u00f3xima de uma masmorra (mas n\u00e3o para encontrar a localiza\u00e7\u00e3o de uma criatura ou objeto; a magia funciona apenas em rela\u00e7\u00e3o a lugares). Caso a criatura demore mais de uma hora para percorrer o caminho, o conhecimento se perde."
       }
     ],
@@ -6232,11 +6248,11 @@
     "ALVO": "1 criatura",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 3,
+        "CUSTO": "3",
         "DESCRICAO": "muda a dura\u00e7\u00e3o para um dia. Se n\u00e3o estiver em combate, a criatura s\u00f3 pode fazer o teste de Vontade a cada hora. Requer 3\u00ba c\u00edrculo."
       },
       {
-        "CUSTO": 3,
+        "CUSTO": "3",
         "DESCRICAO": "sempre que o alvo fizer o teste de Vontade e falhar, a marca causa 3d6 pontos de dano ps\u00edquico. Requer 3\u00ba c\u00edrculo."
       }
     ],
@@ -6329,7 +6345,7 @@
     "ALCANCE_DESCRICAO": "Outros",
     "ALCANCE_ID": 999,
     "ALVO": "",
-    "APRIMORAMENTO": [{ "CUSTO": 1, "DESCRICAO": "aumenta o dano em" }],
+    "APRIMORAMENTO": [{ "CUSTO": "1", "DESCRICAO": "aumenta o dano em" }],
     "AREA_DESCRICAO": "Nenhum",
     "AREA_ID": 998,
     "DURACAO_DESCRICAO": "Nenhum",
@@ -6343,7 +6359,7 @@
     "ID_SINCRONISMO": 120,
     "MAGIA_DESCRICAO": "",
     "MAGIA_EFEITO": "",
-    "MAGIA_MECANICA": "",
+    "MAGIA_MECANICA": "Esta \u00e9 uma das mais poderosas magias de destrui\u00e7\u00e3o existentes. Ap\u00f3s entoar longos c\u00e2nticos, o conjurador dispara uma carga de energia que varre uma enorme \u00e1rea \u00e0 sua frente, causando 20d12 pontos de dano de ess\u00eancia em todas as criaturas, constru\u00e7\u00f5es e objetos livres atingidos. Sempre que rola um resultado 12 em um dado de dano, a magia causa +1d12 pontos de dano. Apesar de seu poder destrutivo, esta magia \u00e9 lenta, tornando seu uso dif\u00edcil em combate.",
     "MAGIA_ORIGEM": "Tormenta 20 - Jogo do Ano",
     "MAGIA_ORIGEMSIGLA": "T20",
     "MANA_DESCRICAO": "Nenhum",
@@ -6376,12 +6392,12 @@
     "ALVO": "1 criatura",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 3,
+        "CUSTO": "3",
         "DESCRICAO": "muda o alcance para curto e o alvo para criaturas escolhidas."
       },
-      { "CUSTO": 3, "DESCRICAO": "em vez do normal, o alvo recebe" },
-      { "CUSTO": 7, "DESCRICAO": "em vez do normal, o alvo recebe" },
-      { "CUSTO": 12, "DESCRICAO": "em vez do normal, o alvo recebe" }
+      { "CUSTO": "3", "DESCRICAO": "em vez do normal, o alvo recebe" },
+      { "CUSTO": "7", "DESCRICAO": "em vez do normal, o alvo recebe" },
+      { "CUSTO": "12", "DESCRICAO": "em vez do normal, o alvo recebe" }
     ],
     "AREA_DESCRICAO": "Nenhum",
     "AREA_ID": 998,
@@ -6396,7 +6412,7 @@
     "ID_SINCRONISMO": 121,
     "MAGIA_DESCRICAO": "",
     "MAGIA_EFEITO": "",
-    "MAGIA_MECANICA": "Voc\u00ea fortalece a mente do alvo. Ele recebe +2 em Intelig\u00eancia, Sabedoria ou Carisma, a sua escolha. Esse aumento n\u00e3o oferece PV, PM ou per\u00edcias adicionais.",
+    "MAGIA_MECANICA": "Voc\u00ea fortalece a mente do alvo. Ele recebe +2 em Intelig\u00eancia, Sabedoria ou Carisma, a sua escolha. Esse aumento n\u00e3o oferece PV, PM ou per\u00edcias adicionais",
     "MAGIA_ORIGEM": "Tormenta 20 - Jogo do Ano",
     "MAGIA_ORIGEMSIGLA": "T20",
     "MANA_DESCRICAO": "Nenhum",
@@ -6429,31 +6445,31 @@
     "ALVO": "voc\u00ea",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "a forma escolhida recebe uma habilidade de sentidos entre faro, vis\u00e3o na penumbra e vis\u00e3o no escuro."
       },
       {
-        "CUSTO": 3,
+        "CUSTO": "3",
         "DESCRICAO": "a forma escolhida recebe percep\u00e7\u00e3o \u00e0s cegas. Requer 3\u00ba c\u00edrculo."
       },
       {
-        "CUSTO": 3,
+        "CUSTO": "3",
         "DESCRICAO": "muda o alcance para toque, o alvo para 1 criatura e adiciona resist\u00eancia (Vontade anula)."
       },
       {
-        "CUSTO": 3,
+        "CUSTO": "3",
         "DESCRICAO": "muda o alcance para m\u00e9dio, o alvo para 1 criatura e a resist\u00eancia para Vontade anula. Em vez do normal, transforma o alvo em uma criatura ou objeto inofensivo (ovelha, sapo, galinha, pudim de ameixa etc. ). A criatura n\u00e3o pode atacar, falar e lan\u00e7ar magias; seu deslocamento vira 3m e sua Defesa vira 10. Suas outras caracter\u00edsticas n\u00e3o mudam. No in\u00edcio de seus turnos, o alvo pode fazer um teste de Vontade; se passar, retorna \u00e0 sua forma normal e a magia termina. Requer 3\u00ba c\u00edrculo."
       },
       {
-        "CUSTO": 5,
+        "CUSTO": "5",
         "DESCRICAO": "se mudar para formas n\u00e3o humanoides, pode escolher uma Forma Selvagem Aprimorada. Requer 3\u00ba c\u00edrculo."
       },
       {
-        "CUSTO": 9,
+        "CUSTO": "9",
         "DESCRICAO": "se mudar para formas n\u00e3o humanoides, pode escolher uma Forma Selvagem Superior. Requer 4\u00ba c\u00edrculo."
       },
       {
-        "CUSTO": 12,
+        "CUSTO": "12",
         "DESCRICAO": "al\u00e9m do normal, no in\u00edcio de seus turnos o alvo pode mudar de forma novamente, como uma a\u00e7\u00e3o livre, fazendo novas escolhas. Requer 5\u00ba c\u00edrculo."
       }
     ],
@@ -6502,8 +6518,8 @@
     "ALCANCE_ID": 4,
     "ALVO": "",
     "APRIMORAMENTO": [
-      { "CUSTO": 2, "DESCRICAO": "aumenta o dano em" },
-      { "CUSTO": 3, "DESCRICAO": "muda o tipo do dano para trevas." }
+      { "CUSTO": "2", "DESCRICAO": "aumenta o dano em" },
+      { "CUSTO": "3", "DESCRICAO": "muda o tipo do dano para trevas." }
     ],
     "AREA_DESCRICAO": "Outro",
     "AREA_ID": 999,
@@ -6551,11 +6567,11 @@
     "ALVO": "",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 4,
+        "CUSTO": "4",
         "DESCRICAO": "al\u00e9m do normal, pode alterar a apar\u00eancia de criaturas escolhidas na \u00e1rea, como se usando Disfarce Ilus\u00f3rio."
       },
       {
-        "CUSTO": 9,
+        "CUSTO": "9",
         "DESCRICAO": "muda a dura\u00e7\u00e3o para permanente e adiciona componente material (p\u00f3 de diamante no valor de T$ 1. 000). Requer 4\u00ba c\u00edrculo."
       }
     ],
@@ -6605,11 +6621,11 @@
     "ALVO": "1 criatura",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "muda o alcance para toque, a dura\u00e7\u00e3o para permanente e adiciona penalidade de \u20131 PM. Em vez do normal, voc\u00ea inscreve uma marca (como uma tatuagem) na pele do alvo e escolhe um tipo de a\u00e7\u00e3o que ativar\u00e1 a marca. Normalmente, ser\u00e1 cometer um crime (roubar, matar. . . ) ou outra coisa contr\u00e1ria \u00e0s Obriga\u00e7\u00f5es & Restri\u00e7\u00f5es de sua divindade. Sempre que a marca \u00e9 ativada, o alvo recebe uma penalidade cumulativa de \u20132 em todos os testes. Muitas vezes, portar essa marca \u00e9 um estigma por si s\u00f3, j\u00e1 que esta magia normalmente \u00e9 lan\u00e7ada em criminosos ou traidores. Uma magia que dissipe outras suprime a marca e suas penalidades por um dia; elas s\u00f3 podem ser totalmente removidas pelo conjurador original ou pela magia Purifica\u00e7\u00e3o."
       },
       {
-        "CUSTO": 4,
+        "CUSTO": "4",
         "DESCRICAO": "muda a dura\u00e7\u00e3o para 1 ano ou at\u00e9 ser descarregada."
       }
     ],
@@ -6659,19 +6675,19 @@
     "ALVO": "",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "al\u00e9m do normal, criaturas do tipo animal em alcance curto da montaria devem fazer um teste de Vontade. Se passarem, ficam abaladas pela cena; se falharem, ficam apavoradas por 1d4 rodadas, depois abaladas pela cena."
       },
       {
-        "CUSTO": 3,
+        "CUSTO": "3",
         "DESCRICAO": "muda a dura\u00e7\u00e3o para permanente e adiciona penalidade de \u20133 PM."
       },
       {
-        "CUSTO": 3,
+        "CUSTO": "3",
         "DESCRICAO": "aumenta o tamanho da montaria em uma categoria. Isso tamb\u00e9m aumenta o n\u00famero de criaturas que ela pode carregar \u2014 duas para uma criatura Enorme, seis para Colossal. Uma \u00fanica criatura controla a montaria; as outras apenas s\u00e3o deslocadas."
       },
       {
-        "CUSTO": 3,
+        "CUSTO": "3",
         "DESCRICAO": "muda o n\u00edvel do parceiro para mestre. Requer 3\u00ba c\u00edrculo."
       }
     ],
@@ -6720,9 +6736,9 @@
     "ALCANCE_ID": 4,
     "ALVO": "",
     "APRIMORAMENTO": [
-      { "CUSTO": 3, "DESCRICAO": "aumenta o comprimento em" },
+      { "CUSTO": "3", "DESCRICAO": "aumenta o comprimento em" },
       {
-        "CUSTO": 5,
+        "CUSTO": "5",
         "DESCRICAO": "o muro \u00e9 feito de uma massa de esqueletos animados. Sempre que uma criatura iniciar seu turno adjacente ou escalando a muralha, deve fazer um teste de Reflexos. Se falhar fica agarrada, sofrendo os efeitos normais de estar agarrada pela magia."
       }
     ],
@@ -6771,10 +6787,13 @@
     "ALCANCE_ID": 4,
     "ALVO": "",
     "APRIMORAMENTO": [
-      { "CUSTO": 2, "DESCRICAO": "aumenta o dano por atravessar a muralha em" },
-      { "CUSTO": 2, "DESCRICAO": "aumenta o comprimento em" },
       {
-        "CUSTO": 4,
+        "CUSTO": "2",
+        "DESCRICAO": "aumenta o dano por atravessar a muralha em"
+      },
+      { "CUSTO": "2", "DESCRICAO": "aumenta o comprimento em" },
+      {
+        "CUSTO": "4",
         "DESCRICAO": "muda a dura\u00e7\u00e3o para sustentada e adiciona uma nova escolha, Ess\u00eancia. A muralha \u00e9 invis\u00edvel e indestrut\u00edvel \u2014 imune a qualquer forma de dano e n\u00e3o afetada por nenhuma magia. Ela n\u00e3o pode ser atravessada nem mesmo por criaturas incorp\u00f3reas. No entanto, magias que teletransportam criaturas, como Salto Dimensional, podem atravess\u00e1-la. Magias e efeitos de dano, como Bola de Fogo e o sopro de um drag\u00e3o, n\u00e3o vencem a muralha, mas magias lan\u00e7adas diretamente sobre uma criatura ou \u00e1rea, como Sono, podem ser lan\u00e7adas contra alvos que estejam no outro lado como se tivessem linha de efeito. Requer 4\u00ba c\u00edrculo."
       }
     ],
@@ -6791,7 +6810,7 @@
     "ID_SINCRONISMO": 130,
     "MAGIA_DESCRICAO": "",
     "MAGIA_EFEITO": "muralha de energia",
-    "MAGIA_MECANICA": "",
+    "MAGIA_MECANICA": "Uma muralha de um elemento a sua escolha se eleva da terra. Ela pode ser um muro de at\u00e9 30m de comprimento e 3m de altura (ou o contr\u00e1rio) ou uma c\u00fapula de 3m de raio. Os efeitos variam conforme o elemento escolhido. Fogo. Faz surgir uma violenta cortina de chamas. Um lado da muralha (a sua escolha) emite ondas de calor, que causam 2d6 pontos de dano de fogo em criaturas a at\u00e9 6m quando voc\u00ea lan\u00e7a a magia e no in\u00edcio de seus turnos. Atravessar a muralha causa 8d6 pontos de dano de fogo. Caso seja criada em uma \u00e1rea onde existem criaturas, elas sofrem dano como se estivessem atravessando a muralha, mas podem fazer um teste de Reflexos para reduzir o dano \u00e0 metade e escapar para um lado (a criatura escolhe, mas se escapar para o lado quente sofrer\u00e1 mais 2d6 pontos de dano). Gelo. Evoca uma parede grossa de gelo denso com 15cm de espessura. Na forma de c\u00fapula, pode prender uma ou mais criaturas, mas elas t\u00eam direito a um teste de Reflexos para escapar antes que a c\u00fapula se forme. Cada trecho de 3m da muralha tem Defesa 8, 40 PV e RD 5. Um trecho da muralha que atinja 0 PV ser\u00e1 rompido. Qualquer efeito de fogo causa dano dobrado \u00e0 muralha. Uma criatura que atravesse um trecho rompido da muralha sofre 4d6 pontos de dano de frio.",
     "MAGIA_ORIGEM": "Tormenta 20 - Jogo do Ano",
     "MAGIA_ORIGEMSIGLA": "T20",
     "MANA_DESCRICAO": "Nenhum",
@@ -6824,24 +6843,24 @@
     "ALVO": "",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "a magia tamb\u00e9m funciona sob a \u00e1gua, criando uma nuvem de tinta."
       },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "voc\u00ea pode escolher criaturas no alcance ao lan\u00e7ar a magia; elas enxergam atrav\u00e9s do efeito. Requer 2\u00ba c\u00edrculo."
       },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "a nuvem tem um cheiro horr\u00edvel. No in\u00edcio de seus turnos, qualquer criatura dentro dela, ou qualquer criatura com faro em alcance curto da nuvem, deve fazer um teste de Fortitude. Se falhar, fica enjoada por uma rodada."
       },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "a nuvem tem um tom esverdeado e se torna c\u00e1ustica. No in\u00edcio de seus turnos, criaturas dentro dela sofrem 2d4 pontos de dano de \u00e1cido."
       },
-      { "CUSTO": 3, "DESCRICAO": "aumenta o dano de \u00e1cido em" },
+      { "CUSTO": "3", "DESCRICAO": "aumenta o dano de \u00e1cido em" },
       {
-        "CUSTO": 5,
+        "CUSTO": "5",
         "DESCRICAO": "al\u00e9m do normal, a nuvem fica espessa, quase s\u00f3lida. Qualquer criatura dentro dela tem seu deslocamento reduzido para 3m (independentemente de seu deslocamento normal) e sofre \u20132 em testes de ataque e rolagens de dano."
       }
     ],
@@ -6890,17 +6909,17 @@
     "ALCANCE_ID": 3,
     "ALVO": "",
     "APRIMORAMENTO": [
-      { "CUSTO": 2, "DESCRICAO": "aumenta os b\u00f4nus em" },
+      { "CUSTO": "2", "DESCRICAO": "aumenta os b\u00f4nus em" },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "aumenta as penalidades em \u20131 (penalidade m\u00e1xima limitada pelo c\u00edrculo m\u00e1ximo de magia que voc\u00ea pode lan\u00e7ar)."
       },
       {
-        "CUSTO": 7,
+        "CUSTO": "7",
         "DESCRICAO": "muda o alcance para m\u00e9dio. Requer 3\u00ba c\u00edrculo."
       },
       {
-        "CUSTO": 12,
+        "CUSTO": "12",
         "DESCRICAO": "muda a dura\u00e7\u00e3o para cena. Requer 4\u00ba c\u00edrculo."
       }
     ],
@@ -6950,15 +6969,15 @@
     "ALVO": "1 criatura",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "muda a dura\u00e7\u00e3o para cena. Em vez do normal, escolha um atributo. Sempre que o alvo fizer um teste de per\u00edcia baseado no atributo escolhido, pode rolar dois dados e ficar com o melhor resultado. N\u00e3o se aplica a testes de ataque ou resist\u00eancia. Requer 2\u00ba c\u00edrculo."
       },
       {
-        "CUSTO": 5,
+        "CUSTO": "5",
         "DESCRICAO": "como acima, mas, em vez de um atributo, escolha entre atributos f\u00edsicos (For\u00e7a, Destreza e Constitui\u00e7\u00e3o) ou mentais (Intelig\u00eancia, Sabedoria e Carisma). Requer 3\u00ba c\u00edrculo."
       },
       {
-        "CUSTO": 5,
+        "CUSTO": "5",
         "DESCRICAO": "muda o alvo para criaturas escolhidas. Requer 3\u00ba c\u00edrculo."
       }
     ],
@@ -7053,20 +7072,20 @@
     "ALVO": "voc\u00ea",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "muda o alcance para toque e o alvo para 1 criatura."
       },
-      { "CUSTO": 4, "DESCRICAO": "muda a dura\u00e7\u00e3o para um dia." },
+      { "CUSTO": "4", "DESCRICAO": "muda a dura\u00e7\u00e3o para um dia." },
       {
-        "CUSTO": 4,
+        "CUSTO": "4",
         "DESCRICAO": "sua pele ganha aspecto e dureza de a\u00e7o. Voc\u00ea recebe redu\u00e7\u00e3o de dano 10. Requer 4\u00ba c\u00edrculo."
       },
       {
-        "CUSTO": 4,
+        "CUSTO": "4",
         "DESCRICAO": "muda o alcance para toque, o alvo para 1 criatura, a dura\u00e7\u00e3o para 1d4 rodadas e adiciona Resist\u00eancia: Fortitude anula. Em vez do efeito normal, a magia transforma o alvo e seu equipamento em uma est\u00e1tua inerte e sem consci\u00eancia. A est\u00e1tua possui os mesmos PV da criatura e redu\u00e7\u00e3o de dano 8; se for quebrada, a criatura morrer\u00e1. Requer 4\u00ba c\u00edrculo."
       },
       {
-        "CUSTO": 9,
+        "CUSTO": "9",
         "DESCRICAO": "como acima, mas com dura\u00e7\u00e3o permanente. Requer 5\u00ba c\u00edrculo."
       }
     ],
@@ -7116,7 +7135,7 @@
     "ALVO": "",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "aumenta as penalidades em \u20131 (penalidade m\u00e1xima limitada pelo c\u00edrculo m\u00e1ximo de magia que voc\u00ea pode lan\u00e7ar)."
       }
     ],
@@ -7133,7 +7152,7 @@
     "ID_SINCRONISMO": 136,
     "MAGIA_DESCRICAO": "",
     "MAGIA_EFEITO": "",
-    "MAGIA_MECANICA": "",
+    "MAGIA_MECANICA": "Amaldi\u00e7oa os alvos, que recebem \u20131 em testes de ataque e rolagens de dano. Perdi\u00e7\u00e3o anula B\u00ean\u00e7\u00e3o.",
     "MAGIA_ORIGEM": "Tormenta 20 - Jogo do Ano",
     "MAGIA_ORIGEMSIGLA": "T20",
     "MANA_DESCRICAO": "Nenhum",
@@ -7164,7 +7183,7 @@
     "ALCANCE_DESCRICAO": "M\u00e9dio",
     "ALCANCE_ID": 4,
     "ALVO": "",
-    "APRIMORAMENTO": [{ "CUSTO": 2, "DESCRICAO": "aumenta o dano em" }],
+    "APRIMORAMENTO": [{ "CUSTO": "2", "DESCRICAO": "aumenta o dano em" }],
     "AREA_DESCRICAO": "Outro",
     "AREA_ID": 999,
     "DURACAO_DESCRICAO": "Cena",
@@ -7211,15 +7230,15 @@
     "ALVO": "1 criatura",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 5,
+        "CUSTO": "5",
         "DESCRICAO": "voc\u00ea ganha acesso \u00e0s habilidades de ra\u00e7a e classe da criatura."
       },
       {
-        "CUSTO": 5,
+        "CUSTO": "5",
         "DESCRICAO": "enquanto a magia durar e voc\u00ea estiver dentro do alcance do seu corpo original, pode \u201csaltar\u201d de uma criatura possu\u00edda para outra. O novo alvo tem direito a um teste de Vontade. Se falhar, voc\u00ea assume o controle do corpo dele e o alvo anterior recobra a consci\u00eancia."
       },
       {
-        "CUSTO": 5,
+        "CUSTO": "5",
         "DESCRICAO": "muda a dura\u00e7\u00e3o para permanente, mas destr\u00f3i seu corpo original no processo. Uma criatura possu\u00edda pode fazer um teste de Vontade no come\u00e7o do dia para retomar seu corpo. Se passar, recobra a consci\u00eancia (e a sua pr\u00f3pria consci\u00eancia fica inerte). O teste se repete no in\u00edcio de cada dia. Se o corpo de uma criatura possu\u00edda morrer e houver outra criatura em alcance curto, voc\u00ea pode tentar possu\u00ed-la. Enquanto houver novos corpos para possuir, voc\u00ea \u00e9 imortal!"
       }
     ],
@@ -7268,10 +7287,10 @@
     "ALCANCE_ID": 1,
     "ALVO": "voc\u00ea",
     "APRIMORAMENTO": [
-      { "CUSTO": 2, "DESCRICAO": "aumenta o b\u00f4nus de For\u00e7a em" },
-      { "CUSTO": 5, "DESCRICAO": "aumenta a RD em" },
+      { "CUSTO": "2", "DESCRICAO": "aumenta o b\u00f4nus de For\u00e7a em" },
+      { "CUSTO": "5", "DESCRICAO": "aumenta a RD em" },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "muda o alcance para toque e o alvo para 1 criatura. A magia falha se voc\u00ea e o alvo n\u00e3o forem devotos da mesma divindade."
       }
     ],
@@ -7321,10 +7340,10 @@
     "ALVO": "voc\u00ea",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 3,
+        "CUSTO": "3",
         "DESCRICAO": "muda a execu\u00e7\u00e3o para rea\u00e7\u00e3o, o alcance para curto, o alvo para 1 criatura e a dura\u00e7\u00e3o para instant\u00e2nea. Esta magia s\u00f3 pode ser usada em uma criatura que tenha acabado de fazer um teste. Obriga a criatura a fazer uma nova rolagem de dados e aceitar o novo resultado, seja ele um sucesso ou falha. Criaturas involunt\u00e1rias t\u00eam direito a um teste de Vontade para negar o efeito."
       },
-      { "CUSTO": 10, "DESCRICAO": "muda a dura\u00e7\u00e3o para um dia." }
+      { "CUSTO": "10", "DESCRICAO": "muda a dura\u00e7\u00e3o para um dia." }
     ],
     "AREA_DESCRICAO": "Nenhum",
     "AREA_ID": 998,
@@ -7372,19 +7391,19 @@
     "ALVO": "1 criatura",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "al\u00e9m do normal, o alvo recebe um b\u00f4nus adicional de"
       },
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "al\u00e9m do normal, o alvo pode escalar paredes e tetos sem precisar fazer testes de Atletismo. Para isso, precisa estar com as m\u00e3os livres, mas pode usar uma \u00fanica m\u00e3o se ficar parado no lugar. O alvo n\u00e3o fica desprevenido enquanto escala."
       },
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "muda a execu\u00e7\u00e3o para a\u00e7\u00e3o de movimento, o alcance para pessoal, o alvo para voc\u00ea e a dura\u00e7\u00e3o para instant\u00e2nea. Voc\u00ea salta muito alto e pousa em alcance corpo a corpo de uma criatura em alcance curto. Se fizer um ataque corpo a corpo contra essa criatura neste turno, recebe os benef\u00edcios e penalidades de uma investida e sua arma causa um dado extra de dano do mesmo tipo durante este ataque."
       },
       {
-        "CUSTO": 3,
+        "CUSTO": "3",
         "DESCRICAO": "al\u00e9m do normal, ao fazer testes de per\u00edcias baseadas em For\u00e7a, Destreza ou Constitui\u00e7\u00e3o, o alvo pode rolar dois dados e escolher o melhor. N\u00e3o afeta testes de ataque ou resist\u00eancia. Requer 2\u00ba c\u00edrculo."
       }
     ],
@@ -7434,12 +7453,15 @@
     "ALVO": "",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "al\u00e9m do normal, mortos-vivos na \u00e1rea recebem"
       },
-      { "CUSTO": 2, "DESCRICAO": "aumenta os b\u00f4nus para mortos-vivos em" },
       {
-        "CUSTO": 9,
+        "CUSTO": "2",
+        "DESCRICAO": "aumenta os b\u00f4nus para mortos-vivos em"
+      },
+      {
+        "CUSTO": "9",
         "DESCRICAO": "muda a execu\u00e7\u00e3o para 1 hora, a dura\u00e7\u00e3o para permanente e adiciona componente material (incenso e \u00f3leos no valor de T$ 1. 000). Requer 4\u00ba c\u00edrculo."
       }
     ],
@@ -7489,7 +7511,7 @@
     "ALVO": "local ou criatura conhecidos",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 10,
+        "CUSTO": "10",
         "DESCRICAO": "al\u00e9m do normal, sua proje\u00e7\u00e3o \u00e9 capaz de lan\u00e7ar magias que n\u00e3o precisem de componentes materiais e tenham dura\u00e7\u00e3o diferente de sustentada. Sua forma fantasmag\u00f3rica funciona como na magia Forma Et\u00e9rea, sendo afetada por magias de abjura\u00e7\u00e3o e ess\u00eancia, mas as magias que ela lan\u00e7a podem afetar criaturas corp\u00f3reas."
       }
     ],
@@ -7538,13 +7560,13 @@
     "ALCANCE_ID": 2,
     "ALVO": "1 criatura",
     "APRIMORAMENTO": [
-      { "CUSTO": 4, "DESCRICAO": "muda o b\u00f4nus para" },
+      { "CUSTO": "4", "DESCRICAO": "muda o b\u00f4nus para" },
       {
-        "CUSTO": 4,
+        "CUSTO": "4",
         "DESCRICAO": "em vez do normal, o alvo fica imune a uma escola de magia a sua escolha. Requer 4\u00ba C\u00edrculo."
       },
       {
-        "CUSTO": 9,
+        "CUSTO": "9",
         "DESCRICAO": "em vez do normal, o alvo fica imune a duas escolas de magia a sua escolha. Requer 5\u00ba C\u00edrculo."
       }
     ],
@@ -7593,17 +7615,17 @@
     "ALCANCE_ID": 2,
     "ALVO": "1 criatura",
     "APRIMORAMENTO": [
-      { "CUSTO": 2, "DESCRICAO": "aumenta o b\u00f4nus concedido em" },
+      { "CUSTO": "2", "DESCRICAO": "aumenta o b\u00f4nus concedido em" },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "muda a execu\u00e7\u00e3o para rea\u00e7\u00e3o, o alcance para curto e a dura\u00e7\u00e3o para 1 rodada. Em vez do normal, o alvo recebe"
       },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "muda o alvo para \u00e1rea de esfera com 3m de raio. Todos os aliados dentro do c\u00edrculo recebem o b\u00f4nus da magia. Requer 2\u00ba c\u00edrculo."
       },
       {
-        "CUSTO": 5,
+        "CUSTO": "5",
         "DESCRICAO": "torna o alvo imune a efeitos mentais e de medo. Requer 3\u00ba c\u00edrculo."
       }
     ],
@@ -7653,19 +7675,19 @@
     "ALVO": "1 criatura",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "tamb\u00e9m recupera todos os PV perdidos por veneno."
       },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "em vez de uma, remove todas as condi\u00e7\u00f5es listadas."
       },
       {
-        "CUSTO": 3,
+        "CUSTO": "3",
         "DESCRICAO": "tamb\u00e9m permite que o alvo solte qualquer item amaldi\u00e7oado que esteja segurando (mas n\u00e3o remove a maldi\u00e7\u00e3o do item em si)."
       },
       {
-        "CUSTO": 7,
+        "CUSTO": "7",
         "DESCRICAO": "tamb\u00e9m dissipa magias e efeitos prejudiciais de encantamento, necromancia e transmuta\u00e7\u00e3o afetando o alvo. Requer 3\u00ba c\u00edrculo."
       }
     ],
@@ -7715,11 +7737,11 @@
     "ALVO": "",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "muda o alvo para at\u00e9 10 criaturas ou objetos adequados."
       },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "aumenta a categoria de tamanho do alvo em uma."
       }
     ],
@@ -7769,11 +7791,11 @@
     "ALVO": "1 criatura",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "em vez do normal, se falhar na resist\u00eancia o alvo fica exausto. Se passar, fica fatigado. Requer 2\u00ba c\u00edrculo."
       },
       {
-        "CUSTO": 5,
+        "CUSTO": "5",
         "DESCRICAO": "como acima, mas muda o alvo para criaturas escolhidas. Requer 3\u00ba c\u00edrculo."
       }
     ],
@@ -7822,9 +7844,9 @@
     "ALCANCE_ID": 4,
     "ALVO": "1 criatura",
     "APRIMORAMENTO": [
-      { "CUSTO": 3, "DESCRICAO": "aumenta o dano em" },
+      { "CUSTO": "3", "DESCRICAO": "aumenta o dano em" },
       {
-        "CUSTO": 5,
+        "CUSTO": "5",
         "DESCRICAO": "muda o alvo para \u00e1rea de esfera com 6m de raio. Em vez de um raio, voc\u00ea dispara uma bola de gelo que explode, causando o efeito da magia em todas as criaturas na \u00e1rea."
       }
     ],
@@ -7873,13 +7895,13 @@
     "ALCANCE_ID": 1,
     "ALVO": "",
     "APRIMORAMENTO": [
-      { "CUSTO": 2, "DESCRICAO": "aumenta o dano ou cura em" },
+      { "CUSTO": "2", "DESCRICAO": "aumenta o dano ou cura em" },
       {
-        "CUSTO": 3,
+        "CUSTO": "3",
         "DESCRICAO": "em vez do normal, criaturas vivas a sua escolha na \u00e1rea curam 4d8 pontos de vida; o restante sofre o dano normalmente."
       },
       {
-        "CUSTO": 3,
+        "CUSTO": "3",
         "DESCRICAO": "criaturas que falhem na resist\u00eancia ficam cegas por 1d4 rodadas."
       }
     ],
@@ -7974,19 +7996,19 @@
     "ALVO": "",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "al\u00e9m do normal, os limites do domo s\u00e3o envoltos por uma fuma\u00e7a escura e espessa, que impede criaturas do lado de fora de enxergar ou ouvir o que est\u00e1 dentro. Criaturas do lado de dentro enxergam e ouvem normalmente o que est\u00e1 do lado de fora. A fuma\u00e7a tamb\u00e9m bloqueia magias de adivinha\u00e7\u00e3o."
       },
       {
-        "CUSTO": 3,
+        "CUSTO": "3",
         "DESCRICAO": "em vez do normal, cria uma cabana que comporta at\u00e9 10 criaturas M\u00e9dias. Descansar nesse espa\u00e7o concede recupera\u00e7\u00e3o confort\u00e1vel (recupera PV e PM igual ao dobro do n\u00edvel). Para todos os efeitos \u00e9 uma cabana normal, com paredes de madeira, telhado, uma porta, duas janelas e alguma mob\u00edlia (camas, uma mesa com bancos e uma lareira). A porta e as janelas t\u00eam 15 PV, RD 5 e s\u00e3o protegidas por um efeito id\u00eantico \u00e0 magia Tranca Arcana. As paredes t\u00eam 200 PV e RD 5."
       },
       {
-        "CUSTO": 3,
+        "CUSTO": "3",
         "DESCRICAO": "em vez do normal, cria um espa\u00e7o extradimensional, similar a uma caverna vazia e escura, que comporta at\u00e9 10 criaturas M\u00e9dias. A entrada para o espa\u00e7o precisa estar desenhada em um objeto fixo como uma grande pedra ou \u00e1rvore. Qualquer criatura que atravesse a entrada consegue entrar no espa\u00e7o. Nenhum efeito a partir do mundo real afeta o espa\u00e7o e vice-versa, mas aqueles que estiverem dentro podem observar o mundo real como se uma janela de 1m estivesse centrada na entrada. Qualquer coisa que esteja no espa\u00e7o extradimensional surge no mundo real na \u00e1rea vazia mais pr\u00f3xima da entrada quando a dura\u00e7\u00e3o da magia acaba. Requer 3\u00ba c\u00edrculo."
       },
       {
-        "CUSTO": 9,
+        "CUSTO": "9",
         "DESCRICAO": "em vez do normal, cria uma mans\u00e3o extradimensional que comporta at\u00e9 100 criaturas M\u00e9dias, com quartos luxuosos, comida e bebida e dez servos fantasmag\u00f3ricos (como na magia Servos Invis\u00edveis). Descansar na mans\u00e3o concede recupera\u00e7\u00e3o luxuosa (recupera PV e PM igual ao triplo do n\u00edvel). A mans\u00e3o tem uma \u00fanica entrada, uma porta feita de luz. Voc\u00ea pode deix\u00e1-la vis\u00edvel ou invis\u00edvel como uma a\u00e7\u00e3o livre e apenas criaturas escolhidas por voc\u00ea podem passar. Requer 4\u00ba c\u00edrculo."
       }
     ],
@@ -8035,9 +8057,9 @@
     "ALCANCE_ID": 1,
     "ALVO": "",
     "APRIMORAMENTO": [
-      { "CUSTO": 2, "DESCRICAO": "aumenta o dano em" },
+      { "CUSTO": "2", "DESCRICAO": "aumenta o dano em" },
       {
-        "CUSTO": 3,
+        "CUSTO": "3",
         "DESCRICAO": "muda a \u00e1rea para alvo (criaturas escolhidas). Em vez do normal, voc\u00ea dispara v\u00e1rios rel\u00e2mpagos, um para cada alvo escolhido, causando 6d6 pontos de dano de eletricidade. Requer 3\u00ba c\u00edrculo."
       }
     ],
@@ -8086,7 +8108,7 @@
     "ALCANCE_ID": 999,
     "ALVO": "",
     "APRIMORAMENTO": [
-      { "CUSTO": 2, "DESCRICAO": "aumenta o dano das rajadas em" }
+      { "CUSTO": "2", "DESCRICAO": "aumenta o dano das rajadas em" }
     ],
     "AREA_DESCRICAO": "Nenhum",
     "AREA_ID": 998,
@@ -8146,7 +8168,7 @@
     "ID_SINCRONISMO": 157,
     "MAGIA_DESCRICAO": "",
     "MAGIA_EFEITO": "",
-    "MAGIA_MECANICA": "",
+    "MAGIA_MECANICA": "Esta magia cria uma ilus\u00e3o particular para cada uma das criaturas que atingir. Enquanto a magia durar, no in\u00edcio de cada um de seus turnos, cada criatura afetada deve fazer um teste de Vontade; se falhar, acha que n\u00e3o tomou as a\u00e7\u00f5es que realmente fez no turno anterior e \u00e9 obrigada a repetir as mesmas a\u00e7\u00f5es neste turno, com uma penalidade cumulativa de \u20135 em todos os testes para cada vez que se repetir (a penalidade n\u00e3o se aplica ao teste de Vontade contra esta magia). Por exemplo, se a criatura se aproximou de um alvo e o atacou, precisa se aproximar desse mesmo alvo e atacar novamente. A a\u00e7\u00e3o repetida consome PM e recursos normalmente e, caso exija um teste de resist\u00eancia, qualquer alvo faz esse teste com um b\u00f4nus igual ao da penalidade desta magia.",
     "MAGIA_ORIGEM": "Tormenta 20 - Jogo do Ano",
     "MAGIA_ORIGEMSIGLA": "T20",
     "MANA_DESCRICAO": "Nenhum",
@@ -8178,21 +8200,21 @@
     "ALCANCE_ID": 2,
     "ALVO": "1 criatura",
     "APRIMORAMENTO": [
-      { "CUSTO": 2, "DESCRICAO": "aumenta a redu\u00e7\u00e3o de dano em" },
+      { "CUSTO": "2", "DESCRICAO": "aumenta a redu\u00e7\u00e3o de dano em" },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "muda a dura\u00e7\u00e3o para um dia. Requer 2\u00ba c\u00edrculo."
       },
       {
-        "CUSTO": 5,
+        "CUSTO": "5",
         "DESCRICAO": "muda o alcance para curto e o alvo para criaturas escolhidas. Requer 3\u00ba c\u00edrculo."
       },
       {
-        "CUSTO": 5,
+        "CUSTO": "5",
         "DESCRICAO": "muda o efeito para redu\u00e7\u00e3o de dano contra todos os tipos listados na magia. Requer 3\u00ba c\u00edrculo."
       },
       {
-        "CUSTO": 9,
+        "CUSTO": "9",
         "DESCRICAO": "muda o efeito para imunidade a um tipo listado na magia. Requer 4\u00ba c\u00edrculo."
       }
     ],
@@ -8242,11 +8264,11 @@
     "ALVO": "1 criatura",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 3,
+        "CUSTO": "3",
         "DESCRICAO": "aumenta o n\u00famero de efeitos que voc\u00ea pode escolher em"
       },
       {
-        "CUSTO": 7,
+        "CUSTO": "7",
         "DESCRICAO": "muda a dura\u00e7\u00e3o para permanente e resist\u00eancia para Fortitude parcial. Se passar, a criatura ainda sofre os efeitos da maldi\u00e7\u00e3o, mas por 1 rodada. Requer 4\u00ba c\u00edrculo."
       }
     ],
@@ -8296,11 +8318,11 @@
     "ALVO": "1 criatura",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 5,
+        "CUSTO": "5",
         "DESCRICAO": "o objeto que abriga a alma det\u00e9m os mesmos PM totais que o alvo. Se estiver empunhando o objeto, voc\u00ea pode usar esses PM para lan\u00e7ar magias no lugar dos seus. O objeto recupera PM por dia como se o personagem estivesse em descanso normal."
       },
       {
-        "CUSTO": 10,
+        "CUSTO": "10",
         "DESCRICAO": "como uma rea\u00e7\u00e3o ao lan\u00e7ar esta magia, voc\u00ea possui o corpo sem alma do alvo, como na magia Possess\u00e3o (mesmo que n\u00e3o conhe\u00e7a a magia)."
       }
     ],
@@ -8349,13 +8371,13 @@
     "ALCANCE_ID": 2,
     "ALVO": "uma \u00e1rea de 6m de raio",
     "APRIMORAMENTO": [
-      { "CUSTO": 1, "DESCRICAO": "aumenta o dano em" },
+      { "CUSTO": "1", "DESCRICAO": "aumenta o dano em" },
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "muda o alvo para \u201cvoc\u00ea\u201d e o alcance para \u201cpessoal\u201d. Ao inv\u00e9s do normal, escolha uma magia de 1\u00ba c\u00edrculo que voc\u00ea conhece e pode lan\u00e7ar, com tempo de execu\u00e7\u00e3o de uma a\u00e7\u00e3o padr\u00e3o ou menor. Voc\u00ea escreve a runa em seu corpo e especifica uma condi\u00e7\u00e3o de ativa\u00e7\u00e3o como, por exemplo, \u201cquando eu for alvo de um ataque\u201d ou \u201cquando for alvo de uma magia\u201d. Quando a condi\u00e7\u00e3o for cumprida, voc\u00ea pode ativar a runa e lan\u00e7ar a magia escolhida como uma rea\u00e7\u00e3o. Voc\u00ea s\u00f3 pode escrever uma runa em seu corpo ao mesmo tempo."
       },
       {
-        "CUSTO": 3,
+        "CUSTO": "3",
         "DESCRICAO": "como o aprimoramento anterior, mas voc\u00ea pode escolher magias de 2\u00ba c\u00edrculo. Requer 3\u00ba c\u00edrculo."
       }
     ],
@@ -8404,16 +8426,16 @@
     "ALCANCE_ID": 3,
     "ALVO": "voc\u00ea",
     "APRIMORAMENTO": [
-      { "CUSTO": 1, "DESCRICAO": "muda o alcance para m\u00e9dio." },
+      { "CUSTO": "1", "DESCRICAO": "muda o alcance para m\u00e9dio." },
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "muda o alvo para voc\u00ea e uma criatura volunt\u00e1ria. Voc\u00ea pode escolher este aprimoramento mais vezes para aumentar o n\u00famero de alvos adicionais em"
       },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "muda a execu\u00e7\u00e3o para rea\u00e7\u00e3o. Em vez do normal, voc\u00ea recebe"
       },
-      { "CUSTO": 3, "DESCRICAO": "muda o alcance para longo." }
+      { "CUSTO": "3", "DESCRICAO": "muda o alcance para longo." }
     ],
     "AREA_DESCRICAO": "Nenhum",
     "AREA_ID": 998,
@@ -8461,11 +8483,11 @@
     "ALVO": "1 criatura",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "al\u00e9m do normal, escolha um tipo de criatura entre animal, construto ou morto-vivo. Voc\u00ea n\u00e3o pode ser percebido por criaturas n\u00e3o inteligentes (Int \u20134 ou menor) do tipo escolhido."
       },
       {
-        "CUSTO": 9,
+        "CUSTO": "9",
         "DESCRICAO": "tamb\u00e9m protege o alvo contra efeitos de \u00e1rea. Uma criatura que tente atacar uma \u00e1rea que inclua o alvo deve fazer o teste de Vontade; se falhar, n\u00e3o consegue e perde a a\u00e7\u00e3o. Ela s\u00f3 pode tentar novamente se o alvo sair da \u00e1rea."
       }
     ],
@@ -8514,13 +8536,13 @@
     "ALCANCE_ID": 2,
     "ALVO": "1 criatura",
     "APRIMORAMENTO": [
-      { "CUSTO": 1, "DESCRICAO": "aumenta a cura em" },
+      { "CUSTO": "1", "DESCRICAO": "aumenta a cura em" },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "muda o alcance para curto e o alvo para at\u00e9 5 criaturas."
       },
       {
-        "CUSTO": 5,
+        "CUSTO": "5",
         "DESCRICAO": "muda o alvo para uma criatura que tenha morrido h\u00e1 at\u00e9 uma rodada. Esta magia pode cur\u00e1-la."
       }
     ],
@@ -8570,7 +8592,7 @@
     "ALVO": "1 criatura",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 4,
+        "CUSTO": "4",
         "DESCRICAO": "muda o alcance para curto e o alvo para criaturas escolhidas dentro do alcance. Requer 4\u00ba c\u00edrculo."
       }
     ],
@@ -8620,11 +8642,11 @@
     "ALVO": "",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "adiciona alvo (1 criatura). Voc\u00ea cria uma semiplano labir\u00edntico e expulsa o alvo para ele. A cada rodada, a v\u00edtima tem direito a um teste de Investiga\u00e7\u00e3o ou Sobreviv\u00eancia, com b\u00f4nus cumulativo de"
       },
       {
-        "CUSTO": 5,
+        "CUSTO": "5",
         "DESCRICAO": "muda a dura\u00e7\u00e3o para permanente e adiciona componente material (maquete do semiplano feita de materiais preciosos no valor de T$ 5. 000). Voc\u00ea pode lan\u00e7ar a magia diversas vezes para aumentar as dimens\u00f5es do semiplano em"
       }
     ],
@@ -8674,11 +8696,11 @@
     "ALVO": "",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 4,
+        "CUSTO": "4",
         "DESCRICAO": "muda a dura\u00e7\u00e3o para um dia ou at\u00e9 ser descarregada. O esp\u00edrito realiza uma tarefa a sua escolha que exija at\u00e9 um dia. O custo do pagamento aumenta para T$ 500. O resto segue normal."
       },
       {
-        "CUSTO": 9,
+        "CUSTO": "9",
         "DESCRICAO": "muda a dura\u00e7\u00e3o para 1 semana ou at\u00e9 ser descarregada. O esp\u00edrito realiza uma tarefa que exija at\u00e9 uma semana. O custo do pagamento aumenta para T$ 1. 000. O resto segue normal."
       }
     ],
@@ -8695,7 +8717,7 @@
     "ID_SINCRONISMO": 167,
     "MAGIA_DESCRICAO": "",
     "MAGIA_EFEITO": "criatura conjurada",
-    "MAGIA_MECANICA": "",
+    "MAGIA_MECANICA": "Voc\u00ea pede a sua divindade que envie um esp\u00edrito para ajud\u00e1-lo. Esse esp\u00edrito realiza uma tarefa a sua escolha que possa ser cumprida em at\u00e9 uma hora \u2014 desde algo simples como \u201cuse suas asas para nos levar at\u00e9 o topo da montanha\u201d at\u00e9 algo complexo como \u201cescolte esses camponeses at\u00e9 o castelo\u201d. A magia \u00e9 descarregada quando a criatura cumpre a tarefa, retornando a seu plano natal. O tipo de criatura \u00e9 escolhido pelo mestre, de acordo com as necessidades da tarefa. Componente material: um pagamento de T$ 100 ao esp\u00edrito. A forma de pagamento varia \u2014 doa\u00e7\u00f5es a um templo, um item m\u00e1gico ou mesmo dinheiro.",
     "MAGIA_ORIGEM": "Tormenta 20 - Jogo do Ano",
     "MAGIA_ORIGEMSIGLA": "T20",
     "MANA_DESCRICAO": "Nenhum",
@@ -8728,15 +8750,15 @@
     "ALVO": "1 cad\u00e1ver",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 3,
+        "CUSTO": "3",
         "DESCRICAO": "muda o componente material para p\u00f3 de \u00f4nix negro (T$ 500). Em vez de um zumbi ou esqueleto, cria um carni\u00e7al. Ele pode funcionar como um parceiro veterano, escolhido entre ajudante, atirador, combatente, fort\u00e3o ou guardi\u00e3o. O resto segue normal."
       },
       {
-        "CUSTO": 3,
+        "CUSTO": "3",
         "DESCRICAO": "muda o componente material para p\u00f3 de \u00f4nix negro (T$ 500). Em vez de um zumbi ou esqueleto, cria uma sombra. Ela pode funcionar como um parceiro veterano, escolhido entre assassino, combatente ou perseguidor. O restante da magia segue normal."
       },
       {
-        "CUSTO": 7,
+        "CUSTO": "7",
         "DESCRICAO": "muda o componente material para ferramentas de embalsamar (T$ 1. 000). Em vez de um zumbi ou esqueleto, cria uma m\u00famia. Ela pode funcionar como um parceiro mestre, escolhido entre ajudante, destruidor, guardi\u00e3o ou m\u00e9dico. O restante da magia segue normal. Requer 4\u00ba c\u00edrculo."
       }
     ],
@@ -8786,11 +8808,11 @@
     "ALVO": "",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "aumenta o n\u00famero de servos conjurados em 1."
       },
       {
-        "CUSTO": 3,
+        "CUSTO": "3",
         "DESCRICAO": "voc\u00ea pode comandar os servos para realizar uma \u00fanica tarefa no seu lugar. Em termos de jogo, eles passam automaticamente em um teste de per\u00edcia com CD m\u00e1xima igual ao seu n\u00edvel,"
       }
     ],
@@ -8840,19 +8862,19 @@
     "ALVO": "",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "muda as setas para lan\u00e7as de energia que surgem e caem do c\u00e9u. Cada lan\u00e7a causa 1d8"
       },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "muda o n\u00famero de setas/lan\u00e7as para tr\u00eas."
       },
       {
-        "CUSTO": 4,
+        "CUSTO": "4",
         "DESCRICAO": "muda o n\u00famero de setas/lan\u00e7as para cinco. Requer 2\u00ba c\u00edrculo."
       },
       {
-        "CUSTO": 9,
+        "CUSTO": "9",
         "DESCRICAO": "muda o n\u00famero de setas/lan\u00e7as para dez. Requer 4\u00ba c\u00edrculo."
       }
     ],
@@ -8869,7 +8891,7 @@
     "ID_SINCRONISMO": 170,
     "MAGIA_DESCRICAO": "",
     "MAGIA_EFEITO": "",
-    "MAGIA_MECANICA": "",
+    "MAGIA_MECANICA": "Favorita entre arcanistas iniciantes, esta magia lan\u00e7a duas setas de energia que causam 1d4+1 pontos de dano de ess\u00eancia cada. Voc\u00ea pode lan\u00e7ar as setas em alvos diferentes ou concentr\u00e1-las num mesmo alvo. Caso voc\u00ea possua um b\u00f4nus no dano de magias, como pelo poder Arcano de Batalha, ele \u00e9 aplicado em apenas uma seta (o b\u00f4nus vale para a magia, n\u00e3o cada alvo).",
     "MAGIA_ORIGEM": "Tormenta 20 - Jogo do Ano",
     "MAGIA_ORIGEMSIGLA": "T20",
     "MANA_DESCRICAO": "Nenhum",
@@ -8902,11 +8924,11 @@
     "ALVO": "",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "muda a \u00e1rea para alvo de 1 objeto. Em vez do normal, o alvo emana uma \u00e1rea de sil\u00eancio com 3m de raio. Se lan\u00e7ar a magia num objeto de uma criatura involunt\u00e1ria, ela tem direito a um teste de Vontade para anul\u00e1-la."
       },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "muda a dura\u00e7\u00e3o para cena. Em vez do normal, nenhum som pode deixar a \u00e1rea, mas criaturas dentro da \u00e1rea podem falar, ouvir e lan\u00e7ar magias com palavras m\u00e1gicas normalmente."
       }
     ],
@@ -8956,12 +8978,12 @@
     "ALVO": "1 criatura",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "muda o alcance para pessoal, o alvo para voc\u00ea, a dura\u00e7\u00e3o para cena e a resist\u00eancia para nenhuma. Em vez do normal, seus ataques corpo a corpo passam a acertar inimigos distantes. Seu alcance natural aumenta em 3m; uma criatura M\u00e9dia pode atacar advers\u00e1rios a at\u00e9 4,5m, por exemplo."
       },
-      { "CUSTO": 2, "DESCRICAO": "aumenta o dano em" },
-      { "CUSTO": 4, "DESCRICAO": "aumenta o empurr\u00e3o em" },
-      { "CUSTO": 5, "DESCRICAO": "muda o tipo do dano para ess\u00eancia." }
+      { "CUSTO": "2", "DESCRICAO": "aumenta o dano em" },
+      { "CUSTO": "4", "DESCRICAO": "aumenta o empurr\u00e3o em" },
+      { "CUSTO": "5", "DESCRICAO": "muda o tipo do dano para ess\u00eancia." }
     ],
     "AREA_DESCRICAO": "Nenhum",
     "AREA_ID": 998,
@@ -9009,7 +9031,7 @@
     "ALVO": "1 criatura",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 10,
+        "CUSTO": "10",
         "DESCRICAO": "muda o alvo para criaturas escolhidas na \u00e1rea."
       }
     ],
@@ -9059,10 +9081,10 @@
     "ALVO": "1 criatura viva",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "transforma o sonho do alvo em um pesadelo. A v\u00edtima deve fazer um teste de Vontade. Se falhar, n\u00e3o recupera PV ou PM pela noite, sofre 1d10 pontos de dano de trevas e acorda fatigada. A v\u00edtima recebe b\u00f4nus ou penalidades em seu teste de resist\u00eancia, dependendo do conhecimento que voc\u00ea tiver dela. Use os mesmos modificadores da magia Vid\u00eancia."
       },
-      { "CUSTO": 1, "DESCRICAO": "aumenta o n\u00famero de alvos em" }
+      { "CUSTO": "1", "DESCRICAO": "aumenta o n\u00famero de alvos em" }
     ],
     "AREA_DESCRICAO": "Nenhum",
     "AREA_ID": 998,
@@ -9110,12 +9132,12 @@
     "ALVO": "1 humanoide",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "alvos que falhem na resist\u00eancia ficam exaustos por 1d4"
       },
-      { "CUSTO": 2, "DESCRICAO": "muda o alvo para criatura." },
+      { "CUSTO": "2", "DESCRICAO": "muda o alvo para criatura." },
       {
-        "CUSTO": 5,
+        "CUSTO": "5",
         "DESCRICAO": "afeta todos os alvos v\u00e1lidos a sua escolha dentro do alcance."
       }
     ],
@@ -9164,13 +9186,13 @@
     "ALCANCE_ID": 1,
     "ALVO": "",
     "APRIMORAMENTO": [
-      { "CUSTO": 2, "DESCRICAO": "aumenta a cura em" },
+      { "CUSTO": "2", "DESCRICAO": "aumenta a cura em" },
       {
-        "CUSTO": 4,
+        "CUSTO": "4",
         "DESCRICAO": "al\u00e9m do normal, se um aliado estiver com PV negativos, seus PV s\u00e3o levados a 0 e ent\u00e3o a cura \u00e9 aplicada."
       },
       {
-        "CUSTO": 4,
+        "CUSTO": "4",
         "DESCRICAO": "remove todas as condi\u00e7\u00f5es listadas, em vez de apenas uma."
       }
     ],
@@ -9219,9 +9241,9 @@
     "ALCANCE_ID": 1,
     "ALVO": "",
     "APRIMORAMENTO": [
-      { "CUSTO": 2, "DESCRICAO": "aumenta o dano de frio em" },
+      { "CUSTO": "2", "DESCRICAO": "aumenta o dano de frio em" },
       {
-        "CUSTO": 3,
+        "CUSTO": "3",
         "DESCRICAO": "aumenta o tamanho m\u00e1ximo das criaturas afetadas em uma categoria. Requer 3\u00ba c\u00edrculo."
       }
     ],
@@ -9271,7 +9293,7 @@
     "ALVO": "1 criatura",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 5,
+        "CUSTO": "5",
         "DESCRICAO": "muda o alcance para curto e o alvo para criaturas escolhidas."
       }
     ],
@@ -9320,10 +9342,10 @@
     "ALCANCE_ID": 3,
     "ALVO": "1 humanoide",
     "APRIMORAMENTO": [
-      { "CUSTO": 2, "DESCRICAO": "aumenta o n\u00famero de alvos em" },
-      { "CUSTO": 3, "DESCRICAO": "muda o alvo para 1 criatura." },
+      { "CUSTO": "2", "DESCRICAO": "aumenta o n\u00famero de alvos em" },
+      { "CUSTO": "3", "DESCRICAO": "muda o alvo para 1 criatura." },
       {
-        "CUSTO": 12,
+        "CUSTO": "12",
         "DESCRICAO": "muda o alvo para criaturas escolhidas. Requer 5\u00ba c\u00edrculo."
       }
     ],
@@ -9372,9 +9394,9 @@
     "ALCANCE_ID": 1,
     "ALVO": "",
     "APRIMORAMENTO": [
-      { "CUSTO": 2, "DESCRICAO": "aumenta o dano em" },
+      { "CUSTO": "2", "DESCRICAO": "aumenta o dano em" },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "muda o alvo para voc\u00ea, a dura\u00e7\u00e3o para sustentada e o efeito para uma vez por rodada, como uma a\u00e7\u00e3o de movimento, voc\u00ea pode disparar uma l\u00e2mina de ar contra um alvo em alcance m\u00e9dio, causando 6d8 pontos de dano de corte (Fortitude reduz \u00e0 metade)."
       }
     ],
@@ -9424,14 +9446,14 @@
     "ALVO": "",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "al\u00e9m do normal, criaturas que falhem na resist\u00eancia tamb\u00e9m ficam im\u00f3veis."
       },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "al\u00e9m do normal, no in\u00edcio de seus turnos a magia afeta novamente qualquer criatura na \u00e1rea, exigindo um novo teste de Reflexos. Requer 2\u00ba c\u00edrculo."
       },
-      { "CUSTO": 2, "DESCRICAO": "aumenta a \u00e1rea em" }
+      { "CUSTO": "2", "DESCRICAO": "aumenta a \u00e1rea em" }
     ],
     "AREA_DESCRICAO": "Outro",
     "AREA_ID": 999,
@@ -9446,7 +9468,7 @@
     "ID_SINCRONISMO": 181,
     "MAGIA_DESCRICAO": "",
     "MAGIA_EFEITO": "",
-    "MAGIA_MECANICA": "",
+    "MAGIA_MECANICA": "Teia cria v\u00e1rias camadas de fibras entrela\u00e7adas e pegajosas na \u00e1rea. Qualquer criatura na \u00e1rea que falhar na resist\u00eancia fica enredada. Uma v\u00edtima pode se libertar com uma a\u00e7\u00e3o padr\u00e3o e um teste de Acrobacia ou Atletismo. A \u00e1rea ocupada por Teia \u00e9 terreno dif\u00edcil. A Teia \u00e9 inflam\u00e1vel. Qualquer ataque que cause dano de fogo destr\u00f3i as teias por onde passar, libertando as criaturas enredadas mas deixando-as em chamas. ",
     "MAGIA_ORIGEM": "Tormenta 20 - Jogo do Ano",
     "MAGIA_ORIGEMSIGLA": "T20",
     "MANA_DESCRICAO": "Nenhum",
@@ -9479,7 +9501,7 @@
     "ALVO": "veja texto",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 3,
+        "CUSTO": "3",
         "DESCRICAO": "aumenta o tamanho m\u00e1ximo da criatura em uma categoria (para Grande, Enorme e Colossal) ou dobra a quantidade de espa\u00e7os do objeto."
       }
     ],
@@ -9528,13 +9550,13 @@
     "ALCANCE_ID": 2,
     "ALVO": "at\u00e9 5 criaturas volunt\u00e1rias",
     "APRIMORAMENTO": [
-      { "CUSTO": 2, "DESCRICAO": "aumenta o n\u00famero de alvos em" },
+      { "CUSTO": "2", "DESCRICAO": "aumenta o n\u00famero de alvos em" },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "em vez do normal, a magia teletransporta os alvos para seu santu\u00e1rio \u2014 um local familiar e previamente preparado. A magia pode ser usada sem limite de dist\u00e2ncia ou necessidade de testes, mas apenas dentro do mesmo plano. Preparar um local como seu santu\u00e1rio exige um ritual de um dia e o gasto de T$ 1. 000. Voc\u00ea s\u00f3 pode ter um santu\u00e1rio por vez."
       },
       {
-        "CUSTO": 9,
+        "CUSTO": "9",
         "DESCRICAO": "muda a execu\u00e7\u00e3o para a\u00e7\u00e3o completa, a dura\u00e7\u00e3o para cena e adiciona sacrif\u00edcio de 1 PM. Em vez do normal, voc\u00ea cria um c\u00edrculo de 1,5m de di\u00e2metro no ch\u00e3o, que transporta qualquer criatura que pisar nele. O destino \u00e9 escolhido quando a magia \u00e9 lan\u00e7ada e pode ser qualquer lugar, em qualquer mundo, sem a necessidade de testes, desde que seja conhecido por voc\u00ea. O c\u00edrculo \u00e9 t\u00eanue e praticamente invis\u00edvel. Voc\u00ea pode marc\u00e1-lo de alguma forma (por exemplo, lan\u00e7ando-o sobre uma plataforma elevada). Se n\u00e3o fizer isso, algu\u00e9m pode pisar nele por acidente. Junte isso a um destino hostil e voc\u00ea ter\u00e1 uma armadilha bastante eficaz! Requer 5\u00ba c\u00edrculo."
       }
     ],
@@ -9584,24 +9606,24 @@
     "ALVO": "",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "al\u00e9m do normal, uma vez por rodada voc\u00ea pode gastar uma a\u00e7\u00e3o padr\u00e3o para fazer um raio cair sobre um alvo na \u00e1rea, causando 3d8 pontos de dano de eletricidade (Reflexos reduz \u00e0 metade)."
       },
-      { "CUSTO": 2, "DESCRICAO": "aumenta o dano de raios (veja acima) em" },
+      { "CUSTO": "2", "DESCRICAO": "aumenta o dano de raios (veja acima) em" },
       {
-        "CUSTO": 3,
+        "CUSTO": "3",
         "DESCRICAO": "se escolheu causar chuva, ela se torna mais grossa, revelando a silhueta de criaturas invis\u00edveis na \u00e1rea. Criaturas M\u00e9dias ou menores ficam lentas e criaturas voadoras precisam passar num teste de Atletismo por rodada ou caem ao solo (mas podem fazer testes de Acrobacia para reduzir o dano de queda, como o normal)."
       },
       {
-        "CUSTO": 3,
+        "CUSTO": "3",
         "DESCRICAO": "se escolheu causar granizo, muda o dano para 2d6 por rodada."
       },
       {
-        "CUSTO": 3,
+        "CUSTO": "3",
         "DESCRICAO": "se escolheu causar neve, criaturas na \u00e1rea sofrem 2d6 pontos de dano de frio no in\u00edcio de seus turnos."
       },
       {
-        "CUSTO": 3,
+        "CUSTO": "3",
         "DESCRICAO": "muda a \u00e1rea para cilindro com 90m de raio e 90m de altura."
       }
     ],
@@ -9650,8 +9672,8 @@
     "ALCANCE_ID": 4,
     "ALVO": "",
     "APRIMORAMENTO": [
-      { "CUSTO": 2, "DESCRICAO": "aumenta o raio da \u00e1rea em" },
-      { "CUSTO": 2, "DESCRICAO": "aumenta o dano dos tent\u00e1culos em" }
+      { "CUSTO": "2", "DESCRICAO": "aumenta o raio da \u00e1rea em" },
+      { "CUSTO": "2", "DESCRICAO": "aumenta o dano dos tent\u00e1culos em" }
     ],
     "AREA_DESCRICAO": "Esfera",
     "AREA_ID": 3,
@@ -9743,13 +9765,13 @@
     "ALCANCE_ID": 2,
     "ALVO": "1 criatura",
     "APRIMORAMENTO": [
-      { "CUSTO": 1, "DESCRICAO": "aumenta o dano em" },
+      { "CUSTO": "1", "DESCRICAO": "aumenta o dano em" },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "muda a resist\u00eancias para nenhum. Como parte da execu\u00e7\u00e3o da magia, voc\u00ea faz um ataque corpo a corpo contra o alvo. Se acertar, causa o dano do ataque e da magia."
       },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "muda o alcance para pessoal e o alvo para \u00e1rea: esfera com 6m de raio. Voc\u00ea dispara raios pelas pontas dos dedos que afetam todas as criaturas na \u00e1rea."
       }
     ],
@@ -9799,11 +9821,11 @@
     "ALVO": "1 criatura",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "muda o alcance para curto. Em vez de tocar no alvo, voc\u00ea dispara um raio p\u00farpura da ponta de seu dedo indicador."
       },
       {
-        "CUSTO": 10,
+        "CUSTO": "10",
         "DESCRICAO": "muda o alcance para curto e o alvo para inimigos no alcance. Em vez de tocar no alvo, voc\u00ea dispara raios p\u00farpuras da ponta de seus dedos."
       }
     ],
@@ -9853,12 +9875,12 @@
     "ALVO": "1 criatura",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "muda a resist\u00eancias para nenhum como parte da execu\u00e7\u00e3o da ma-d gia, voc\u00ea pode fazer um ataque corpo a corpo contra o alvo. Se acertar, causa o dano do ataque e da magia, e recupera pontos de vida iguais \u00e0 metade do dano da magia."
       },
-      { "CUSTO": 2, "DESCRICAO": "aumenta o dano em" },
+      { "CUSTO": "2", "DESCRICAO": "aumenta o dano em" },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "muda o alcance para pessoal, o alvo para voc\u00ea e a dura\u00e7\u00e3o para cena. Em vez do normal, a cada rodada voc\u00ea pode gastar uma a\u00e7\u00e3o padr\u00e3o para tocar 1 criatura e causar 3d6 pontos de dano. Voc\u00ea recupera pontos de vida iguais \u00e0 metade do dano causado. Requer 3\u00ba c\u00edrculo."
       }
     ],
@@ -9908,12 +9930,12 @@
     "ALVO": "1 objeto Grande ou menor",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "muda o alcance para curto e a dura\u00e7\u00e3o para instant\u00e2nea. Em vez do normal, a magia abre portas, ba\u00fas e janelas trancadas, presas, barradas ou protegidas por Tranca Arcana (o efeito \u00e9 dissipado) a sua escolha. Ela tamb\u00e9m afrouxa grilh\u00f5es e solta correntes."
       },
-      { "CUSTO": 5, "DESCRICAO": "aumenta a CD para abrir o alvo em" },
+      { "CUSTO": "5", "DESCRICAO": "aumenta a CD para abrir o alvo em" },
       {
-        "CUSTO": 5,
+        "CUSTO": "5",
         "DESCRICAO": "muda o alvo para 1 objeto de qualquer tamanho, podendo afetar at\u00e9 mesmo os port\u00f5es de um castelo. Requer 3\u00ba c\u00edrculo."
       }
     ],
@@ -9962,10 +9984,10 @@
     "ALCANCE_ID": 3,
     "ALVO": "1 animal ou humanoide",
     "APRIMORAMENTO": [
-      { "CUSTO": 1, "DESCRICAO": "muda o alvo para 1 criatura." },
-      { "CUSTO": 1, "DESCRICAO": "aumenta o n\u00famero de alvos em" },
+      { "CUSTO": "1", "DESCRICAO": "muda o alvo para 1 criatura." },
+      { "CUSTO": "1", "DESCRICAO": "aumenta o n\u00famero de alvos em" },
       {
-        "CUSTO": 5,
+        "CUSTO": "5",
         "DESCRICAO": "muda o alcance para m\u00e9dio e o alvo para criaturas escolhidas. Requer 3\u00ba c\u00edrculo."
       }
     ],
@@ -10015,11 +10037,11 @@
     "ALVO": "voc\u00ea",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "aumenta os b\u00f4nus na Defesa, testes de ataque e rolagens de dano corpo a corpo em"
       },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "adiciona componente material (barra de adamante no valor de T$ 100). Sua forma de combate ganha um aspecto met\u00e1lico e sem express\u00f5es. Al\u00e9m do normal, voc\u00ea recebe redu\u00e7\u00e3o de dano 10 e imunidade a atordoamento e efeitos de cansa\u00e7o, encantamento, metabolismo, trevas e veneno, e n\u00e3o precisa respirar."
       }
     ],
@@ -10069,23 +10091,23 @@
     "ALVO": "",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "muda o alcance para toque, o alvo para 1 construto e a dura\u00e7\u00e3o para instant\u00e2nea. Em vez do normal, cura 2d8 PV do alvo. Voc\u00ea pode gastar 2 PM adicionais para aumentar a cura em"
       },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "aumenta o limite de tamanho do objeto em uma categoria."
       },
       {
-        "CUSTO": 3,
+        "CUSTO": "3",
         "DESCRICAO": "aumenta o pre\u00e7o m\u00e1ximo do objeto criado em um fator de x10 ("
       },
       {
-        "CUSTO": 5,
+        "CUSTO": "5",
         "DESCRICAO": "muda o alvo para 1 objeto mundano e a dura\u00e7\u00e3o para instant\u00e2nea. Em vez do normal, voc\u00ea cura todos os PV do alvo, restaurando o objeto totalmente. Este aprimoramento est\u00e1 sujeito aos limites de tamanho e pre\u00e7o do objeto conforme a magia original e n\u00e3o funciona se o objeto tiver sido completamente destru\u00eddo (queimado at\u00e9 virar cinzas ou desintegrado, por exemplo). Requer 3\u00ba c\u00edrculo."
       },
       {
-        "CUSTO": 9,
+        "CUSTO": "9",
         "DESCRICAO": "como o aprimoramento anterior, mas passa a afetar itens m\u00e1gicos."
       }
     ],
@@ -10135,15 +10157,15 @@
     "ALVO": "1 criatura",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 0,
+        "CUSTO": "0",
         "DESCRICAO": "muda a dura\u00e7\u00e3o para cena. A a\u00e7\u00e3o adicional que voc\u00ea pode fazer \u00e9 apenas de movimento. Uma criatura s\u00f3 pode receber uma a\u00e7\u00e3o adicional por turno como efeito de Velocidade."
       },
       {
-        "CUSTO": 7,
+        "CUSTO": "7",
         "DESCRICAO": "muda o alvo para criaturas escolhidas no alcance. Requer 4\u00ba c\u00edrculo."
       },
       {
-        "CUSTO": 7,
+        "CUSTO": "7",
         "DESCRICAO": "muda o alcance para pessoal e o alvo para voc\u00ea. Voc\u00ea acelera sua mente, al\u00e9m de seu corpo. A a\u00e7\u00e3o adicional pode ser usada para lan\u00e7ar magias e ativar engenhocas. Requer 4\u00ba c\u00edrculo."
       }
     ],
@@ -10193,12 +10215,12 @@
     "ALVO": "",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 3,
+        "CUSTO": "3",
         "DESCRICAO": "o objeto oferece o mesmo b\u00f4nus em testes de resist\u00eancia. Requer 3\u00ba c\u00edrculo."
       },
-      { "CUSTO": 4, "DESCRICAO": "aumenta o b\u00f4nus em" },
+      { "CUSTO": "4", "DESCRICAO": "aumenta o b\u00f4nus em" },
       {
-        "CUSTO": 7,
+        "CUSTO": "7",
         "DESCRICAO": "o objeto tamb\u00e9m oferece redu\u00e7\u00e3o de dano 5. Requer 4\u00ba c\u00edrculo."
       }
     ],
@@ -10248,7 +10270,7 @@
     "ALVO": "voc\u00ea",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "muda o alcance para toque, o alvo para at\u00e9 cinco criaturas e a dura\u00e7\u00e3o para instant\u00e2nea. Os alvos entram em uma planta (de tamanho M\u00e9dio ou maior) e saem em outra planta do mesmo tamanho a at\u00e9 100km de dist\u00e2ncia, especificada em dire\u00e7\u00e3o e dist\u00e2ncia aproximadas (como \u201c50km ao norte\u201d)."
       }
     ],
@@ -10298,7 +10320,7 @@
     "ALVO": "pessoal",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "muda o alvo para at\u00e9 cinco criaturas volunt\u00e1rias que voc\u00ea esteja tocando."
       }
     ],
@@ -10393,19 +10415,19 @@
     "ALVO": "voc\u00ea",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "muda o alcance para toque e o alvo para 1 criatura."
       },
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "al\u00e9m do normal, o alvo fica com sentidos apurados; ele recebe"
       },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "al\u00e9m do normal, o alvo escuta falsidades; ele recebe"
       },
       {
-        "CUSTO": 4,
+        "CUSTO": "4",
         "DESCRICAO": "al\u00e9m do normal, o alvo enxerga atrav\u00e9s de paredes e barreiras com 30cm de espessura ou menos (as paredes e barreiras parecem transl\u00facidas)."
       }
     ],
@@ -10454,10 +10476,10 @@
     "ALCANCE_ID": 1,
     "ALVO": "voc\u00ea",
     "APRIMORAMENTO": [
-      { "CUSTO": 1, "DESCRICAO": "recebe vis\u00e3o no escuro." },
-      { "CUSTO": 2, "DESCRICAO": "muda a dura\u00e7\u00e3o para um dia." },
+      { "CUSTO": "1", "DESCRICAO": "recebe vis\u00e3o no escuro." },
+      { "CUSTO": "2", "DESCRICAO": "muda a dura\u00e7\u00e3o para um dia." },
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "tamb\u00e9m pode enxergar objetos e criaturas invis\u00edveis. Eles aparecem como formas transl\u00facidas."
       }
     ],
@@ -10507,11 +10529,11 @@
     "ALVO": "voc\u00ea",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 2,
+        "CUSTO": "2",
         "DESCRICAO": "aumenta os PV tempor\u00e1rios recebidos em"
       },
       {
-        "CUSTO": 5,
+        "CUSTO": "5",
         "DESCRICAO": "muda o alvo para \u00e1rea: esfera com 6m de raio centrada em voc\u00ea e a resist\u00eancia para Fortitude reduz \u00e0 metade. Em vez do normal, voc\u00ea suga energia das criaturas vivas na \u00e1rea, causando 1d10 pontos de dano de trevas e recebendo PV tempor\u00e1rios iguais ao dano total causado. Os PV tempor\u00e1rios desaparecem ao final da cena. Requer 2\u00ba c\u00edrculo."
       }
     ],
@@ -10561,15 +10583,15 @@
     "ALVO": "voc\u00ea",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "muda o alcance para toque e o alvo para 1 criatura."
       },
       {
-        "CUSTO": 4,
+        "CUSTO": "4",
         "DESCRICAO": "muda a dura\u00e7\u00e3o para um dia. Requer 4\u00ba c\u00edrculo."
       },
       {
-        "CUSTO": 4,
+        "CUSTO": "4",
         "DESCRICAO": "muda o alcance para curto e o alvo para at\u00e9 10 criaturas. Requer 4\u00b0 c\u00edrculo."
       }
     ],
@@ -10619,11 +10641,11 @@
     "ALVO": "voc\u00ea",
     "APRIMORAMENTO": [
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "voc\u00ea concede um pouco de vida a um cad\u00e1ver, suficiente para que ele responda a suas perguntas. O conhecimento do corpo \u00e9 limitado ao que ele tinha enquanto vivo e suas respostas s\u00e3o curtas e enigm\u00e1ticas. Um corpo s\u00f3 pode ser alvo desta magia uma vez. Ela tamb\u00e9m n\u00e3o funciona em um corpo cuja cabe\u00e7a tenha sido destru\u00edda."
       },
       {
-        "CUSTO": 1,
+        "CUSTO": "1",
         "DESCRICAO": "voc\u00ea pode falar com plantas (normais ou monstruosas) e rochas. Plantas e rochas t\u00eam percep\u00e7\u00e3o limitada de seus arredores e normalmente fornecem respostas simpl\u00f3rias."
       }
     ],

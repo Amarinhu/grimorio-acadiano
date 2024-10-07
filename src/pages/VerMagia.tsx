@@ -148,7 +148,7 @@ const Grimorio: React.FC = () => {
             WHERE MAGIA.ID = ${idMagia} `;
 
         const comandoSQLAprim = `
-            SELECT * FROM APRIMORAMENTO WHERE ID_MAGIA = ${idMagia}`;
+            SELECT * FROM APRIMORAMENTO WHERE ID_MAGIA = ${idMagia} ORDER BY CUSTO DESC `;
 
         try {
           let resultado: { values: any[] } | undefined;
@@ -364,7 +364,10 @@ const Grimorio: React.FC = () => {
                   <IonRow key={indice}>
                     <IonCol>
                       <strong>
-                        +{aprimoramento?.[indice]?.CUSTO || null} PM :{" "}
+                        {isNaN(Number(aprimoramento?.[indice]?.CUSTO)) || null
+                          ? `${aprimoramento?.[indice]?.CUSTO} :`
+                          : `+${aprimoramento?.[indice]?.CUSTO} PM :`} {" "}
+                        
                       </strong>
                       {aprimoramento?.[indice]?.DESCRICAO || null}{" "}
                     </IonCol>

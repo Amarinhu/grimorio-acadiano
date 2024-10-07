@@ -922,7 +922,7 @@ const EditorDeFeiticos: React.FC = () => {
         `INSERT OR REPLACE INTO NIVEL (ID, NIVEL)
           VALUES (1, '1'), (2, '2'), (3, '3'), (4, '4'), (5, '5'), (6, '6'), (999, 'Ø');`,
         `INSERT OR REPLACE INTO NATUREZA(ID, ICONE, DESCRICAO)
-          VALUES (1,'🙏', 'Divino'), (2,'✨', 'Arcana'), (3,'📖', 'Universal'), (998, 'x', 'Nenhum'), (999,'Ø','Outro')`,
+          VALUES (1,'🙏', 'Divino'), (2,'✨', 'Arcana'), (3,'📖', 'Universal'), (4,'⚔️', 'Marcial'), (998, 'x', 'Nenhum'), (999,'Ø','Outro')`,
         `INSERT OR REPLACE INTO ESCOLA(ID, ICONE, DESCRICAO)
           VALUES (1, '🛡️', 'Abjuração'), (2, '🔮', 'Adivinhação'), (3, '🌀', 'Convocação'), 
           (4, '❤️', 'Encantamento'), (5, '👁️‍🗨️', 'Ilusão'), (6, '🔥', 'Evocação'), (7, '☠️', 'Necromancia'), 
