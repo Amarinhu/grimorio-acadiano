@@ -69,6 +69,7 @@ const ListaMagia: React.FC = () => {
 
   const [modalSel, defModalSel] = useState<number>(0);
 
+  const [grimorioItens, defGrimorioItens] = useState<Array<any>>([]);
   const [magiaItens, defMagiaItens] = useState<Array<any>>([]);
   const [magiaItensTotal, defMagiaItensTotal] = useState<Array<any>>([]);
 
@@ -241,6 +242,8 @@ const ListaMagia: React.FC = () => {
         INNER JOIN RESISTENCIA ON MAGIA.ID_RESISTENCIA = RESISTENCIA.ID
          `;
 
+    let comandoGrimorio = ` SELECT * FROM GRIMORIO `;
+
     let comando = [];
     let array = [];
 
@@ -273,8 +276,6 @@ const ListaMagia: React.FC = () => {
     comandoSQL += `
     ORDER BY MAGIA.NOME
   `;
-  
-  
 
     try {
       defCarregamento(true);
@@ -282,6 +283,11 @@ const ListaMagia: React.FC = () => {
         if (!pagina || pagina <= 0) {
           console.log("RODOU A RESULTADO TOTAL ");
           const resultadoTotal = await db?.query(comandoSQL, array);
+          const resultadoGrimorio = await db?.query(comandoGrimorio);
+          if (resultadoGrimorio && resultadoGrimorio.values) {
+            defGrimorioItens(resultadoGrimorio?.values);
+          }
+          
           if (resultadoTotal && resultadoTotal.values) {
             defMagiaItensTotal(resultadoTotal?.values);
           }
@@ -291,13 +297,13 @@ const ListaMagia: React.FC = () => {
         console.log(resultado);
 
         if (resultado && resultado.values) {
-          let totalLocal = 40;
+          let totalLocal = 20;
           if (pagina) {
-            totalLocal = pagina + 40;
+            totalLocal = pagina + 20;
           }
-          const batch40 = resultado.values.slice(pagina, totalLocal);
-          console.log(batch40);
-          defMagiaItens(batch40);
+          const batch20 = resultado.values.slice(pagina, totalLocal);
+          console.log(batch20);
+          defMagiaItens(batch20);
         }
       });
     } catch (erro) {
@@ -363,6 +369,25 @@ const ListaMagia: React.FC = () => {
       corSecundaria: corSecundaria,
       corTerciaria: corTerciaria,
     };
+  };
+
+  const guardarMagiaGrimorio = async (idMagia: number, idGrimorio: number) => {
+    try {
+      await executarAcaoSQL(async (db: SQLiteDBConnection | undefined) => {
+        await db?.query(
+          ` INSERT OR REPLACE INTO MAGIAGRIMORIO (ID_MAGIA, ID_GRIMORIO) VALUES (?,?) `,
+          [idMagia, idGrimorio]
+        );
+      });
+    } catch (erro) {
+      console.error(erro);
+    } finally {
+      defCorToast("success");
+      defToastTexto("Magia adicionada ao grimório!");
+      defMostraMensagem(true);
+      defMostraModalOpcoes(false);
+      defMostraModalGrimorio(false);
+    }
   };
 
   const deletarMagia = async (idMagia: number) => {
@@ -529,25 +554,25 @@ const ListaMagia: React.FC = () => {
   /**/
 
   const voltarPagina = () => {
-    if (pagina - 40 >= 0) {
+    if (pagina - 20 >= 0) {
       try {
-        defPagina(pagina - 40);
+        defPagina(pagina - 20);
       } catch (erro) {
         console.error(erro);
       } finally {
-        filtraDados(pagina - 40);
+        filtraDados(pagina - 20);
       }
     }
   };
 
   const avancarPagina = () => {
-    if (pagina + 40 <= magiaItensTotal.length) {
+    if (pagina + 20 <= magiaItensTotal.length) {
       try {
-        defPagina(pagina + 40);
+        defPagina(pagina + 20);
       } catch (erro) {
         console.error(erro);
       } finally {
-        filtraDados(pagina + 40);
+        filtraDados(pagina + 20);
       }
     }
   };
@@ -555,7 +580,7 @@ const ListaMagia: React.FC = () => {
   const teste = () => {
     console.log(magiaItens);
     console.log(magiaItensTotal);
-    console.log(Math.ceil(magiaItensTotal.length / 40));
+    console.log(Math.ceil(magiaItensTotal.length / 20));
   };
 
   return (
@@ -666,7 +691,7 @@ const ListaMagia: React.FC = () => {
                 style={{ padding: "0px" }}
                 className="ion-text-center"
               >
-                {pagina / 40 + 1}/{Math.ceil(magiaItensTotal.length / 40)}
+                {pagina / 20 + 1}/{Math.ceil(magiaItensTotal.length / 20)}
               </IonCol>
               <IonCol
                 onClick={avancarPagina}
@@ -821,7 +846,7 @@ const ListaMagia: React.FC = () => {
                     </IonCol>
                   </IonRow>
                   <IonRow>
-                    <IonCol style={{ padding: "0px", textAlign : "justify" }}>
+                    <IonCol style={{ padding: "0px", textAlign: "justify" }}>
                       <p>{magia.MAGIA_MECANICA}</p>
                     </IonCol>
                   </IonRow>
@@ -830,7 +855,10 @@ const ListaMagia: React.FC = () => {
             ))}
           </div>
         ) : null}
-        {magiaItensTotal && magiaItensTotal.length > 0 && !carregamento ? (
+        {magiaItensTotal &&
+        magiaItensTotal.length > 0 &&
+        magiaItensTotal.length > 10 &&
+        !carregamento ? (
           <IonGrid>
             <IonRow className="ion-justify-content-center ion-align-items-center">
               <IonCol
@@ -847,7 +875,7 @@ const ListaMagia: React.FC = () => {
                 style={{ padding: "0px" }}
                 className="ion-text-center"
               >
-                {pagina / 40 + 1}/{Math.ceil(magiaItensTotal.length / 40)}
+                {pagina / 20 + 1}/{Math.ceil(magiaItensTotal.length / 20)}
               </IonCol>
               <IonCol
                 onClick={avancarPagina}
@@ -930,6 +958,44 @@ const ListaMagia: React.FC = () => {
               </IonButton>
             </div>
           </IonCard>
+        </IonModal>
+
+        <IonModal
+          isOpen={mostraModalGrimorio}
+          onDidDismiss={() => defMostraModalGrimorio(false)}
+        >
+          <IonList style={{ marginTop: "auto", marginBottom: "auto" }}>
+            <IonTitle
+              style={{ fontSize: "1.5rem", paddingBottom: "1rem" }}
+              className="ion-text-center"
+            >
+              Selecione o Grimório
+            </IonTitle>
+            {grimorioItens?.map((grimorio) => (
+              <IonItem
+                className="ion-text-center"
+                button
+                key={grimorio.ID}
+                color="secondary"
+                onClick={() => guardarMagiaGrimorio(cardSel, grimorio.ID)}
+              >
+                <IonLabel style={{ fontSize: "1.3rem" }}>
+                  <strong>"{grimorio.NOME}"</strong> -{" "}
+                  <em>{grimorio.USUARIO}</em>
+                </IonLabel>
+              </IonItem>
+            ))}
+            <div className="ion-text-center">
+              <IonButton
+                fill="clear"
+                color="secondary"
+                onClick={() => defMostraModalGrimorio(false)}
+              >
+                <IonIcon color="danger" slot="start" icon={closeCircle} />
+                <IonLabel color="danger">CANCELAR</IonLabel>
+              </IonButton>
+            </div>
+          </IonList>
         </IonModal>
 
         <IonModal

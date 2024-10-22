@@ -1,3 +1,0 @@
-domo.tarefas.test
-style WhiteBackgroundDialogTheme
-style WhiteBackgroundTheme

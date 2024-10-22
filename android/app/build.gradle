@@ -5,7 +5,7 @@ android {
     /*compileSdkVersion rootProject.ext.compileSdkVersion*/
     compileSdkVersion 34
     defaultConfig {
-        applicationId "domo.tarefas"
+        applicationId "assistente.tormenta"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 2
